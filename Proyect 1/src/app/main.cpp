@@ -1,9 +1,12 @@
 #include <fstream>
-#include <sstream>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 #include <string>
-#include "Lexer.h"
+#include <vector>
+
+#include "lexer/Lexer.h"
+#include "reporting/LexicalReport.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -22,9 +25,12 @@ int main(int argc, char* argv[]) {
     std::string source = buffer.str();
 
     Lexer lexer(source);
+    std::vector<Token> tokens;
 
     while (true) {
         Token token = lexer.nextToken();
+        tokens.push_back(token);
+
         std::cout
             << tokenTypeToString(token.type)
             << " lexeme=\"" << token.lexeme << "\""
@@ -56,6 +62,13 @@ int main(int argc, char* argv[]) {
                       << std::setw(45) << error.description
                       << "(" << error.line << ", " << error.column << ")\n";
         }
+    }
+
+    const std::string reportPath = "reporte_lexico.html";
+    if (writeLexicalHtmlReport(reportPath, tokens, errors)) {
+        std::cout << "\nReporte HTML generado: " << reportPath << "\n";
+    } else {
+        std::cerr << "\nNo se pudo generar el reporte HTML: " << reportPath << "\n";
     }
 
     return 0;

@@ -42,7 +42,7 @@ enum class TokenType {
     ESPECIALIDAD_ENUM,
     DOSIS_ENUM,
 
-    // Symbolos
+    // Simbolos
     LBrace,      // {
     RBrace,      // }
     LParen,      // (
@@ -50,7 +50,7 @@ enum class TokenType {
     Colon,       // :
     Semicolon,   // ;
     Comma,       // ,
-    Equal,        // =
+    Equal,       // =
     LBracket,    // [
     RBracket,    // ]
     Minus        // -

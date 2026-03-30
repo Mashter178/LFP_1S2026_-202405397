@@ -2,47 +2,7 @@
 
 Lexer::Lexer(const std::string& source)
     : m_source(source), m_index(0), m_line(1), m_column(1), m_errorCounter(0) {
-    m_keywords["HOSPITAL"] = TokenType::Hospital;
-    m_keywords["PACIENTES"] = TokenType::Pacientes;
-    m_keywords["paciente"] = TokenType::Paciente;
-    m_keywords["MEDICOS"] = TokenType::Medicos;
-    m_keywords["medico"] = TokenType::Medico;
-    m_keywords["CITAS"] = TokenType::Citas;
-    m_keywords["cita"] = TokenType::Cita;
-    m_keywords["DIAGNOSTICOS"] = TokenType::Diagnosticos;
-    m_keywords["diagnostico"] = TokenType::Diagnostico;
-    m_keywords["especialidad"] = TokenType::Especialidad;
-    m_keywords["fecha"] = TokenType::Fecha;
-    m_keywords["hora"] = TokenType::Hora;
-    m_keywords["dosis"] = TokenType::Dosis;
-    m_keywords["tipo_sangre"] = TokenType::Tipo_Sangre;
-    m_keywords["codigo"] = TokenType::Codigo;
-    m_keywords["condicion"] = TokenType::Condicion;
-    m_keywords["medicamento"] = TokenType::Medicamento;
-    m_keywords["edad"] = TokenType::Edad;
-    m_keywords["habitacion"] = TokenType::Habitacion;
-    m_keywords["con"] = TokenType::Con;
-
-    m_specialties.insert("CARDIOLOGIA");
-    m_specialties.insert("NEUROLOGIA");
-    m_specialties.insert("PEDIATRIA");
-    m_specialties.insert("CIRUGIA");
-    m_specialties.insert("MEDICINA_GENERAL");
-    m_specialties.insert("ONCOLOGIA");
-
-    m_doseFrequencies.insert("DIARIA");
-    m_doseFrequencies.insert("CADA_8_HORAS");
-    m_doseFrequencies.insert("CADA_12_HORAS");
-    m_doseFrequencies.insert("SEMANAL");
-
-    m_bloodTypes.insert("A+");
-    m_bloodTypes.insert("A-");
-    m_bloodTypes.insert("B+");
-    m_bloodTypes.insert("B-");
-    m_bloodTypes.insert("O+");
-    m_bloodTypes.insert("O-");
-    m_bloodTypes.insert("AB+");
-    m_bloodTypes.insert("AB-");
+    initializeCatalogs();
 }
 
 const std::vector<LexicalError>& Lexer::getErrors() const {
@@ -72,23 +32,17 @@ Token Lexer::nextToken() {
         case '[': return makeToken(TokenType::LBracket, "[", startLine, startColumn);
         case ']': return makeToken(TokenType::RBracket, "]", startLine, startColumn);
         case '-': return makeToken(TokenType::Minus, "-", startLine, startColumn);
-        case '"': {
-            // The opening quote was consumed; scan until closing quote.
-            return scanString();
-        }
-        default:
-            break;
+        case '"': return scanString();
+        default: break;
     }
 
     if (isAlpha(c)) {
-        // Rewind one char so the state machine scans from the first letter.
         m_index--;
         m_column--;
         return scanIdentifierOrKeyword();
     }
 
     if (isDigit(c)) {
-        // Rewind one char so the state machine scans from the first digit.
         m_index--;
         m_column--;
         return scanNumber();
@@ -139,7 +93,6 @@ void Lexer::skipWhitespaceAndComments() {
             continue;
         }
 
-        // Line comments: // text...
         if (c == '/' && peekNext() == '/') {
             while (!isAtEnd() && peek() != '\n') {
                 advance();
@@ -193,6 +146,17 @@ Token Lexer::scanIdentifierOrKeyword() {
         return makeToken(TokenType::DOSIS_ENUM, lexeme, startLine, startColumn);
     }
 
+    std::string suggestion;
+    if (isLikelyMisspelledReservedWord(lexeme, suggestion)) {
+        addError(
+            lexeme,
+            "PalabraReservadaInvalida",
+            "Posible palabra reservada mal escrita. Sugerencia: " + suggestion,
+            startLine,
+            startColumn
+        );
+    }
+
     return makeToken(TokenType::IDENTIFICADOR, lexeme, startLine, startColumn);
 }
 
@@ -205,7 +169,6 @@ Token Lexer::scanNumber() {
         firstPart.push_back(advance());
     }
 
-    // Fecha AAAA-MM-DD
     if (!isAtEnd() && peek() == '-' && firstPart.size() == 4 && isDigit(peekNext())) {
         std::string lexeme = firstPart;
         lexeme.push_back(advance());
@@ -238,7 +201,6 @@ Token Lexer::scanNumber() {
         return makeToken(TokenType::Unknown, lexeme, startLine, startColumn);
     }
 
-    // Hora HH:MM
     if (!isAtEnd() && peek() == ':' && firstPart.size() == 2 && isDigit(peekNext())) {
         std::string lexeme = firstPart;
         lexeme.push_back(advance());
@@ -262,10 +224,6 @@ Token Lexer::scanNumber() {
         return makeToken(TokenType::Unknown, lexeme, startLine, startColumn);
     }
 
-    if (firstPart.size() > 1 && firstPart[0] == '0') {
-        // Permitimos enteros positivos con ceros a la izquierda por simplicidad en fase lexica.
-    }
-
     return makeToken(TokenType::ENTERO, firstPart, startLine, startColumn);
 }
 
@@ -275,87 +233,47 @@ Token Lexer::scanString() {
     std::string lexeme;
 
     while (!isAtEnd() && peek() != '"') {
-        // Accept new lines inside string; track line/column through advance().
         lexeme.push_back(advance());
     }
 
     if (isAtEnd()) {
-        // Unterminated string: return Unknown token to surface lexical error.
         addError(lexeme, "CadenaNoTerminada", "No se encontro comilla de cierre para la cadena", startLine, startColumn);
         return makeToken(TokenType::Unknown, lexeme, startLine, startColumn);
     }
 
-    // Consume closing quote
     advance();
 
     if (m_bloodTypes.find(lexeme) != m_bloodTypes.end()) {
         return makeToken(TokenType::TIPO_SANGRE_LITERAL, lexeme, startLine, startColumn);
     }
 
+    if (isBloodTypeLike(lexeme)) {
+        addError(
+            lexeme,
+            "TipoSangreInvalido",
+            "Tipo de sangre invalido. Valores permitidos: A+, A-, B+, B-, O+, O-, AB+, AB-",
+            startLine,
+            startColumn
+        );
+        return makeToken(TokenType::Unknown, lexeme, startLine, startColumn);
+    }
+
     if (isValidCodeId(lexeme)) {
         return makeToken(TokenType::CODIGO_ID, lexeme, startLine, startColumn);
     }
 
+    if (isCodeIdLike(lexeme)) {
+        addError(
+            lexeme,
+            "CodigoIdInvalido",
+            "Codigo ID invalido. Formato esperado: 3 letras mayusculas + '-' + digitos (ej. MED-001)",
+            startLine,
+            startColumn
+        );
+        return makeToken(TokenType::Unknown, lexeme, startLine, startColumn);
+    }
+
     return makeToken(TokenType::CADENA, lexeme, startLine, startColumn);
-}
-
-bool Lexer::isValidCodeId(const std::string& text) const {
-    if (text.size() < 5) {
-        return false;
-    }
-
-    if (!(text[0] >= 'A' && text[0] <= 'Z') ||
-        !(text[1] >= 'A' && text[1] <= 'Z') ||
-        !(text[2] >= 'A' && text[2] <= 'Z') ||
-        text[3] != '-') {
-        return false;
-    }
-
-    for (std::size_t i = 4; i < text.size(); ++i) {
-        if (!isDigit(text[i])) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-bool Lexer::isValidDate(const std::string& text) const {
-    if (text.size() != 10 || text[4] != '-' || text[7] != '-') {
-        return false;
-    }
-
-    const int month = (text[5] - '0') * 10 + (text[6] - '0');
-    const int day = (text[8] - '0') * 10 + (text[9] - '0');
-
-    if (month < 1 || month > 12) {
-        return false;
-    }
-
-    if (day < 1 || day > 31) {
-        return false;
-    }
-
-    return true;
-}
-
-bool Lexer::isValidHour(const std::string& text) const {
-    if (text.size() != 5 || text[2] != ':') {
-        return false;
-    }
-
-    const int hour = (text[0] - '0') * 10 + (text[1] - '0');
-    const int minute = (text[3] - '0') * 10 + (text[4] - '0');
-
-    if (hour < 0 || hour > 23) {
-        return false;
-    }
-
-    if (minute < 0 || minute > 59) {
-        return false;
-    }
-
-    return true;
 }
 
 bool Lexer::isAlpha(char c) {

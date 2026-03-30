@@ -34,8 +34,11 @@ private:
     std::unordered_set<std::string> m_specialties;
     std::unordered_set<std::string> m_doseFrequencies;
     std::unordered_set<std::string> m_bloodTypes;
+    std::unordered_set<std::string> m_reservedLexemes;
     std::vector<LexicalError> m_errors;
     int m_errorCounter;
+
+    void initializeCatalogs();
 
     bool isAtEnd() const;
     char peek() const;
@@ -49,10 +52,16 @@ private:
     Token scanIdentifierOrKeyword();
     Token scanNumber();
     Token scanString();
+
     bool isValidCodeId(const std::string& text) const;
+    bool isCodeIdLike(const std::string& text) const;
+    bool isBloodTypeLike(const std::string& text) const;
     bool isValidDate(const std::string& text) const;
     bool isValidHour(const std::string& text) const;
+    bool isLikelyMisspelledReservedWord(const std::string& text, std::string& suggestion) const;
 
+    static std::string toUpperAscii(const std::string& text);
+    static bool isOneEditAway(const std::string& a, const std::string& b);
     static bool isAlpha(char c);
     static bool isDigit(char c);
     static bool isAlphaNumeric(char c);

@@ -24,7 +24,10 @@
 - [x] Reconocer tipo de sangre restringido como TIPO_SANGRE_LITERAL
 - [x] Implementar tabla de errores lexicos acumulada
 - [x] Continuar el analisis tras error lexico sin detener ejecucion
-- [ ] Afinar clasificacion de casos ambiguos (ejemplo: codigo invalido dentro de CADENA)
+- [x] Clasificar codigo invalido dentro de CADENA como error lexico
+- [x] Detectar tipo de sangre invalido como error lexico
+- [x] Detectar posible palabra reservada mal escrita con sugerencia
+- [ ] Afinar casos ambiguos restantes y revisar falsos positivos
 
 ## Fase 3. Integracion con GUI y Generacion de Reportes
 
@@ -46,6 +49,7 @@
 
 ## Fase 4. Pruebas, Correccion y Documentacion
 
+- [x] Ejecutar pruebas manuales base (caso valido y caso con conflictos)
 - [ ] Crear bateria de pruebas validas por bloque (PACIENTES, MEDICOS, CITAS, DIAGNOSTICOS)
 - [ ] Crear bateria de pruebas invalidas (errores de simbolos, fecha, hora, codigo)
 - [ ] Verificar cobertura de todos los tipos de token
@@ -56,9 +60,10 @@
 
 ## Fase 5. Siguiente Entregable Tecnico (Parser + Semantica)
 
-- [ ] Implementar parser sintactico por bloques
-- [ ] Construir estructuras de datos: Paciente, Medico, Cita, Diagnostico
-- [ ] Validar referencias cruzadas (paciente/medico existentes)
-- [ ] Detectar conflicto de horario entre citas (mismo medico, misma fecha/hora)
+- [x] Implementar parser sintactico por bloques
+- [x] Construir estructuras de datos: Paciente, Medico, Cita, Diagnostico
+- [x] Validar referencias cruzadas (paciente/medico existentes) en citas
+- [x] Detectar conflicto de horario entre citas (mismo medico, misma fecha/hora)
 - [ ] Detectar codigos duplicados
-- [ ] Generar reporte de errores sintacticos y semanticos
+- [x] Generar reporte de errores sintacticos y semanticos en consola
+- [ ] Exportar reporte semantico HTML

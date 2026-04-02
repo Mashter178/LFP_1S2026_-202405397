@@ -14,7 +14,7 @@
 - [x] AFD implementado con transiciones explícitas en nextToken()
 - [x] Definir estructura global y tokens del lenguaje
 - [x] Clase Token (lexema, tipo, línea, columna)
-- [ ] Clase LexicalAnalyzer con método nextToken() basado en el AFD
+- [x] Clase LexicalAnalyzer con método nextToken() basado en el AFD (implementada como `Lexer::nextToken()`)
 - [ ] Clase ErrorManager
 - [ ] Afinar casos ambiguos y falsos positivos
 - [ ] Documentar formalmente el AFD (diagrama y tabla)
@@ -26,15 +26,15 @@
 - [x] Validar referencias cruzadas y conflictos de horario
 - [ ] Detectar códigos duplicados
 - [x] Reporte de errores sintácticos y semánticos en consola
-- [ ] Exportar reporte semántico HTML
+- [x] Exportar reporte semántico HTML
 
 ## 4. Reportes HTML
 - [x] Exportar reporte léxico HTML
-- [ ] Clase ReportGenerator
-- [ ] Reporte 1: Historial de Pacientes
-- [ ] Reporte 2: Carga de Médicos por Especialidad
-- [ ] Reporte 3: Agenda de Citas con conflictos
-- [ ] Reporte 4: Estadístico General del Hospital
+- [x] Clase ReportGenerator
+- [x] Reporte 1: Historial de Pacientes
+- [x] Reporte 2: Carga de Médicos por Especialidad
+- [x] Reporte 3: Agenda de Citas con conflictos
+- [x] Reporte 4: Estadístico General del Hospital
 - [ ] Exportar Graphviz (.dot) con jerarquía y relaciones
 
 ## 5. GUI
@@ -62,3 +62,8 @@
 - [ ] Documentar arquitectura y funcionamiento de nextToken
 - [ ] Documentar formato de entrada .med con ejemplos
 - [ ] Documentar tabla de errores y criterios de recuperación
+
+## 8. Pendientes Priorizados de Backend
+- [ ] Implementar detección semántica de códigos duplicados en médicos
+- [ ] Completar pruebas formales: suite de casos válidos e inválidos por bloque
+- [ ] Exportar reporte Graphviz (.dot) con jerarquía y relaciones

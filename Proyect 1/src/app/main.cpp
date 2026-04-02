@@ -1,15 +1,9 @@
-#include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
-#include "../core/lexer/Lexer.h"
-#include "../core/parser/Parser.h"
-#include "../core/report/Generator.h"
-#include "../core/report/LexicalReport.h"
-#include "SemanticAnalyzer.h"
+#include "MedLangService.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -17,22 +11,16 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::ifstream in(argv[1], std::ios::in);
-    if (!in) {
+    MedLangService service;
+    const MedLangAnalysisResult result = service.analyzeFile(argv[1]);
+
+    if (!result.sourceLoaded) {
         std::cerr << "No se pudo abrir el archivo: " << argv[1] << "\n";
         return 1;
     }
 
-    std::ostringstream buffer;
-    buffer << in.rdbuf();
-    std::string source = buffer.str();
-
-    Lexer lexer(source);
-    std::vector<Token> tokens;
-
-    while (true) {
-        Token token = lexer.nextToken();
-        tokens.push_back(token);
+    for (std::size_t i = 0; i < result.tokens.size(); ++i) {
+        const Token& token = result.tokens[i];
 
         std::cout
             << tokenTypeToString(token.type)
@@ -40,14 +28,9 @@ int main(int argc, char* argv[]) {
             << " line=" << token.line
             << " col=" << token.column
             << "\n";
-
-        if (token.type == TokenType::EndOfFile) {
-            break;
-        }
     }
 
-    const std::vector<LexicalError>& errors = lexer.getErrors();
-    if (!errors.empty()) {
+    if (!result.lexicalErrors.empty()) {
         std::cout << "\nTabla de errores lexicos\n";
         std::cout << std::left
             << std::setw(8) << "No."
@@ -56,8 +39,8 @@ int main(int argc, char* argv[]) {
             << std::setw(45) << "Descripcion"
             << "Posicion\n";
 
-        for (std::size_t i = 0; i < errors.size(); ++i) {
-            const LexicalError& error = errors[i];
+        for (std::size_t i = 0; i < result.lexicalErrors.size(); ++i) {
+            const LexicalError& error = result.lexicalErrors[i];
             std::cout << std::left
                 << std::setw(8) << error.number
                 << std::setw(20) << error.invalidLexeme
@@ -68,17 +51,13 @@ int main(int argc, char* argv[]) {
     }
 
     const std::string reportPath = "reporte_lexico.html";
-    if (writeLexicalHtmlReport(reportPath, tokens, errors)) {
+    if (result.lexicalReportGenerated) {
         std::cout << "\nReporte HTML generado: " << reportPath << "\n";
     } else {
         std::cerr << "\nNo se pudo generar el reporte HTML: " << reportPath << "\n";
     }
 
-    Parser parser(tokens);
-    const bool syntaxOk = parser.parseProgram();
-    const std::vector<SyntaxError>& syntaxErrors = parser.getErrors();
-
-    if (syntaxErrors.empty()) {
+    if (result.syntaxErrors.empty()) {
         std::cout << "\nAnalisis sintactico: sin errores en bloques PACIENTES, MEDICOS, CITAS y DIAGNOSTICOS.\n";
     } else {
         std::cout << "\nTabla de errores sintacticos\n";
@@ -89,8 +68,8 @@ int main(int argc, char* argv[]) {
             << std::setw(35) << "Encontrado"
             << "Posicion\n";
 
-        for (std::size_t i = 0; i < syntaxErrors.size(); ++i) {
-            const SyntaxError& error = syntaxErrors[i];
+        for (std::size_t i = 0; i < result.syntaxErrors.size(); ++i) {
+            const SyntaxError& error = result.syntaxErrors[i];
             std::cout << std::left
                 << std::setw(8) << error.number
                 << std::setw(22) << error.message
@@ -100,27 +79,22 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    if (!syntaxOk) {
+    if (!result.syntaxOk) {
         return 2;
     }
 
-    const Hospital& hospital = parser.getHospitalData();
-    SemanticAnalyzer semanticAnalyzer(hospital);
-    const SemanticRecognitionResult recognition = semanticAnalyzer.recognizeInput();
-
     std::cout << "\nReconocimiento de entrada semantica\n";
-    for (std::size_t i = 0; i < recognition.notes.size(); ++i) {
-        std::cout << "- " << recognition.notes[i] << "\n";
+    for (std::size_t i = 0; i < result.semanticRecognition.notes.size(); ++i) {
+        std::cout << "- " << result.semanticRecognition.notes[i] << "\n";
     }
 
-    if (!recognition.inputReady) {
+    if (!result.semanticRecognition.inputReady) {
         std::cout << "Entrada semantica incompleta para reglas avanzadas.\n";
     } else {
         std::cout << "Entrada semantica lista para aplicar reglas.\n";
     }
 
-    const SemanticValidationResult semanticValidation = semanticAnalyzer.validateBasicRules();
-    if (semanticValidation.errors.empty()) {
+    if (result.semanticValidation.errors.empty()) {
         std::cout << "\nAnalisis semantico base: sin errores.\n";
     } else {
         std::cout << "\nTabla de errores semanticos\n";
@@ -131,8 +105,8 @@ int main(int argc, char* argv[]) {
             << std::setw(30) << "Entidad"
             << "Linea\n";
 
-        for (std::size_t i = 0; i < semanticValidation.errors.size(); ++i) {
-            const SemanticError& err = semanticValidation.errors[i];
+        for (std::size_t i = 0; i < result.semanticValidation.errors.size(); ++i) {
+            const SemanticError& err = result.semanticValidation.errors[i];
             std::cout << std::left
                 << std::setw(8) << err.number
                 << std::setw(22) << err.type
@@ -143,7 +117,7 @@ int main(int argc, char* argv[]) {
     }
 
     const std::string reportsDirectory = "output";
-    if (Generator::generateAllHtmlReports(reportsDirectory, hospital, semanticValidation)) {
+    if (result.htmlReportsGenerated) {
         std::cout << "\nReportes HTML generados en: " << reportsDirectory << "\n";
     } else {
         std::cerr << "\nNo se pudieron generar uno o mas reportes HTML en: " << reportsDirectory << "\n";

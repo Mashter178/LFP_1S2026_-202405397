@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "../core/model/HospitalModel.h"
+#include "../model/HospitalModel.h"
 
 struct SemanticRecognitionResult {
     bool inputReady;

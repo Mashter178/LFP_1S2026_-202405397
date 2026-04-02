@@ -4,7 +4,7 @@
 #include <string>
 
 #include "../model/HospitalModel.h"
-#include "../../app/SemanticAnalyzer.h"
+#include "../semantic/SemanticAnalyzer.h"
 
 bool writeHospitalStatsHtmlReport(
     const std::string& outputPath,

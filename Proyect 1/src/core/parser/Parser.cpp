@@ -39,7 +39,7 @@ const std::vector<SyntaxError>& Parser::getErrors() const {
     return m_errors;
 }
 
-const HospitalData& Parser::getHospitalData() const {
+const Hospital& Parser::getHospitalData() const {
     return m_hospitalData;
 }
 
@@ -105,7 +105,7 @@ bool Parser::parsePacienteDecl() {
     ok = expect(TokenType::Comma, ",") && ok;
 
     if (ok) {
-        PacienteData paciente;
+        Paciente paciente;
         paciente.nombre = nombreToken.lexeme;
         paciente.edad = std::stoi(edadToken.lexeme);
         paciente.tipoSangre = sangreToken.lexeme;
@@ -172,7 +172,7 @@ bool Parser::parseMedicoDecl() {
     ok = expect(TokenType::Comma, ",") && ok;
 
     if (ok) {
-        MedicoData medico;
+        Medico medico;
         medico.nombre = nombreToken.lexeme;
         medico.especialidad = especialidadToken.lexeme;
         medico.codigo = codigoToken.lexeme;
@@ -241,7 +241,7 @@ bool Parser::parseCitaDecl() {
     ok = expect(TokenType::Comma, ",") && ok;
 
     if (ok) {
-        CitaData cita;
+        Cita cita;
         cita.paciente = pacienteToken.lexeme;
         cita.medico = medicoToken.lexeme;
         cita.fecha = fechaToken.lexeme;
@@ -315,7 +315,7 @@ bool Parser::parseDiagnosticoDecl() {
     ok = expect(TokenType::Comma, ",") && ok;
 
     if (ok) {
-        DiagnosticoData diagnostico;
+        Diagnostico diagnostico;
         diagnostico.paciente = pacienteToken.lexeme;
         diagnostico.condicion = condicionToken.lexeme;
         diagnostico.medicamento = medicamentoToken.lexeme;

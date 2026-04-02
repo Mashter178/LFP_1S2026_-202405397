@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "lexer/Token.h"
-#include "lexer/Lexer.h"
+#include "../lexer/Token.h"
+#include "../lexer/Lexer.h"
 
 bool writeLexicalHtmlReport(
     const std::string& outputPath,

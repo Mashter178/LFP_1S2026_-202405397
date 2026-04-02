@@ -1,9 +1,9 @@
-#include "semantic/SemanticAnalyzer.h"
+#include "SemanticAnalyzer.h"
 
 #include <unordered_map>
 #include <unordered_set>
 
-SemanticAnalyzer::SemanticAnalyzer(const HospitalData& data)
+SemanticAnalyzer::SemanticAnalyzer(const Hospital& data)
     : m_data(data) {}
 
 SemanticRecognitionResult SemanticAnalyzer::recognizeInput() const {
@@ -54,7 +54,7 @@ SemanticValidationResult SemanticAnalyzer::validateBasicRules() const {
     }
 
     for (std::size_t i = 0; i < m_data.citas.size(); ++i) {
-        const CitaData& cita = m_data.citas[i];
+        const Cita& cita = m_data.citas[i];
 
         if (pacientes.find(cita.paciente) == pacientes.end()) {
             SemanticError err;

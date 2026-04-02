@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "model/HospitalModel.h"
+#include "../core/model/HospitalModel.h"
 
 struct SemanticRecognitionResult {
     bool inputReady;
@@ -26,13 +26,13 @@ struct SemanticValidationResult {
 
 class SemanticAnalyzer {
 public:
-    explicit SemanticAnalyzer(const HospitalData& data);
+    explicit SemanticAnalyzer(const Hospital& data);
 
     SemanticRecognitionResult recognizeInput() const;
     SemanticValidationResult validateBasicRules() const;
 
 private:
-    const HospitalData& m_data;
+    const Hospital& m_data;
 };
 
 #endif

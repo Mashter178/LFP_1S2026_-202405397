@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-struct PacienteData {
+struct Paciente {
     std::string nombre;
     int edad;
     std::string tipoSangre;
@@ -12,14 +12,14 @@ struct PacienteData {
     int line;
 };
 
-struct MedicoData {
+struct Medico {
     std::string nombre;
     std::string especialidad;
     std::string codigo;
     int line;
 };
 
-struct CitaData {
+struct Cita {
     std::string paciente;
     std::string medico;
     std::string fecha;
@@ -27,7 +27,7 @@ struct CitaData {
     int line;
 };
 
-struct DiagnosticoData {
+struct Diagnostico {
     std::string paciente;
     std::string condicion;
     std::string medicamento;
@@ -35,11 +35,11 @@ struct DiagnosticoData {
     int line;
 };
 
-struct HospitalData {
-    std::vector<PacienteData> pacientes;
-    std::vector<MedicoData> medicos;
-    std::vector<CitaData> citas;
-    std::vector<DiagnosticoData> diagnosticos;
+struct Hospital {
+    std::vector<Paciente> pacientes;
+    std::vector<Medico> medicos;
+    std::vector<Cita> citas;
+    std::vector<Diagnostico> diagnosticos;
 };
 
 #endif

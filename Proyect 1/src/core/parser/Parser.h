@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "lexer/Token.h"
-#include "model/HospitalModel.h"
+#include "../lexer/Token.h"
+#include "../model/HospitalModel.h"
 
 struct SyntaxError {
     int number;
@@ -22,14 +22,14 @@ public:
 
     bool parseProgram();
     const std::vector<SyntaxError>& getErrors() const;
-    const HospitalData& getHospitalData() const;
+    const Hospital& getHospitalData() const;
 
 private:
     const std::vector<Token>& m_tokens;
     std::size_t m_current;
     int m_errorCounter;
     std::vector<SyntaxError> m_errors;
-    HospitalData m_hospitalData;
+    Hospital m_hospitalData;
 
     bool parsePacientesBlock();
     bool parsePacienteDecl();

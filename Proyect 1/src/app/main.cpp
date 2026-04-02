@@ -5,10 +5,11 @@
 #include <string>
 #include <vector>
 
-#include "lexer/Lexer.h"
-#include "parser/Parser.h"
-#include "reporting/LexicalReport.h"
-#include "semantic/SemanticAnalyzer.h"
+#include "../core/lexer/Lexer.h"
+#include "../core/parser/Parser.h"
+#include "../core/report/Generator.h"
+#include "../core/report/LexicalReport.h"
+#include "SemanticAnalyzer.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -49,20 +50,20 @@ int main(int argc, char* argv[]) {
     if (!errors.empty()) {
         std::cout << "\nTabla de errores lexicos\n";
         std::cout << std::left
-                  << std::setw(8) << "No."
-                  << std::setw(20) << "Lexema"
-                  << std::setw(20) << "Tipo"
-                  << std::setw(45) << "Descripcion"
-                  << "Posicion\n";
+            << std::setw(8) << "No."
+            << std::setw(20) << "Lexema"
+            << std::setw(20) << "Tipo"
+            << std::setw(45) << "Descripcion"
+            << "Posicion\n";
 
         for (std::size_t i = 0; i < errors.size(); ++i) {
             const LexicalError& error = errors[i];
             std::cout << std::left
-                      << std::setw(8) << error.number
-                      << std::setw(20) << error.invalidLexeme
-                      << std::setw(20) << error.errorType
-                      << std::setw(45) << error.description
-                      << "(" << error.line << ", " << error.column << ")\n";
+                << std::setw(8) << error.number
+                << std::setw(20) << error.invalidLexeme
+                << std::setw(20) << error.errorType
+                << std::setw(45) << error.description
+                << "(" << error.line << ", " << error.column << ")\n";
         }
     }
 
@@ -82,20 +83,20 @@ int main(int argc, char* argv[]) {
     } else {
         std::cout << "\nTabla de errores sintacticos\n";
         std::cout << std::left
-                  << std::setw(8) << "No."
-                  << std::setw(22) << "Mensaje"
-                  << std::setw(22) << "Esperado"
-                  << std::setw(35) << "Encontrado"
-                  << "Posicion\n";
+            << std::setw(8) << "No."
+            << std::setw(22) << "Mensaje"
+            << std::setw(22) << "Esperado"
+            << std::setw(35) << "Encontrado"
+            << "Posicion\n";
 
         for (std::size_t i = 0; i < syntaxErrors.size(); ++i) {
             const SyntaxError& error = syntaxErrors[i];
             std::cout << std::left
-                      << std::setw(8) << error.number
-                      << std::setw(22) << error.message
-                      << std::setw(22) << error.expected
-                      << std::setw(35) << error.found
-                      << "(" << error.line << ", " << error.column << ")\n";
+                << std::setw(8) << error.number
+                << std::setw(22) << error.message
+                << std::setw(22) << error.expected
+                << std::setw(35) << error.found
+                << "(" << error.line << ", " << error.column << ")\n";
         }
     }
 
@@ -103,8 +104,8 @@ int main(int argc, char* argv[]) {
         return 2;
     }
 
-    const HospitalData& hospitalData = parser.getHospitalData();
-    SemanticAnalyzer semanticAnalyzer(hospitalData);
+    const Hospital& hospital = parser.getHospitalData();
+    SemanticAnalyzer semanticAnalyzer(hospital);
     const SemanticRecognitionResult recognition = semanticAnalyzer.recognizeInput();
 
     std::cout << "\nReconocimiento de entrada semantica\n";
@@ -124,21 +125,28 @@ int main(int argc, char* argv[]) {
     } else {
         std::cout << "\nTabla de errores semanticos\n";
         std::cout << std::left
-                  << std::setw(8) << "No."
-                  << std::setw(22) << "Tipo"
-                  << std::setw(50) << "Descripcion"
-                  << std::setw(30) << "Entidad"
-                  << "Linea\n";
+            << std::setw(8) << "No."
+            << std::setw(22) << "Tipo"
+            << std::setw(50) << "Descripcion"
+            << std::setw(30) << "Entidad"
+            << "Linea\n";
 
         for (std::size_t i = 0; i < semanticValidation.errors.size(); ++i) {
             const SemanticError& err = semanticValidation.errors[i];
             std::cout << std::left
-                      << std::setw(8) << err.number
-                      << std::setw(22) << err.type
-                      << std::setw(50) << err.description
-                      << std::setw(30) << err.entity
-                      << err.line << "\n";
+                << std::setw(8) << err.number
+                << std::setw(22) << err.type
+                << std::setw(50) << err.description
+                << std::setw(30) << err.entity
+                << err.line << "\n";
         }
+    }
+
+    const std::string reportsDirectory = "output";
+    if (Generator::generateAllHtmlReports(reportsDirectory, hospital, semanticValidation)) {
+        std::cout << "\nReportes HTML generados en: " << reportsDirectory << "\n";
+    } else {
+        std::cerr << "\nNo se pudieron generar uno o mas reportes HTML en: " << reportsDirectory << "\n";
     }
 
     return 0;

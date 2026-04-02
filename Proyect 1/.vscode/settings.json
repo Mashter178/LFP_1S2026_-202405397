@@ -1,0 +1,20 @@
+{
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.includePath": [
+    "${workspaceFolder}/src",
+    "${workspaceFolder}/src/core",
+    "${workspaceFolder}/src/app",
+    "${workspaceFolder}/src/core/lexer",
+    "${workspaceFolder}/src/core/parser",
+    "${workspaceFolder}/src/core/model",
+    "${workspaceFolder}/src/core/report"
+],
+    "material-icon-theme.folders.associations": {
+    "core": "component",
+    "lexer": "tools",
+    "parser": "library",
+    "model": "class",
+    "gui": "desktop",
+    "app": "app"
+    }
+}

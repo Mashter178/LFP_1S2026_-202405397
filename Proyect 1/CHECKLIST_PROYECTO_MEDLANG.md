@@ -1,69 +1,64 @@
 # Checklist General Proyecto MedLang
 
-## Fase 1. Analisis del Lenguaje y Diseno del AFD
+## 1. Hitos de Entrega
+- [ ] Código completo en C++ organizado en clases y módulos, debidamente comentado
+- [ ] Proyecto compila con g++ -std=c++17 o QMake/CMake
+- [ ] Clase principal de la GUI
+- [ ] GUI en Qt 5.15/6.x o wxWidgets 3.x
+- [ ] Proyecto con CMakeLists.txt o QMake (.pro)
+- [ ] README con compilación paso a paso
 
-- [x] Definir estructura global del lenguaje: HOSPITAL, PACIENTES, MEDICOS, CITAS, DIAGNOSTICOS
-- [x] Definir convencion de palabras reservadas (plurales en MAYUSCULA, singulares en minuscula)
-- [x] Definir delimitadores estructurales: { } [ ] : ; , -
-- [x] Definir literales base: ENTERO, CADENA, IDENTIFICADOR
-- [x] Definir tokens compuestos requeridos: FECHA_LITERAL, HORA_LITERAL, CODIGO_ID
-- [x] Definir catalogos: especialidades, frecuencia de dosis, tipos de sangre
-- [ ] Documentar formalmente el AFD por estados y transiciones (diagrama)
+## 2. Núcleo del Lenguaje
+- [x] Lenguaje base en C++17 o superior
+- [x] Prohibido std::regex en el lexer
+- [x] AFD implementado con transiciones explícitas en nextToken()
+- [x] Definir estructura global y tokens del lenguaje
+- [x] Clase Token (lexema, tipo, línea, columna)
+- [ ] Clase LexicalAnalyzer con método nextToken() basado en el AFD
+- [ ] Clase ErrorManager
+- [ ] Afinar casos ambiguos y falsos positivos
+- [ ] Documentar formalmente el AFD (diagrama y tabla)
 - [ ] Validar el AFD con casos de prueba de borde
 
-## Fase 2. Implementacion del Motor Lexico
+## 3. Parser y Semántica
+- [x] Implementar parser sintáctico por bloques
+- [x] Construir estructuras de datos: Paciente, Medico, Cita, Diagnóstico
+- [x] Validar referencias cruzadas y conflictos de horario
+- [ ] Detectar códigos duplicados
+- [x] Reporte de errores sintácticos y semánticos en consola
+- [ ] Exportar reporte semántico HTML
 
-- [x] Implementar lexer nativo en C++ (sin std::regex)
-- [x] Implementar lectura de archivo .med
-- [x] Implementar nextToken con avance continuo del flujo
-- [x] Reconocer palabras reservadas del lenguaje
-- [x] Reconocer FECHA_LITERAL (AAAA-MM-DD)
-- [x] Reconocer HORA_LITERAL (HH:MM)
-- [x] Reconocer CODIGO_ID (AAA-999...)
-- [x] Reconocer enumeraciones: ESPECIALIDAD_ENUM y DOSIS_ENUM
-- [x] Reconocer tipo de sangre restringido como TIPO_SANGRE_LITERAL
-- [x] Implementar tabla de errores lexicos acumulada
-- [x] Continuar el analisis tras error lexico sin detener ejecucion
-- [x] Clasificar codigo invalido dentro de CADENA como error lexico
-- [x] Detectar tipo de sangre invalido como error lexico
-- [x] Detectar posible palabra reservada mal escrita con sugerencia
-- [ ] Afinar casos ambiguos restantes y revisar falsos positivos
+## 4. Reportes HTML
+- [x] Exportar reporte léxico HTML
+- [ ] Clase ReportGenerator
+- [ ] Reporte 1: Historial de Pacientes
+- [ ] Reporte 2: Carga de Médicos por Especialidad
+- [ ] Reporte 3: Agenda de Citas con conflictos
+- [ ] Reporte 4: Estadístico General del Hospital
+- [ ] Exportar Graphviz (.dot) con jerarquía y relaciones
 
-## Fase 3. Integracion con GUI y Generacion de Reportes
-
-- [ ] Definir tecnologia GUI (Qt solo si el curso lo exige)
+## 5. GUI
 - [ ] Integrar carga de archivo .med desde interfaz
-- [ ] Mostrar tabla de tokens en GUI
-- [ ] Mostrar tabla de errores lexicos en GUI
-- [x] Exportar reporte lexico HTML (tabla de tokens y tabla de errores)
-- [ ] Exportar Reporte 1 HTML: Historial de Pacientes
-- [ ] Columnas Reporte 1: Nombre, Edad, Sangre, Diagnostico activo, Medicamento, Estado (colores)
-- [ ] Exportar Reporte 2 HTML: Carga de Medicos por Especialidad
-- [ ] Columnas Reporte 2: Nombre, Codigo, Especialidad, Citas programadas, Numero de pacientes, Nivel de carga (colores)
-- [ ] Exportar Reporte 3 HTML: Agenda de Citas con deteccion de conflictos
-- [ ] Columnas Reporte 3: Fecha, Hora, Paciente, Medico, Especialidad, Estado (colores)
-- [ ] Exportar Reporte 4 HTML: Estadistico General del Hospital
-- [ ] Tabla Reporte 4-A: resumen general hospitalario
-- [ ] Tabla Reporte 4-B: desglose especifico por especialidad
-- [ ] Exportar Graphviz (.dot) con jerarquia y relaciones del hospital analizado
+- [ ] Mostrar tabla de tokens y errores en GUI
+- [ ] Botones para análisis y exportar reportes
+- [ ] Componentes mínimos en GUI: área de texto, tabla de tokens, tabla de errores, botones de carga/análisis, acceso a reportes HTML
 
-## Fase 4. Pruebas, Correccion y Documentacion
-
-- [x] Ejecutar pruebas manuales base (caso valido y caso con conflictos)
-- [ ] Crear bateria de pruebas validas por bloque (PACIENTES, MEDICOS, CITAS, DIAGNOSTICOS)
-- [ ] Crear bateria de pruebas invalidas (errores de simbolos, fecha, hora, codigo)
+## 6. Pruebas y Cobertura
+- [x] Pruebas manuales base (caso válido y con conflictos)
+- [ ] Batería de pruebas válidas por bloque
+- [ ] Batería de pruebas inválidas (errores de símbolos, fecha, hora, código)
 - [ ] Verificar cobertura de todos los tipos de token
 - [ ] Corregir errores detectados por pruebas
-- [ ] Documentar arquitectura del lexer y funcionamiento de nextToken
+
+## 7. Documentación y Cierre
+- [ ] Manual técnico: arquitectura del sistema (diagrama de componentes UML)
+- [ ] Manual técnico: diagrama de clases completo
+- [ ] Manual técnico: diagrama del AFD y tabla de transiciones
+- [ ] Manual técnico: descripción de algoritmos y justificación de diseño
+- [ ] Manual de usuario: capturas de pantalla de la GUI
+- [ ] Manual de usuario: guía de compilación e instalación de dependencias
+- [ ] Manual de usuario: ejemplos de archivo .med y explicación de estructura
+- [ ] Manual de usuario: instrucciones para analizar archivo y leer reportes
+- [ ] Documentar arquitectura y funcionamiento de nextToken
 - [ ] Documentar formato de entrada .med con ejemplos
-- [ ] Documentar tabla de errores y criterios de recuperacion
-
-## Fase 5. Siguiente Entregable Tecnico (Parser + Semantica)
-
-- [x] Implementar parser sintactico por bloques
-- [x] Construir estructuras de datos: Paciente, Medico, Cita, Diagnostico
-- [x] Validar referencias cruzadas (paciente/medico existentes) en citas
-- [x] Detectar conflicto de horario entre citas (mismo medico, misma fecha/hora)
-- [ ] Detectar codigos duplicados
-- [x] Generar reporte de errores sintacticos y semanticos en consola
-- [ ] Exportar reporte semantico HTML
+- [ ] Documentar tabla de errores y criterios de recuperación

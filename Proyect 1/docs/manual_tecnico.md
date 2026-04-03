@@ -225,14 +225,34 @@ diagnosticoAttrs ::= ("condicion:" STRING | "medicamento:" STRING | "dosis:" FRE
 
 **Tipo**: Parsing descendente recursivo predictivo (LL(1))
 
-**Flujo de parsing**:
-1. **Sincronización**: Punto de recuperación ante errores
-2. **Especulação predictiva**: Verificación de tokens esperados
-3. **Reportes de errores**: Registro de discrepancias sintácticas
+**Nota clave sobre lectura de entrada**:
+- El **Parser no lee caracteres del archivo**.
+- El archivo se recorre primero en el **Lexer**, que consume caracter por caracter.
+- En esa fase se ignoran espacios, tabulaciones, saltos de linea y comentarios.
+- El Parser recibe un `vector<Token>` ya limpio y estructurado.
 
+**Flujo real (Lexer -> Parser)**:
+1. `Lexer::nextToken()` produce tokens secuenciales.
+2. `MedLangService` almacena esos tokens en un arreglo hasta `EndOfFile`.
+3. `Parser` avanza sobre ese arreglo con `peek`, `match`, `expect` y `advance`.
+4. Si el token esperado no coincide, se registra error sintactico y se intenta recuperar.
+
+**Ejemplo simplificado de consumo de tokens**:
+```cpp
+// Entrada ya tokenizada:
+// Cita, Colon, CADENA, Con, CADENA, LBracket, Fecha, Colon, FECHA_LITERAL,
+// Comma, Hora, Colon, HORA_LITERAL, RBracket, Comma
+
+ok = consume(TokenType::Cita, "cita", declToken) && ok;
+ok = expect(TokenType::Colon, ":") && ok;
+ok = consume(TokenType::CADENA, "CADENA (paciente)", pacienteToken) && ok;
+ok = expect(TokenType::Con, "con") && ok;
+ok = consume(TokenType::CADENA, "CADENA (medico)", medicoToken) && ok;
 ```
 
-```
+**Comparacion con JavaScript (conceptual)**:
+- Si, el enfoque es similar al pipeline de compiladores/engines: **tokenizar primero, parsear despues**.
+- La diferencia importante es que este parser es LL(1) manual y predictivo, orientado a la gramatica de MedLang.
 
 ### 4.3 Recuperación de Errores
 
@@ -242,7 +262,25 @@ diagnosticoAttrs ::= ("condicion:" STRING | "medicamento:" STRING | "dosis:" FRE
 - Continúa parsing del resto del programa
 - Permite identificar múltiples errores en una pasada
 
-```
+```cpp
+void Parser::synchronize() {
+  while (!isAtEnd()) {
+    if (m_current > 0 && previous().type == TokenType::Semicolon) {
+      return;
+    }
+
+    if (peek().type == TokenType::Paciente ||
+      peek().type == TokenType::Pacientes ||
+      peek().type == TokenType::Medicos ||
+      peek().type == TokenType::Citas ||
+      peek().type == TokenType::Diagnosticos ||
+      peek().type == TokenType::RBrace) {
+      return;
+    }
+
+    advance();
+  }
+}
 ```
 
 ### 4.4 Errores Sintácticos

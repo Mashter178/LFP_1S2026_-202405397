@@ -15,12 +15,20 @@ std::string buildEarlyIndexBody(const MedLangAnalysisResult& result) {
     body << "<h2 class=\"section-title\">Indice de reportes (parcial)</h2>";
     body << "<p class=\"muted\">Se detectaron errores lexicos o sintacticos. Se muestran los reportes disponibles.</p>";
     body << "<table><thead><tr><th>#</th><th>Reporte</th><th>Archivo</th><th>Estado</th></tr></thead><tbody>";
-    body << "<tr><td>1</td><td>Reporte Lexico</td><td><a href=\"../reporte_lexico.html\">reporte_lexico.html</a></td><td>";
+    body << "<tr><td>1</td><td>Reporte Lexico</td><td><a href=\"reporte_lexico.html\">reporte_lexico.html</a></td><td>";
     body << (result.lexicalReportGenerated ? "Generado" : "No generado");
     body << "</td></tr>";
     body << "</tbody></table>";
     body << "</div>";
     return body.str();
+}
+
+bool writeFallbackIndex(const MedLangAnalysisResult& result) {
+    std::filesystem::create_directories("output");
+    return writeHtmlDocument(
+        "output/indice_reportes.html",
+        "Indice de Reportes MedLang",
+        buildEarlyIndexBody(result));
 }
 }
 
@@ -52,7 +60,8 @@ MedLangAnalysisResult MedLangService::analyzeFile(const std::string& filePath) c
     }
 
     result.lexicalErrors = lexer.getErrors();
-    result.lexicalReportGenerated = writeLexicalHtmlReport("reporte_lexico.html", result.tokens, result.lexicalErrors);
+    std::filesystem::create_directories("output");
+    result.lexicalReportGenerated = writeLexicalHtmlReport("output/reporte_lexico.html", result.tokens, result.lexicalErrors);
 
     Parser parser(result.tokens);
     result.syntaxOk = parser.parseProgram();
@@ -60,11 +69,7 @@ MedLangAnalysisResult MedLangService::analyzeFile(const std::string& filePath) c
     result.hospital = parser.getHospitalData();
 
     if (!result.syntaxOk) {
-        std::filesystem::create_directories("output");
-        result.htmlReportsGenerated = writeHtmlDocument(
-            "output/indice_reportes.html",
-            "Indice de Reportes MedLang",
-            buildEarlyIndexBody(result));
+        result.htmlReportsGenerated = writeFallbackIndex(result);
         return result;
     }
 
@@ -72,6 +77,9 @@ MedLangAnalysisResult MedLangService::analyzeFile(const std::string& filePath) c
     result.semanticRecognition = semanticAnalyzer.recognizeInput();
     result.semanticValidation = semanticAnalyzer.validateBasicRules();
 
-    result.htmlReportsGenerated = Generator::generateAllHtmlReports("output", result.hospital, result.semanticValidation);
+    result.htmlReportsGenerated = Generator::generateAllHtmlReports("output", result.hospital, result.semanticValidation, filePath);
+    if (!result.htmlReportsGenerated) {
+        result.htmlReportsGenerated = writeFallbackIndex(result);
+    }
     return result;
 }

@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    const std::string reportPath = "reporte_lexico.html";
+    const std::string reportPath = "output/reporte_lexico.html";
     if (result.lexicalReportGenerated) {
         std::cout << "\nReporte HTML generado: " << reportPath << "\n";
     } else {

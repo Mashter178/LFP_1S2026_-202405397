@@ -1,5 +1,8 @@
 #include "Hospital.h"
 
+#include <filesystem>
+#include <iomanip>
+#include <set>
 #include <sstream>
 #include <unordered_map>
 
@@ -8,17 +11,46 @@
 bool writeHospitalStatsHtmlReport(
     const std::string& outputPath,
     const Hospital& data,
-    const SemanticValidationResult& semanticValidation
+    const SemanticValidationResult& semanticValidation,
+    const std::string& sourceFilePath
 ) {
-    std::unordered_map<std::string, int> pacientesPorSangre;
-    std::unordered_map<std::string, int> medicosPorEspecialidad;
+    std::unordered_map<std::string, std::set<std::string> > pacientesPorMedicamento;
+    std::unordered_map<std::string, int> frecuenciaMedicamento;
+    std::unordered_map<std::string, std::string> especialidadPorMedico;
+    std::unordered_map<std::string, int> citasPorEspecialidad;
+    std::unordered_map<std::string, int> citasPorMedico;
 
+    int sumEdades = 0;
     for (std::size_t i = 0; i < data.pacientes.size(); ++i) {
-        pacientesPorSangre[data.pacientes[i].tipoSangre]++;
+        sumEdades += data.pacientes[i].edad;
     }
 
     for (std::size_t i = 0; i < data.medicos.size(); ++i) {
-        medicosPorEspecialidad[data.medicos[i].especialidad]++;
+        especialidadPorMedico[data.medicos[i].nombre] = data.medicos[i].especialidad;
+    }
+
+    for (std::size_t i = 0; i < data.diagnosticos.size(); ++i) {
+        const Diagnostico& diagnostico = data.diagnosticos[i];
+        frecuenciaMedicamento[diagnostico.medicamento]++;
+        pacientesPorMedicamento[diagnostico.medicamento].insert(diagnostico.paciente);
+    }
+
+    for (std::size_t i = 0; i < data.citas.size(); ++i) {
+        const Cita& cita = data.citas[i];
+        const std::string especialidad = especialidadPorMedico[cita.medico];
+        citasPorEspecialidad[especialidad]++;
+        citasPorMedico[cita.medico]++;
+    }
+
+    std::string medicamentoTop = "N/A";
+    int medicamentoTopFrecuencia = 0;
+    int medicamentoTopPacientes = 0;
+    for (const auto& entry : frecuenciaMedicamento) {
+        if (entry.second > medicamentoTopFrecuencia) {
+            medicamentoTop = entry.first;
+            medicamentoTopFrecuencia = entry.second;
+            medicamentoTopPacientes = static_cast<int>(pacientesPorMedicamento[entry.first].size());
+        }
     }
 
     int conflictCount = 0;
@@ -27,6 +59,46 @@ bool writeHospitalStatsHtmlReport(
             conflictCount++;
         }
     }
+
+    std::set<std::string> pacientesConDiagnostico;
+    for (std::size_t i = 0; i < data.diagnosticos.size(); ++i) {
+        pacientesConDiagnostico.insert(data.diagnosticos[i].paciente);
+    }
+
+    const double porcentajeActivos = data.pacientes.empty()
+        ? 0.0
+        : (100.0 * static_cast<double>(pacientesConDiagnostico.size()) / static_cast<double>(data.pacientes.size()));
+
+    std::string especialidadTop = "N/A";
+    int especialidadTopCitas = 0;
+    for (const auto& entry : citasPorEspecialidad) {
+        if (entry.second > especialidadTopCitas) {
+            especialidadTop = entry.first;
+            especialidadTopCitas = entry.second;
+        }
+    }
+
+    std::string medicoTop = "N/A";
+    int medicoTopCitas = 0;
+    for (const auto& entry : citasPorMedico) {
+        const std::string especialidad = especialidadPorMedico[entry.first];
+        if (especialidad == especialidadTop && entry.second > medicoTopCitas) {
+            medicoTop = entry.first;
+            medicoTopCitas = entry.second;
+        }
+    }
+
+    const double promedioEdad = data.pacientes.empty()
+        ? 0.0
+        : static_cast<double>(sumEdades) / static_cast<double>(data.pacientes.size());
+
+    std::ostringstream porcentajeActivoText;
+    porcentajeActivoText << std::fixed << std::setprecision(1) << porcentajeActivos;
+
+    std::ostringstream promedioEdadText;
+    promedioEdadText << std::fixed << std::setprecision(1) << promedioEdad;
+
+    const std::string hospitalName = std::filesystem::path(sourceFilePath).filename().string();
 
     std::ostringstream body;
     body << "<div class=\"grid cards\">";
@@ -41,41 +113,16 @@ bool writeHospitalStatsHtmlReport(
     body << "<div class=\"section card\">";
     body << "<h2 class=\"section-title\">Resumen general</h2>";
     body << "<table><thead><tr><th>Indicador</th><th>Valor</th></tr></thead><tbody>";
-    body << "<tr><td>Pacientes</td><td>" << data.pacientes.size() << "</td></tr>";
-    body << "<tr><td>Medicos</td><td>" << data.medicos.size() << "</td></tr>";
-    body << "<tr><td>Citas</td><td>" << data.citas.size() << "</td></tr>";
-    body << "<tr><td>Diagnosticos</td><td>" << data.diagnosticos.size() << "</td></tr>";
-    body << "<tr><td>Especialidades distintas</td><td>" << medicosPorEspecialidad.size() << "</td></tr>";
-    body << "<tr><td>Tipos de sangre distintos</td><td>" << pacientesPorSangre.size() << "</td></tr>";
+    body << "<tr><td>Nombre del hospital</td><td>" << htmlEscape(hospitalName.empty() ? std::string("No definido") : hospitalName) << "</td></tr>";
+    body << "<tr><td>Total de pacientes registrados</td><td>" << data.pacientes.size() << "</td></tr>";
+    body << "<tr><td>Total de medicos activos</td><td>" << data.medicos.size() << "</td></tr>";
+    body << "<tr><td>Total de citas programadas</td><td>" << data.citas.size() << "</td></tr>";
+    body << "<tr><td>Citas con conflicto de horario</td><td>" << conflictCount << "</td></tr>";
+    body << "<tr><td>Pacientes con diagnostico activo</td><td>" << pacientesConDiagnostico.size() << " / " << data.pacientes.size() << " (" << porcentajeActivoText.str() << "%)</td></tr>";
+    body << "<tr><td>Medicamento mas prescrito</td><td>" << htmlEscape(medicamentoTop) << " (" << medicamentoTopPacientes << " pacientes)</td></tr>";
+    body << "<tr><td>Especialidad con mayor carga de citas</td><td>" << htmlEscape(especialidadTop) << " — " << htmlEscape(medicoTop) << " (" << medicoTopCitas << " citas)</td></tr>";
+    body << "<tr><td>Promedio de edad de los pacientes</td><td>" << promedioEdadText.str() << " años</td></tr>";
     body << "</tbody></table>";
-    body << "</div>";
-
-    body << "<div class=\"grid\" style=\"grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 18px;\">";
-    body << "<div class=\"card\">";
-    body << "<h2 class=\"section-title\">Pacientes por tipo de sangre</h2>";
-    if (pacientesPorSangre.empty()) {
-        body << "<p class=\"muted\">Sin pacientes cargados.</p>";
-    } else {
-        body << "<table><thead><tr><th>Tipo</th><th>Cantidad</th></tr></thead><tbody>";
-        for (const auto& entry : pacientesPorSangre) {
-            body << "<tr><td>" << htmlEscape(entry.first) << "</td><td>" << entry.second << "</td></tr>";
-        }
-        body << "</tbody></table>";
-    }
-    body << "</div>";
-
-    body << "<div class=\"card\">";
-    body << "<h2 class=\"section-title\">Medicos por especialidad</h2>";
-    if (medicosPorEspecialidad.empty()) {
-        body << "<p class=\"muted\">Sin medicos cargados.</p>";
-    } else {
-        body << "<table><thead><tr><th>Especialidad</th><th>Cantidad</th></tr></thead><tbody>";
-        for (const auto& entry : medicosPorEspecialidad) {
-            body << "<tr><td>" << htmlEscape(entry.first) << "</td><td>" << entry.second << "</td></tr>";
-        }
-        body << "</tbody></table>";
-    }
-    body << "</div>";
     body << "</div>";
 
     body << "<div class=\"section card\">";

@@ -3,9 +3,9 @@ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/app/MedLangSe
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/lexer/Lexer.h
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/LexicalReport.h
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/parser/Parser.h
-C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Appointments.h
-C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Doctors.h
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Hospital.h
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Doctors.h
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Appointments.h
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Generator.h
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Html.h
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Patients.h
@@ -14,8 +14,8 @@ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/app/MedLangSe
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/lexer/Lexer.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/lexer/LexerCatalog.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/lexer/LexerValidators.cpp
-C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/parser/Parser.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/LexicalReport.cpp
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/parser/Parser.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Appointments.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Doctors.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Generator.cpp
@@ -23,3 +23,5 @@ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/H
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Html.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Patients.cpp
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/semantic/SemanticAnalyzer.cpp
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Graphviz.h
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Graphviz.cpp

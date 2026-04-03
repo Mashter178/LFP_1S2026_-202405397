@@ -1,0 +1,23 @@
+digraph Hospital {
+rankdir=TB;
+node [shape=box, style=filled, fontname="Arial"];
+H [label="MedLang", fillcolor="#1A4731", fontcolor=white, shape=ellipse];
+P [label="PACIENTES", fillcolor="#2E7D52", fontcolor=white];
+M [label="MEDICOS", fillcolor="#2E7D52", fontcolor=white];
+C [label="CITAS", fillcolor="#2E7D52", fontcolor=white];
+D [label="DIAGNOSTICOS", fillcolor="#2E7D52", fontcolor=white];
+H -> P; H -> M; H -> C; H -> D;
+p1 [label="María García\\nA+ | Hab. 302", fillcolor="#D4EDDA"];
+P -> p1;
+p2 [label="Carlos Mendoza\\nO- | Hab. 410", fillcolor="#D4EDDA"];
+P -> p2;
+m1 [label="Dr. Roberto Juárez\\nMED-001 | CARDIOLOGIA", fillcolor="#D6EAF8"];
+M -> m1;
+m2 [label="Dra. Ana Solís\\nMED-002 | NEUROLOGIA", fillcolor="#D6EAF8"];
+M -> m2;
+p1 -> m1 [label="2025-04-10  09:00", color="#E67E22", style=dashed];
+p2 -> m2 [label="2025-04-10  11:30", color="#E67E22", style=dashed];
+d1 [label="Hipertensión Arterial\\nLosartán 50mg / DIARIA", fillcolor="#FDEBD0"];
+D -> d1;
+d1 -> p1 [label="diagnostico activo", color="#C0392B"];
+}

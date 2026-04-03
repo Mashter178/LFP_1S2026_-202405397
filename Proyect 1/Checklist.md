@@ -2,10 +2,10 @@
 
 ## 1. Hitos de Entrega
 - [ ] Código completo en C++ organizado en clases y módulos, debidamente comentado
-- [ ] Proyecto compila con g++ -std=c++17 o QMake/CMake
-- [ ] Clase principal de la GUI
-- [ ] GUI en Qt 5.15/6.x o wxWidgets 3.x
-- [ ] Proyecto con CMakeLists.txt o QMake (.pro)
+- [x] Proyecto compila con g++ -std=c++17 o QMake/CMake
+- [x] Clase principal de la GUI
+- [x] GUI en Qt 5.15/6.x o wxWidgets 3.x
+- [x] Proyecto con CMakeLists.txt o QMake (.pro)
 - [ ] README con compilación paso a paso
 
 ## 2. Núcleo del Lenguaje
@@ -35,7 +35,9 @@
 - [x] Reporte 2: Carga de Médicos por Especialidad
 - [x] Reporte 3: Agenda de Citas con conflictos
 - [x] Reporte 4: Estadístico General del Hospital
-- [ ] Exportar Graphviz (.dot) con jerarquía y relaciones
+- [x] Índice HTML generado y apertura directa desde GUI
+- [x] Exportación robusta con errores: índice parcial + enlace a reporte léxico
+- [x] Exportar Graphviz (.dot) con jerarquía y relaciones (`output/hospital.dot`)
 
 ## 5. GUI
 - [x] Integrar carga de archivo .med desde interfaz
@@ -45,6 +47,7 @@
 
 ## 6. Pruebas y Cobertura
 - [x] Pruebas manuales base (caso válido y con conflictos)
+- [x] Prueba de exportación HTML en escenarios con errores léxicos/sintácticos
 - [ ] Batería de pruebas válidas por bloque
 - [ ] Batería de pruebas inválidas (errores de símbolos, fecha, hora, código)
 - [ ] Verificar cobertura de todos los tipos de token
@@ -66,4 +69,12 @@
 ## 8. Pendientes Priorizados de Backend
 - [ ] Implementar detección semántica de códigos duplicados en médicos
 - [ ] Completar pruebas formales: suite de casos válidos e inválidos por bloque
-- [ ] Exportar reporte Graphviz (.dot) con jerarquía y relaciones
+- [x] Exportar reporte Graphviz (.dot) con jerarquía y relaciones
+
+## 9. Estado Final Consolidado
+- [x] Base funcional completa del proyecto (lexer + parser + semántica base + GUI + reportes)
+- [x] Flujo estable de compilación/ejecución con scripts PowerShell
+- [x] Exportación de reportes en escenarios válidos y con errores
+- [ ] Pendiente de cierre académico: documentación completa (manual técnico + manual de usuario)
+- [ ] Pendiente de robustez: pruebas formales completas y cobertura
+- [ ] Pendiente funcional de backend: detección de códigos duplicados en médicos

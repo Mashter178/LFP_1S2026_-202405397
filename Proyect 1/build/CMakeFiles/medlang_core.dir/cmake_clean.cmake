@@ -20,6 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.obj.d"
   "CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj"
   "CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj.d"
   "CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj"
   "CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj.d"
   "CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj"

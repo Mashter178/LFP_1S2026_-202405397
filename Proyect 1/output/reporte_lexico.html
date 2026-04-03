@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Reporte Lexico MedLang</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 24px; background: #f5f7fb; color: #1f2937; }
+    h1, h2 { margin: 0 0 12px 0; }
+    .card { background: #ffffff; border: 1px solid #dbe2ea; border-radius: 10px; padding: 16px; margin-bottom: 18px; }
+    .ok { color: #065f46; font-weight: 600; }
+    .warn { color: #b45309; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { border: 1px solid #dbe2ea; padding: 8px 10px; text-align: left; }
+    th { background: #eef3ff; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Reporte Lexico - MedLang</h1>
+    <p>Tokens generados: <strong>128</strong></p>
+    <p>Errores lexicos: <strong>0</strong></p>
+    <p class="ok">Analisis lexico completado sin errores.</p>
+  </div>
+  <div class="card">
+    <h2>Tabla de Tokens</h2>
+    <table>
+      <thead><tr><th>#</th><th>Token</th><th>Lexema</th><th>Linea</th><th>Columna</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="mono">Hospital</td><td class="mono">HOSPITAL</td><td>1</td><td>1</td></tr>
+        <tr><td>2</td><td class="mono">LBrace</td><td class="mono">{</td><td>1</td><td>10</td></tr>
+        <tr><td>3</td><td class="mono">Pacientes</td><td class="mono">PACIENTES</td><td>2</td><td>2</td></tr>
+        <tr><td>4</td><td class="mono">LBrace</td><td class="mono">{</td><td>2</td><td>12</td></tr>
+        <tr><td>5</td><td class="mono">Paciente</td><td class="mono">paciente</td><td>3</td><td>3</td></tr>
+        <tr><td>6</td><td class="mono">Colon</td><td class="mono">:</td><td>3</td><td>11</td></tr>
+        <tr><td>7</td><td class="mono">CADENA</td><td class="mono">María García</td><td>3</td><td>13</td></tr>
+        <tr><td>8</td><td class="mono">LBracket</td><td class="mono">[</td><td>3</td><td>30</td></tr>
+        <tr><td>9</td><td class="mono">Edad</td><td class="mono">edad</td><td>3</td><td>31</td></tr>
+        <tr><td>10</td><td class="mono">Colon</td><td class="mono">:</td><td>3</td><td>35</td></tr>
+        <tr><td>11</td><td class="mono">ENTERO</td><td class="mono">45</td><td>3</td><td>37</td></tr>
+        <tr><td>12</td><td class="mono">Comma</td><td class="mono">,</td><td>3</td><td>39</td></tr>
+        <tr><td>13</td><td class="mono">Tipo_Sangre</td><td class="mono">tipo_sangre</td><td>3</td><td>41</td></tr>
+        <tr><td>14</td><td class="mono">Colon</td><td class="mono">:</td><td>3</td><td>52</td></tr>
+        <tr><td>15</td><td class="mono">TIPO_SANGRE_LITERAL</td><td class="mono">A+</td><td>3</td><td>54</td></tr>
+        <tr><td>16</td><td class="mono">Comma</td><td class="mono">,</td><td>3</td><td>58</td></tr>
+        <tr><td>17</td><td class="mono">Habitacion</td><td class="mono">habitacion</td><td>3</td><td>60</td></tr>
+        <tr><td>18</td><td class="mono">Colon</td><td class="mono">:</td><td>3</td><td>70</td></tr>
+        <tr><td>19</td><td class="mono">ENTERO</td><td class="mono">302</td><td>3</td><td>72</td></tr>
+        <tr><td>20</td><td class="mono">RBracket</td><td class="mono">]</td><td>3</td><td>75</td></tr>
+        <tr><td>21</td><td class="mono">Comma</td><td class="mono">,</td><td>3</td><td>76</td></tr>
+        <tr><td>22</td><td class="mono">Paciente</td><td class="mono">paciente</td><td>4</td><td>3</td></tr>
+        <tr><td>23</td><td class="mono">Colon</td><td class="mono">:</td><td>4</td><td>11</td></tr>
+        <tr><td>24</td><td class="mono">CADENA</td><td class="mono">Carlos Mendoza</td><td>4</td><td>13</td></tr>
+        <tr><td>25</td><td class="mono">LBracket</td><td class="mono">[</td><td>4</td><td>30</td></tr>
+        <tr><td>26</td><td class="mono">Edad</td><td class="mono">edad</td><td>4</td><td>31</td></tr>
+        <tr><td>27</td><td class="mono">Colon</td><td class="mono">:</td><td>4</td><td>35</td></tr>
+        <tr><td>28</td><td class="mono">ENTERO</td><td class="mono">62</td><td>4</td><td>37</td></tr>
+        <tr><td>29</td><td class="mono">Comma</td><td class="mono">,</td><td>4</td><td>39</td></tr>
+        <tr><td>30</td><td class="mono">Tipo_Sangre</td><td class="mono">tipo_sangre</td><td>4</td><td>41</td></tr>
+        <tr><td>31</td><td class="mono">Colon</td><td class="mono">:</td><td>4</td><td>52</td></tr>
+        <tr><td>32</td><td class="mono">TIPO_SANGRE_LITERAL</td><td class="mono">O-</td><td>4</td><td>54</td></tr>
+        <tr><td>33</td><td class="mono">Comma</td><td class="mono">,</td><td>4</td><td>58</td></tr>
+        <tr><td>34</td><td class="mono">Habitacion</td><td class="mono">habitacion</td><td>4</td><td>60</td></tr>
+        <tr><td>35</td><td class="mono">Colon</td><td class="mono">:</td><td>4</td><td>70</td></tr>
+        <tr><td>36</td><td class="mono">ENTERO</td><td class="mono">410</td><td>4</td><td>72</td></tr>
+        <tr><td>37</td><td class="mono">RBracket</td><td class="mono">]</td><td>4</td><td>75</td></tr>
+        <tr><td>38</td><td class="mono">Comma</td><td class="mono">,</td><td>4</td><td>76</td></tr>
+        <tr><td>39</td><td class="mono">RBrace</td><td class="mono">}</td><td>5</td><td>2</td></tr>
+        <tr><td>40</td><td class="mono">Semicolon</td><td class="mono">;</td><td>5</td><td>3</td></tr>
+        <tr><td>41</td><td class="mono">Medicos</td><td class="mono">MEDICOS</td><td>6</td><td>2</td></tr>
+        <tr><td>42</td><td class="mono">LBrace</td><td class="mono">{</td><td>6</td><td>10</td></tr>
+        <tr><td>43</td><td class="mono">Medico</td><td class="mono">medico</td><td>7</td><td>3</td></tr>
+        <tr><td>44</td><td class="mono">Colon</td><td class="mono">:</td><td>7</td><td>9</td></tr>
+        <tr><td>45</td><td class="mono">CADENA</td><td class="mono">Dr. Roberto Juárez</td><td>7</td><td>11</td></tr>
+        <tr><td>46</td><td class="mono">LBracket</td><td class="mono">[</td><td>7</td><td>33</td></tr>
+        <tr><td>47</td><td class="mono">Especialidad</td><td class="mono">especialidad</td><td>7</td><td>34</td></tr>
+        <tr><td>48</td><td class="mono">Colon</td><td class="mono">:</td><td>7</td><td>46</td></tr>
+        <tr><td>49</td><td class="mono">ESPECIALIDAD_ENUM</td><td class="mono">CARDIOLOGIA</td><td>7</td><td>48</td></tr>
+        <tr><td>50</td><td class="mono">Comma</td><td class="mono">,</td><td>7</td><td>59</td></tr>
+        <tr><td>51</td><td class="mono">Codigo</td><td class="mono">codigo</td><td>7</td><td>61</td></tr>
+        <tr><td>52</td><td class="mono">Colon</td><td class="mono">:</td><td>7</td><td>67</td></tr>
+        <tr><td>53</td><td class="mono">CODIGO_ID</td><td class="mono">MED-001</td><td>7</td><td>69</td></tr>
+        <tr><td>54</td><td class="mono">RBracket</td><td class="mono">]</td><td>7</td><td>78</td></tr>
+        <tr><td>55</td><td class="mono">Comma</td><td class="mono">,</td><td>7</td><td>79</td></tr>
+        <tr><td>56</td><td class="mono">Medico</td><td class="mono">medico</td><td>8</td><td>3</td></tr>
+        <tr><td>57</td><td class="mono">Colon</td><td class="mono">:</td><td>8</td><td>9</td></tr>
+        <tr><td>58</td><td class="mono">CADENA</td><td class="mono">Dra. Ana Solís</td><td>8</td><td>11</td></tr>
+        <tr><td>59</td><td class="mono">LBracket</td><td class="mono">[</td><td>8</td><td>29</td></tr>
+        <tr><td>60</td><td class="mono">Especialidad</td><td class="mono">especialidad</td><td>8</td><td>30</td></tr>
+        <tr><td>61</td><td class="mono">Colon</td><td class="mono">:</td><td>8</td><td>42</td></tr>
+        <tr><td>62</td><td class="mono">ESPECIALIDAD_ENUM</td><td class="mono">NEUROLOGIA</td><td>8</td><td>44</td></tr>
+        <tr><td>63</td><td class="mono">Comma</td><td class="mono">,</td><td>8</td><td>54</td></tr>
+        <tr><td>64</td><td class="mono">Codigo</td><td class="mono">codigo</td><td>8</td><td>56</td></tr>
+        <tr><td>65</td><td class="mono">Colon</td><td class="mono">:</td><td>8</td><td>62</td></tr>
+        <tr><td>66</td><td class="mono">CODIGO_ID</td><td class="mono">MED-002</td><td>8</td><td>64</td></tr>
+        <tr><td>67</td><td class="mono">RBracket</td><td class="mono">]</td><td>8</td><td>73</td></tr>
+        <tr><td>68</td><td class="mono">Comma</td><td class="mono">,</td><td>8</td><td>74</td></tr>
+        <tr><td>69</td><td class="mono">RBrace</td><td class="mono">}</td><td>9</td><td>2</td></tr>
+        <tr><td>70</td><td class="mono">Semicolon</td><td class="mono">;</td><td>9</td><td>3</td></tr>
+        <tr><td>71</td><td class="mono">Citas</td><td class="mono">CITAS</td><td>10</td><td>2</td></tr>
+        <tr><td>72</td><td class="mono">LBrace</td><td class="mono">{</td><td>10</td><td>8</td></tr>
+        <tr><td>73</td><td class="mono">Cita</td><td class="mono">cita</td><td>11</td><td>3</td></tr>
+        <tr><td>74</td><td class="mono">Colon</td><td class="mono">:</td><td>11</td><td>7</td></tr>
+        <tr><td>75</td><td class="mono">CADENA</td><td class="mono">María García</td><td>11</td><td>9</td></tr>
+        <tr><td>76</td><td class="mono">Con</td><td class="mono">con</td><td>11</td><td>26</td></tr>
+        <tr><td>77</td><td class="mono">CADENA</td><td class="mono">Dr. Roberto Juárez</td><td>11</td><td>30</td></tr>
+        <tr><td>78</td><td class="mono">LBracket</td><td class="mono">[</td><td>11</td><td>52</td></tr>
+        <tr><td>79</td><td class="mono">Fecha</td><td class="mono">fecha</td><td>11</td><td>53</td></tr>
+        <tr><td>80</td><td class="mono">Colon</td><td class="mono">:</td><td>11</td><td>58</td></tr>
+        <tr><td>81</td><td class="mono">FECHA_LITERAL</td><td class="mono">2025-04-10</td><td>11</td><td>60</td></tr>
+        <tr><td>82</td><td class="mono">Comma</td><td class="mono">,</td><td>11</td><td>70</td></tr>
+        <tr><td>83</td><td class="mono">Hora</td><td class="mono">hora</td><td>11</td><td>72</td></tr>
+        <tr><td>84</td><td class="mono">Colon</td><td class="mono">:</td><td>11</td><td>76</td></tr>
+        <tr><td>85</td><td class="mono">HORA_LITERAL</td><td class="mono">09:00</td><td>11</td><td>78</td></tr>
+        <tr><td>86</td><td class="mono">RBracket</td><td class="mono">]</td><td>11</td><td>83</td></tr>
+        <tr><td>87</td><td class="mono">Comma</td><td class="mono">,</td><td>11</td><td>84</td></tr>
+        <tr><td>88</td><td class="mono">Cita</td><td class="mono">cita</td><td>12</td><td>3</td></tr>
+        <tr><td>89</td><td class="mono">Colon</td><td class="mono">:</td><td>12</td><td>7</td></tr>
+        <tr><td>90</td><td class="mono">CADENA</td><td class="mono">Carlos Mendoza</td><td>12</td><td>9</td></tr>
+        <tr><td>91</td><td class="mono">Con</td><td class="mono">con</td><td>12</td><td>26</td></tr>
+        <tr><td>92</td><td class="mono">CADENA</td><td class="mono">Dra. Ana Solís</td><td>12</td><td>30</td></tr>
+        <tr><td>93</td><td class="mono">LBracket</td><td class="mono">[</td><td>12</td><td>48</td></tr>
+        <tr><td>94</td><td class="mono">Fecha</td><td class="mono">fecha</td><td>12</td><td>49</td></tr>
+        <tr><td>95</td><td class="mono">Colon</td><td class="mono">:</td><td>12</td><td>54</td></tr>
+        <tr><td>96</td><td class="mono">FECHA_LITERAL</td><td class="mono">2025-04-10</td><td>12</td><td>56</td></tr>
+        <tr><td>97</td><td class="mono">Comma</td><td class="mono">,</td><td>12</td><td>66</td></tr>
+        <tr><td>98</td><td class="mono">Hora</td><td class="mono">hora</td><td>12</td><td>68</td></tr>
+        <tr><td>99</td><td class="mono">Colon</td><td class="mono">:</td><td>12</td><td>72</td></tr>
+        <tr><td>100</td><td class="mono">HORA_LITERAL</td><td class="mono">11:30</td><td>12</td><td>74</td></tr>
+        <tr><td>101</td><td class="mono">RBracket</td><td class="mono">]</td><td>12</td><td>79</td></tr>
+        <tr><td>102</td><td class="mono">Comma</td><td class="mono">,</td><td>12</td><td>80</td></tr>
+        <tr><td>103</td><td class="mono">RBrace</td><td class="mono">}</td><td>13</td><td>2</td></tr>
+        <tr><td>104</td><td class="mono">Semicolon</td><td class="mono">;</td><td>13</td><td>3</td></tr>
+        <tr><td>105</td><td class="mono">Diagnosticos</td><td class="mono">DIAGNOSTICOS</td><td>14</td><td>2</td></tr>
+        <tr><td>106</td><td class="mono">LBrace</td><td class="mono">{</td><td>14</td><td>15</td></tr>
+        <tr><td>107</td><td class="mono">Diagnostico</td><td class="mono">diagnostico</td><td>15</td><td>3</td></tr>
+        <tr><td>108</td><td class="mono">Colon</td><td class="mono">:</td><td>15</td><td>14</td></tr>
+        <tr><td>109</td><td class="mono">CADENA</td><td class="mono">María García</td><td>15</td><td>16</td></tr>
+        <tr><td>110</td><td class="mono">LBracket</td><td class="mono">[</td><td>15</td><td>33</td></tr>
+        <tr><td>111</td><td class="mono">Condicion</td><td class="mono">condicion</td><td>15</td><td>34</td></tr>
+        <tr><td>112</td><td class="mono">Colon</td><td class="mono">:</td><td>15</td><td>43</td></tr>
+        <tr><td>113</td><td class="mono">CADENA</td><td class="mono">Hipertensión Arterial</td><td>15</td><td>45</td></tr>
+        <tr><td>114</td><td class="mono">Comma</td><td class="mono">,</td><td>15</td><td>69</td></tr>
+        <tr><td>115</td><td class="mono">Medicamento</td><td class="mono">medicamento</td><td>15</td><td>71</td></tr>
+        <tr><td>116</td><td class="mono">Colon</td><td class="mono">:</td><td>15</td><td>82</td></tr>
+        <tr><td>117</td><td class="mono">CADENA</td><td class="mono">Losartán 50mg</td><td>15</td><td>84</td></tr>
+        <tr><td>118</td><td class="mono">Comma</td><td class="mono">,</td><td>15</td><td>100</td></tr>
+        <tr><td>119</td><td class="mono">Dosis</td><td class="mono">dosis</td><td>15</td><td>102</td></tr>
+        <tr><td>120</td><td class="mono">Colon</td><td class="mono">:</td><td>15</td><td>107</td></tr>
+        <tr><td>121</td><td class="mono">DOSIS_ENUM</td><td class="mono">DIARIA</td><td>15</td><td>109</td></tr>
+        <tr><td>122</td><td class="mono">RBracket</td><td class="mono">]</td><td>15</td><td>115</td></tr>
+        <tr><td>123</td><td class="mono">Comma</td><td class="mono">,</td><td>15</td><td>116</td></tr>
+        <tr><td>124</td><td class="mono">RBrace</td><td class="mono">}</td><td>16</td><td>2</td></tr>
+        <tr><td>125</td><td class="mono">Semicolon</td><td class="mono">;</td><td>16</td><td>3</td></tr>
+        <tr><td>126</td><td class="mono">RBrace</td><td class="mono">}</td><td>17</td><td>1</td></tr>
+        <tr><td>127</td><td class="mono">Semicolon</td><td class="mono">;</td><td>17</td><td>2</td></tr>
+        <tr><td>128</td><td class="mono">EndOfFile</td><td class="mono"></td><td>17</td><td>3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Tabla de Errores Lexicos</h2>
+    <table>
+      <thead><tr><th>No.</th><th>Lexema invalido</th><th>Tipo</th><th>Descripcion</th><th>Posicion</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" class="ok">Sin errores lexicos.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

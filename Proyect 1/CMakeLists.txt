@@ -19,6 +19,7 @@ set(MEDLANG_CORE_SOURCES
     src/core/parser/Parser.cpp
     src/core/report/Appointments.cpp
     src/core/report/Doctors.cpp
+    src/core/report/Graphviz.cpp
     src/core/report/Generator.cpp
     src/core/report/Hospital.cpp
     src/core/report/Html.cpp

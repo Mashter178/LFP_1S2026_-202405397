@@ -116,6 +116,7 @@ CMakeFiles/medlang_core.dir/src/core/report/Appointments.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/semantic/SemanticAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/model/HospitalModel.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ios \

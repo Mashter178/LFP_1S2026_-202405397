@@ -288,6 +288,12 @@
 			null
 		],
 		[
+			"C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Graphviz.h",
+			"MU",
+			"SMTXQUNBPZ/moc_Graphviz.cpp",
+			null
+		],
+		[
 			"C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Hospital.h",
 			"MU",
 			"SMTXQUNBPZ/moc_Hospital.cpp",
@@ -401,6 +407,11 @@
 		],
 		[
 			"C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Generator.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/core/report/Graphviz.cpp",
 			"MU",
 			null
 		],

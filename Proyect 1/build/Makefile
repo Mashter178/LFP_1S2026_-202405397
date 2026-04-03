@@ -544,6 +544,30 @@ src/core/report/Generator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_core.dir\build.make CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.s
 .PHONY : src/core/report/Generator.cpp.s
 
+src/core/report/Graphviz.obj: src/core/report/Graphviz.cpp.obj
+.PHONY : src/core/report/Graphviz.obj
+
+# target to build an object file
+src/core/report/Graphviz.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_core.dir\build.make CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj
+.PHONY : src/core/report/Graphviz.cpp.obj
+
+src/core/report/Graphviz.i: src/core/report/Graphviz.cpp.i
+.PHONY : src/core/report/Graphviz.i
+
+# target to preprocess a source file
+src/core/report/Graphviz.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_core.dir\build.make CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.i
+.PHONY : src/core/report/Graphviz.cpp.i
+
+src/core/report/Graphviz.s: src/core/report/Graphviz.cpp.s
+.PHONY : src/core/report/Graphviz.s
+
+# target to generate assembly for a file
+src/core/report/Graphviz.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_core.dir\build.make CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.s
+.PHONY : src/core/report/Graphviz.cpp.s
+
 src/core/report/Hospital.obj: src/core/report/Hospital.cpp.obj
 .PHONY : src/core/report/Hospital.obj
 
@@ -768,6 +792,9 @@ help:
 	@echo ... src/core/report/Generator.obj
 	@echo ... src/core/report/Generator.i
 	@echo ... src/core/report/Generator.s
+	@echo ... src/core/report/Graphviz.obj
+	@echo ... src/core/report/Graphviz.i
+	@echo ... src/core/report/Graphviz.s
 	@echo ... src/core/report/Hospital.obj
 	@echo ... src/core/report/Hospital.i
 	@echo ... src/core/report/Hospital.s

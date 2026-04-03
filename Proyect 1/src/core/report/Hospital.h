@@ -9,7 +9,8 @@
 bool writeHospitalStatsHtmlReport(
     const std::string& outputPath,
     const Hospital& data,
-    const SemanticValidationResult& semanticValidation
+    const SemanticValidationResult& semanticValidation,
+    const std::string& sourceFilePath
 );
 
 #endif

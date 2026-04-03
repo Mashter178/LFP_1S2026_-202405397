@@ -11,7 +11,8 @@ public:
     static bool generateAllHtmlReports(
         const std::string& outputDirectory,
         const Hospital& data,
-        const SemanticValidationResult& semanticValidation
+        const SemanticValidationResult& semanticValidation,
+        const std::string& sourceFilePath
     );
 };
 

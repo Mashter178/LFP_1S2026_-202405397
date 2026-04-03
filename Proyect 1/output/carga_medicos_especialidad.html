@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reporte 2 - Carga de Medicos por Especialidad</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%); color: #1f2937; }
+    .page { max-width: 1280px; margin: 0 auto; padding: 28px 20px 40px; }
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); color: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18); margin-bottom: 20px; }
+    .hero h1 { margin: 0 0 8px 0; font-size: 30px; }
+    .hero p { margin: 0; opacity: 0.92; }
+    .grid { display: grid; gap: 16px; }
+    .grid.cards { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .card { background: #fff; border: 1px solid #d9e2ee; border-radius: 16px; padding: 16px; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05); }
+    .card h2, .card h3 { margin: 0 0 12px 0; }
+    .metric { font-size: 28px; font-weight: 700; margin: 6px 0 0; }
+    .label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; color: #64748b; }
+    .muted { color: #64748b; }
+    .ok { color: #065f46; font-weight: 600; }
+    .warn { color: #b45309; font-weight: 600; }
+    .danger { color: #b91c1c; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; overflow: hidden; }
+    th, td { border: 1px solid #a8b3b0; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #15543a; color: #ffffff; font-weight: 700; }
+    tbody tr:nth-child(even) td { background: #e6ece9; }
+    .section { margin-top: 18px; }
+    .section-title { margin: 0 0 10px 0; font-size: 18px; }
+    .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #e2e8f0; color: #0f172a; font-size: 12px; font-weight: 600; }
+    .pill.ok { background: #dcfce7; color: #166534; }
+    .pill.warn { background: #fef3c7; color: #92400e; }
+    .pill.danger { background: #fee2e2; color: #991b1b; }
+    .pill.info { background: #dbeafe; color: #1d4ed8; }
+    .spacer { height: 8px; }
+    .small { font-size: 13px; }
+    .stack > * + * { margin-top: 10px; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .patient-block { border: 1px solid #d9e2ee; border-radius: 16px; padding: 16px; background: #fff; }
+    .patient-block + .patient-block { margin-top: 14px; }
+    .subtle { background: #f8fafc; border-radius: 12px; padding: 12px; border: 1px solid #e2e8f0; }
+    td.status-ok { background: #2f855a !important; color: #ffffff; font-weight: 700; text-align: center; }
+    td.status-warn { background: #e67e22 !important; color: #ffffff; font-weight: 700; text-align: center; }
+    td.status-danger { background: #c0392b !important; color: #ffffff; font-weight: 700; text-align: center; }
+    td.status-info { background: #1f618d !important; color: #ffffff; font-weight: 700; text-align: center; }
+    .nav-back { margin: -6px 0 18px; }
+    .back-link { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #e2e8f0; color: #0f172a; text-decoration: none; font-weight: 600; }
+    .back-link:hover { background: #cbd5e1; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <h1>Reporte 2 - Carga de Medicos por Especialidad</h1>
+      <p>MedLang - reportes generados desde la estructura del hospital cargada en memoria.</p>
+    </div>
+    <div class="nav-back"><a class="back-link" href="indice_reportes.html">Regresar al indice</a></div>
+<div class="grid cards"><div class="card"><div class="label">Medicos registrados</div><div class="metric">2</div></div><div class="card"><div class="label">Citas programadas</div><div class="metric">2</div></div><div class="card"><div class="label">Medicos con al menos una cita</div><div class="metric">2</div></div></div><div class="section card"><h2 class="section-title">Carga de medicos por especialidad</h2><table><thead><tr><th>Medico</th><th>Codigo</th><th>Especialidad</th><th>Citas Prog.</th><th>Pacientes</th><th>Nivel de Carga</th></tr></thead><tbody><tr><td>Dr. Roberto Juárez</td><td class="mono">MED-001</td><td>CARDIOLOGIA</td><td>1</td><td>1</td><td class="status-info">BAJA</td></tr><tr><td>Dra. Ana Solís</td><td class="mono">MED-002</td><td>NEUROLOGIA</td><td>1</td><td>1</td><td class="status-info">BAJA</td></tr></tbody></table></div>  </div>
+</body>
+</html>

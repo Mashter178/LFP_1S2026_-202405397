@@ -1,0 +1,69 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "MedLang: Configure CMake",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"options": {
+				"cwd": "${workspaceFolder}/Proyect 1"
+			},
+			"args": [
+				"-S",
+				".",
+				"-B",
+				"build",
+				"-G",
+				"MinGW Makefiles",
+				"-DCMAKE_CXX_COMPILER=C:/Qt/Tools/mingw1120_64/bin/g++.exe",
+				"-DCMAKE_PREFIX_PATH=C:/Qt/6.5.3/mingw_64"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "MedLang: Build",
+			"type": "shell",
+			"command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+			"options": {
+				"cwd": "${workspaceFolder}/Proyect 1"
+			},
+			"args": [
+				"--build",
+				"build",
+				"-j"
+			],
+			"isBackground": false,
+			"dependsOn": [
+				"MedLang: Configure CMake"
+			],
+			"group": "build"
+		},
+		{
+			"label": "MedLang: Run GUI",
+			"type": "shell",
+			"command": "./build/medlang_gui.exe",
+			"options": {
+				"cwd": "${workspaceFolder}/Proyect 1"
+			},
+			"isBackground": true,
+			"dependsOn": [
+				"MedLang: Build"
+			]
+		},
+		{
+			"label": "MedLang: Run CLI (sample)",
+			"type": "shell",
+			"command": "./build/medlang_cli.exe",
+			"options": {
+				"cwd": "${workspaceFolder}/Proyect 1"
+			},
+			"args": [
+				"test/hospital_valido_01.med"
+			],
+			"isBackground": false,
+			"dependsOn": [
+				"MedLang: Build"
+			]
+		}
+	]
+}

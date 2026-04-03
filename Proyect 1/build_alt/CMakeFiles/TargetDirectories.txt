@@ -1,0 +1,11 @@
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_core.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_cli.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_gui.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/edit_cache.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/rebuild_cache.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_core_autogen_timestamp_deps.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_core_autogen.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_cli_autogen_timestamp_deps.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_cli_autogen.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_gui_autogen_timestamp_deps.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_gui_autogen.dir

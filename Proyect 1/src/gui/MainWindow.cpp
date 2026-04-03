@@ -2,6 +2,7 @@
 
 #include <QDesktopServices>
 #include <QDir>
+#include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QHeaderView>
@@ -12,6 +13,7 @@
 #include <QPushButton>
 #include <QTableWidget>
 #include <QTabWidget>
+#include <QTextEdit>
 #include <QUrl>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -28,8 +30,10 @@ MainWindow::MainWindow()
     : m_filePathEdit(nullptr)
     , m_browseButton(nullptr)
     , m_analyzeButton(nullptr)
-    , m_openReportsButton(nullptr)
+    , m_exportReportsButton(nullptr)
     , m_statusLabel(nullptr)
+    , m_tabs(nullptr)
+    , m_sourceText(nullptr)
     , m_tokensTable(nullptr)
     , m_lexicalErrorsTable(nullptr)
     , m_syntaxErrorsTable(nullptr)
@@ -51,52 +55,61 @@ void MainWindow::buildUi() {
 
     m_browseButton = new QPushButton("Buscar", central);
     m_analyzeButton = new QPushButton("Analizar", central);
-    m_openReportsButton = new QPushButton("Abrir indice HTML", central);
+    m_exportReportsButton = new QPushButton("Exportar y abrir HTML", central);
 
     fileRow->addWidget(fileLabel);
     fileRow->addWidget(m_filePathEdit, 1);
     fileRow->addWidget(m_browseButton);
     fileRow->addWidget(m_analyzeButton);
-    fileRow->addWidget(m_openReportsButton);
+    fileRow->addWidget(m_exportReportsButton);
 
     m_statusLabel = new QLabel("Listo para analizar.", central);
 
-    QTabWidget* tabs = new QTabWidget(central);
+    m_tabs = new QTabWidget(central);
 
-    m_tokensTable = new QTableWidget(0, 5, tabs);
+    m_sourceText = new QTextEdit(m_tabs);
+    m_sourceText->setReadOnly(true);
+    m_sourceText->setPlaceholderText("Vista previa del archivo .med");
+
+    m_tokensTable = new QTableWidget(0, 5, m_tabs);
     m_tokensTable->setHorizontalHeaderLabels({"#", "Tipo", "Lexema", "Linea", "Columna"});
     m_tokensTable->horizontalHeader()->setStretchLastSection(true);
+    m_tokensTable->verticalHeader()->setVisible(false);
     m_tokensTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    m_lexicalErrorsTable = new QTableWidget(0, 6, tabs);
+    m_lexicalErrorsTable = new QTableWidget(0, 6, m_tabs);
     m_lexicalErrorsTable->setHorizontalHeaderLabels({"#", "Lexema", "Tipo", "Descripcion", "Linea", "Columna"});
     m_lexicalErrorsTable->horizontalHeader()->setStretchLastSection(true);
+    m_lexicalErrorsTable->verticalHeader()->setVisible(false);
     m_lexicalErrorsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    m_syntaxErrorsTable = new QTableWidget(0, 6, tabs);
+    m_syntaxErrorsTable = new QTableWidget(0, 6, m_tabs);
     m_syntaxErrorsTable->setHorizontalHeaderLabels({"#", "Mensaje", "Esperado", "Encontrado", "Linea", "Columna"});
     m_syntaxErrorsTable->horizontalHeader()->setStretchLastSection(true);
+    m_syntaxErrorsTable->verticalHeader()->setVisible(false);
     m_syntaxErrorsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    m_semanticErrorsTable = new QTableWidget(0, 5, tabs);
+    m_semanticErrorsTable = new QTableWidget(0, 5, m_tabs);
     m_semanticErrorsTable->setHorizontalHeaderLabels({"#", "Tipo", "Descripcion", "Entidad", "Linea"});
     m_semanticErrorsTable->horizontalHeader()->setStretchLastSection(true);
+    m_semanticErrorsTable->verticalHeader()->setVisible(false);
     m_semanticErrorsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    tabs->addTab(m_tokensTable, "Tokens");
-    tabs->addTab(m_lexicalErrorsTable, "Errores Lexicos");
-    tabs->addTab(m_syntaxErrorsTable, "Errores Sintacticos");
-    tabs->addTab(m_semanticErrorsTable, "Errores Semanticos");
+    m_tabs->addTab(m_sourceText, "Entrada .med");
+    m_tabs->addTab(m_tokensTable, "Tokens");
+    m_tabs->addTab(m_lexicalErrorsTable, "Errores Lexicos");
+    m_tabs->addTab(m_syntaxErrorsTable, "Errores Sintacticos");
+    m_tabs->addTab(m_semanticErrorsTable, "Errores Semanticos");
 
     rootLayout->addLayout(fileRow);
     rootLayout->addWidget(m_statusLabel);
-    rootLayout->addWidget(tabs, 1);
+    rootLayout->addWidget(m_tabs, 1);
 
     setCentralWidget(central);
 
     connect(m_browseButton, &QPushButton::clicked, this, [this]() { handleBrowse(); });
     connect(m_analyzeButton, &QPushButton::clicked, this, [this]() { handleAnalyze(); });
-    connect(m_openReportsButton, &QPushButton::clicked, this, [this]() { handleOpenReports(); });
+    connect(m_exportReportsButton, &QPushButton::clicked, this, [this]() { handleExportReports(); });
 }
 
 void MainWindow::handleBrowse() {
@@ -108,6 +121,7 @@ void MainWindow::handleBrowse() {
 
     if (!selected.isEmpty()) {
         m_filePathEdit->setText(selected);
+        loadSourcePreview(selected);
     }
 }
 
@@ -124,13 +138,71 @@ void MainWindow::handleAnalyze() {
         return;
     }
 
+    loadSourcePreview(filePath);
+
     MedLangService service;
     const MedLangAnalysisResult result = service.analyzeFile(filePath.toStdString());
+
+    renderAnalysis(result);
+}
+
+void MainWindow::handleExportReports() {
+    const QString filePath = m_filePathEdit->text().trimmed();
+    if (filePath.isEmpty()) {
+        QMessageBox::warning(this, "MedLang", "Selecciona un archivo .med antes de exportar reportes.");
+        return;
+    }
+
+    QFileInfo fileInfo(filePath);
+    if (!fileInfo.exists() || !fileInfo.isFile()) {
+        QMessageBox::warning(this, "MedLang", "La ruta seleccionada no es un archivo valido.");
+        return;
+    }
+
+    loadSourcePreview(filePath);
+
+    MedLangService service;
+    const MedLangAnalysisResult result = service.analyzeFile(filePath.toStdString());
+
+    renderAnalysis(result);
+
+    if (result.htmlReportsGenerated) {
+        const QString indexPath = QDir::current().filePath("output/indice_reportes.html");
+        const QFileInfo info(indexPath);
+        if (info.exists()) {
+            QDesktopServices::openUrl(QUrl::fromLocalFile(indexPath));
+            m_statusLabel->setText("Reportes HTML exportados y abiertos en el navegador.");
+        } else {
+            m_statusLabel->setText("Reportes HTML exportados, pero no se encontro output/indice_reportes.html.");
+        }
+    } else {
+        QMessageBox::information(this, "MedLang", "No se pudieron exportar los reportes HTML.");
+    }
+}
+
+void MainWindow::loadSourcePreview(const QString& filePath) {
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        m_sourceText->setPlainText("No se pudo cargar la vista previa del archivo.");
+        return;
+    }
+
+    const QByteArray content = file.readAll();
+    m_sourceText->setPlainText(QString::fromUtf8(content));
+}
+
+void MainWindow::renderAnalysis(const MedLangAnalysisResult& result) {
 
     if (!result.sourceLoaded) {
         m_statusLabel->setText("No se pudo abrir el archivo para analisis.");
         return;
     }
+
+    // Reforzar ocultamiento del indice de filas de Qt para evitar duplicado con la columna "#".
+    m_tokensTable->verticalHeader()->setVisible(false);
+    m_lexicalErrorsTable->verticalHeader()->setVisible(false);
+    m_syntaxErrorsTable->verticalHeader()->setVisible(false);
+    m_semanticErrorsTable->verticalHeader()->setVisible(false);
 
     m_tokensTable->clearContents();
     m_tokensTable->setRowCount(0);
@@ -194,17 +266,3 @@ void MainWindow::handleAnalyze() {
     m_statusLabel->setText(summary);
 }
 
-void MainWindow::handleOpenReports() {
-    const QString indexPath = QDir::current().filePath("output/indice_reportes.html");
-    QFileInfo info(indexPath);
-
-    if (!info.exists()) {
-        QMessageBox::information(
-            this,
-            "MedLang",
-            "No existe output/indice_reportes.html todavia. Ejecuta un analisis primero.");
-        return;
-    }
-
-    QDesktopServices::openUrl(QUrl::fromLocalFile(indexPath));
-}

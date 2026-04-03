@@ -38,10 +38,10 @@
 - [ ] Exportar Graphviz (.dot) con jerarquía y relaciones
 
 ## 5. GUI
-- [ ] Integrar carga de archivo .med desde interfaz
-- [ ] Mostrar tabla de tokens y errores en GUI
-- [ ] Botones para análisis y exportar reportes
-- [ ] Componentes mínimos en GUI: área de texto, tabla de tokens, tabla de errores, botones de carga/análisis, acceso a reportes HTML
+- [x] Integrar carga de archivo .med desde interfaz
+- [x] Mostrar tabla de tokens y errores en GUI
+- [x] Botones para análisis y exportar reportes
+- [x] Componentes mínimos en GUI: área de texto, tabla de tokens, tabla de errores, botones de carga/análisis, acceso a reportes HTML
 
 ## 6. Pruebas y Cobertura
 - [x] Pruebas manuales base (caso válido y con conflictos)

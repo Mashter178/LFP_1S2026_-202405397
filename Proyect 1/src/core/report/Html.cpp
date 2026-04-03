@@ -37,6 +37,7 @@ std::string joinList(const std::vector<std::string>& values) {
 
 bool writeHtmlDocument(const std::string& outputPath, const std::string& title, const std::string& bodyHtml) {
     const std::filesystem::path path(outputPath);
+    const bool isIndexReport = path.filename() == "indice_reportes.html";
     if (path.has_parent_path()) {
         std::error_code errorCode;
         std::filesystem::create_directories(path.parent_path(), errorCode);
@@ -86,6 +87,9 @@ bool writeHtmlDocument(const std::string& outputPath, const std::string& title, 
     out << "    .patient-block { border: 1px solid #d9e2ee; border-radius: 16px; padding: 16px; background: #fff; }\n";
     out << "    .patient-block + .patient-block { margin-top: 14px; }\n";
     out << "    .subtle { background: #f8fafc; border-radius: 12px; padding: 12px; border: 1px solid #e2e8f0; }\n";
+    out << "    .nav-back { margin: -6px 0 18px; }\n";
+    out << "    .back-link { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #e2e8f0; color: #0f172a; text-decoration: none; font-weight: 600; }\n";
+    out << "    .back-link:hover { background: #cbd5e1; }\n";
     out << "  </style>\n";
     out << "</head>\n";
     out << "<body>\n";
@@ -94,6 +98,9 @@ bool writeHtmlDocument(const std::string& outputPath, const std::string& title, 
     out << "      <h1>" << htmlEscape(title) << "</h1>\n";
     out << "      <p>MedLang - reportes generados desde la estructura del hospital cargada en memoria.</p>\n";
     out << "    </div>\n";
+    if (!isIndexReport) {
+        out << "    <div class=\"nav-back\"><a class=\"back-link\" href=\"indice_reportes.html\">Regresar al indice</a></div>\n";
+    }
     out << bodyHtml;
     out << "  </div>\n";
     out << "</body>\n";

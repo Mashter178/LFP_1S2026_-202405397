@@ -1,0 +1,3 @@
+C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\medlang_cli.dir/objects.a
+C:\Qt\Tools\mingw1120_64\bin\ar.exe qc CMakeFiles\medlang_cli.dir/objects.a @CMakeFiles\medlang_cli.dir\objects1.rsp
+C:\Qt\Tools\mingw1120_64\bin\g++.exe -Wl,--whole-archive CMakeFiles\medlang_cli.dir/objects.a -Wl,--no-whole-archive -o medlang_cli.exe -Wl,--out-implib,libmedlang_cli.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\medlang_cli.dir\linkLibs.rsp

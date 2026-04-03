@@ -41,6 +41,7 @@ if(MEDLANG_BUILD_GUI)
         src/gui/main.cpp
         src/gui/MainWindow.cpp
         src/gui/MainWindow.h
+        src/gui/resources/medlang.qrc
     )
 
     target_link_libraries(medlang_gui PRIVATE medlang_core Qt${QT_VERSION_MAJOR}::Widgets)

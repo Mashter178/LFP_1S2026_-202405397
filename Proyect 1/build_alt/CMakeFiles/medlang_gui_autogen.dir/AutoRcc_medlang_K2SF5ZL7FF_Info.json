@@ -1,0 +1,25 @@
+{
+	"BUILD_DIR" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/medlang_gui_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1",
+	"CMAKE_SOURCE_DIR" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "MinGW Makefiles",
+	"INCLUDE_DIR" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/medlang_gui_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/gui/resources/medlang.svg"
+	],
+	"LOCK_FILE" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_gui_autogen.dir/AutoRcc_medlang_K2SF5ZL7FF_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "medlang" ],
+	"OUTPUT_CHECKSUM" : "K2SF5ZL7FF",
+	"OUTPUT_NAME" : "qrc_medlang.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.5.3/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/build_alt/CMakeFiles/medlang_gui_autogen.dir/AutoRcc_medlang_K2SF5ZL7FF_Used.txt",
+	"SOURCE" : "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1/src/gui/resources/medlang.qrc",
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

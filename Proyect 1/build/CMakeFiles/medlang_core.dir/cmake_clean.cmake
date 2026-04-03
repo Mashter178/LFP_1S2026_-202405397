@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/medlang_core_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/medlang_core_autogen.dir/ParseCache.txt"
+  "medlang_core_autogen"
+  "CMakeFiles/medlang_core.dir/medlang_core_autogen/mocs_compilation.cpp.obj"
+  "CMakeFiles/medlang_core.dir/medlang_core_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/app/MedLangService.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/app/MedLangService.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/lexer/Lexer.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/lexer/Lexer.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/lexer/LexerCatalog.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/lexer/LexerCatalog.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/lexer/LexerValidators.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/lexer/LexerValidators.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/parser/Parser.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/parser/Parser.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Appointments.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Appointments.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj.d"
+  "CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj"
+  "CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj.d"
+  "libmedlang_core.a"
+  "libmedlang_core.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/medlang_core.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

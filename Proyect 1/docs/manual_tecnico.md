@@ -720,3 +720,168 @@ output/
 - **CMake**: https://cmake.org/documentation/
 
 ---
+
+## 12. Guia Practica Basada en `src/`
+
+Esta seccion esta enfocada en comprender rapido el proyecto desde el codigo real para exposicion, depuracion y cambios en vivo.
+
+### 12.1 Mapa Real de `src/` y Responsabilidad por Archivo
+
+#### `src/app/`
+- `main.cpp`: entrada CLI. Imprime tokens, tablas de errores y estado final de reportes.
+- `MedLangService.h/.cpp`: orquestador principal del pipeline completo.
+
+#### `src/core/lexer/`
+- `Token.h`: `enum class TokenType`, `struct Token`, `tokenTypeToString`.
+- `Lexer.h/.cpp`: scanner principal (whitespace/comentarios, cadenas, numeros, keywords, simbolos).
+- `LexerCatalog.cpp`: inicializa catalogos (`keywords`, especialidades, dosis, tipo de sangre).
+- `LexerValidators.cpp`: validadores auxiliares (fecha, hora, codigo ID, typo one-edit distance).
+
+#### `src/core/parser/`
+- `Parser.h/.cpp`: parser descendente recursivo con recuperacion por `synchronize()`.
+
+#### `src/core/model/`
+- `HospitalModel.h`: structs del dominio (`Paciente`, `Medico`, `Cita`, `Diagnostico`, `Hospital`).
+
+#### `src/core/semantic/`
+- `SemanticAnalyzer.h/.cpp`: reconocimiento de entrada y reglas semanticas base.
+
+#### `src/core/report/`
+- `LexicalReport.h/.cpp`: genera `reporte_lexico.html`.
+- `Patients.h/.cpp`: `historial_pacientes.html`.
+- `Doctors.h/.cpp`: `carga_medicos_especialidad.html`.
+- `Appointments.h/.cpp`: `agenda_citas_conflictos.html`.
+- `Hospital.h/.cpp`: `estadistico_general_hospital.html`.
+- `Graphviz.h/.cpp`: `hospital.dot`.
+- `Html.h/.cpp`: utilidades HTML/CSS comun.
+- `Generator.h/.cpp`: coordinador de reportes e `indice_reportes.html`.
+
+#### `src/gui/`
+- `main.cpp`: entrada Qt.
+- `MainWindow.h/.cpp`: UI, carga `.med`, ejecucion de analisis y apertura de reportes.
+
+### 12.2 Flujo End-to-End (Funciones Reales)
+
+1. CLI o GUI llama `MedLangService::analyzeFile(filePath)`.
+2. `Lexer` recorre todo el texto y produce `vector<Token>` + `vector<LexicalError>`.
+3. Siempre intenta escribir `output/reporte_lexico.html`.
+4. `Parser parser(tokens)` ejecuta `parseProgram()` y llena `Hospital`.
+5. Si hay error sintactico, se genera `output/indice_reportes.html` de fallback y termina.
+6. Si sintaxis es valida, `SemanticAnalyzer` ejecuta:
+  - `recognizeInput()`
+  - `validateBasicRules()`
+7. `Generator::generateAllHtmlReports(...)` produce reportes de negocio + indice.
+
+### 12.3 Contrato Sintactico Real del Parser (Importante para Exposicion)
+
+El parser actual es estricto y espera este orden fijo:
+
+1. `HOSPITAL {`
+2. bloque `PACIENTES`
+3. bloque `MEDICOS`
+4. bloque `CITAS`
+5. bloque `DIAGNOSTICOS`
+6. `}` y `;` final
+
+Tambien espera orden fijo de atributos por declaracion:
+
+- Paciente: `edad`, `tipo_sangre`, `habitacion` (en ese orden)
+- Medico: `especialidad`, `codigo`
+- Cita: `fecha`, `hora`
+- Diagnostico: `condicion`, `medicamento`, `dosis`
+
+Y actualmente las declaraciones esperan coma final despues de `]`.
+
+Conclusión tecnica: la gramatica implementada es mas estricta que una EBNF "flexible"; durante la exposicion conviene aclararlo para evitar confusiones con entradas validas teoricamente pero no aceptadas por el parser actual.
+
+### 12.4 Reglas Semanticas Implementadas Hoy
+
+`SemanticAnalyzer::validateBasicRules()` valida:
+
+1. `PacienteInexistente` en citas.
+2. `MedicoInexistente` en citas.
+3. `ConflictoHorario` por clave `medico|fecha|hora` repetida.
+
+`recognizeInput()` marca `inputReady = false` si alguna seccion principal esta vacia (`PACIENTES`, `MEDICOS`, `CITAS`, `DIAGNOSTICOS`), y agrega notas informativas.
+
+Nota: validaciones como duplicado de codigo medico o cruce diagnostico->paciente pueden aparecer como requisito documental, pero deben presentarse como mejora futura si aun no estan codificadas en `SemanticAnalyzer.cpp`.
+
+### 12.5 Comandos C++/Build Utiles para Demo
+
+Compilar:
+
+```powershell
+C:/Qt/Tools/CMake_64/bin/cmake.exe -S . -B build -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER=C:/Qt/Tools/mingw1120_64/bin/g++.exe -DCMAKE_PREFIX_PATH=C:/Qt/6.5.3/mingw_64
+C:/Qt/Tools/CMake_64/bin/cmake.exe --build build -j
+```
+
+Ejecutar CLI:
+
+```powershell
+.\build\medlang_cli.exe test/hospital_valido_01.med
+```
+
+Ejecutar GUI:
+
+```powershell
+.\build\medlang_gui.exe
+```
+
+### 12.6 Donde Modificar si Te Piden Cambios en Vivo
+
+Si te piden "agregar token/regla":
+
+1. Token nuevo: `src/core/lexer/Token.h`
+2. Keyword/catalogo: `src/core/lexer/LexerCatalog.cpp`
+3. Escaneo/validacion: `src/core/lexer/Lexer.cpp` y/o `LexerValidators.cpp`
+4. Regla sintactica: `src/core/parser/Parser.cpp`
+5. Persistencia en modelo: `src/core/model/HospitalModel.h`
+6. Regla semantica: `src/core/semantic/SemanticAnalyzer.cpp`
+7. Reflejar en reporte: archivo especifico en `src/core/report/*.cpp`
+
+Checklist rapido de cambio correcto:
+
+1. Compila sin errores.
+2. Caso valido sigue generando `indice_reportes.html`.
+3. Caso con error dispara la tabla correcta (lexico/sintactico/semantico).
+4. La GUI muestra el nuevo comportamiento en tablas.
+
+### 12.7 Guion Corto para Explicar la Arquitectura
+
+"El proyecto usa arquitectura por fases: `Lexer` convierte texto en tokens, `Parser` construye el modelo `Hospital`, `SemanticAnalyzer` valida reglas de negocio y `Generator` exporta reportes HTML/DOT. `MedLangService` conecta todo y es usado tanto por CLI como GUI, por eso ambos modos comparten exactamente la misma logica de compilacion del DSL." 
+
+### 12.8 Que Se Ejecuta Exactamente En Cada Parte
+
+No hay un "comando" independiente para lexer, parser o semantic desde consola. El proceso real se activa con una sola llamada central y de ahi se encadena todo.
+
+#### En CLI
+- El programa entra por `src/app/main.cpp`.
+- `main()` crea `MedLangService`.
+- `main()` llama `service.analyzeFile(argv[1])`.
+- Esa llamada dispara el analisis completo del archivo `.med`.
+
+#### En GUI
+- El programa entra por `src/gui/main.cpp`.
+- `main()` crea `QApplication` y luego abre `MainWindow`.
+- El usuario elige un `.med` y presiona Analizar o Exportar.
+- `MainWindow` crea `MedLangService` y vuelve a llamar `analyzeFile(...)`.
+
+#### Cadena interna de `MedLangService::analyzeFile()`
+1. Lee el archivo completo.
+2. Crea `Lexer lexer(source)`.
+3. Repite `lexer.nextToken()` hasta `EndOfFile`.
+4. Crea `Parser parser(tokens)`.
+5. Ejecuta `parser.parseProgram()`.
+6. Si la sintaxis es valida, crea `SemanticAnalyzer semanticAnalyzer(hospital)`.
+7. Ejecuta `recognizeInput()` y `validateBasicRules()`.
+8. Si todo esta bien, llama `Generator::generateAllHtmlReports(...)`.
+
+#### Resumen rapido para decirlo en exposicion
+- `Lexer`: se ejecuta con `nextToken()`.
+- `Parser`: se ejecuta con `parseProgram()`.
+- `Semantic`: se ejecuta con `recognizeInput()` y `validateBasicRules()`.
+- `GUI`: solo muestra la interfaz y llama al mismo servicio que la CLI.
+- `main` CLI: arranca el analisis desde consola.
+- `MedLangService`: es el orquestador que une todo.
+
+---

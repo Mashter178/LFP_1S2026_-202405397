@@ -87,8 +87,8 @@ clean: CMakeFiles/medlang_gui_autogen.dir/clean
 # Target rules for target CMakeFiles/medlang_core.dir
 
 # All Build rule for target.
-CMakeFiles/medlang_core.dir/all: CMakeFiles/medlang_core_autogen_timestamp_deps.dir/all
 CMakeFiles/medlang_core.dir/all: CMakeFiles/medlang_core_autogen.dir/all
+CMakeFiles/medlang_core.dir/all: CMakeFiles/medlang_core_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_core.dir\build.make CMakeFiles/medlang_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_core.dir\build.make CMakeFiles/medlang_core.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build\CMakeFiles" --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target medlang_core"
@@ -143,8 +143,8 @@ CMakeFiles/medlang_cli.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/medlang_gui.dir/all: CMakeFiles/medlang_core.dir/all
-CMakeFiles/medlang_gui.dir/all: CMakeFiles/medlang_gui_autogen_timestamp_deps.dir/all
 CMakeFiles/medlang_gui.dir/all: CMakeFiles/medlang_gui_autogen.dir/all
+CMakeFiles/medlang_gui.dir/all: CMakeFiles/medlang_gui_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_gui.dir\build.make CMakeFiles/medlang_gui.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\medlang_gui.dir\build.make CMakeFiles/medlang_gui.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build\CMakeFiles" --progress-num=22,23,24,25,26,27 "Built target medlang_gui"

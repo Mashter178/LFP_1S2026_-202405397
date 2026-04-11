@@ -196,6 +196,7 @@ CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_ops.h \
  C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect\ 1\src\core\report\Appointments.h \
  C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect\ 1\src\core\report\Doctors.h \
+ C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect\ 1\src\core\report\Graphviz.h \
  C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect\ 1\src\core\report\Hospital.h \
  C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect\ 1\src\core\report\Html.h \
  C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect\ 1\src\core\report\Patients.h

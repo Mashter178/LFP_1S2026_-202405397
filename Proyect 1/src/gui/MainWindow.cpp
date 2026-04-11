@@ -162,7 +162,7 @@ void MainWindow::handleExportReports() {
     loadSourcePreview(filePath);
 
     MedLangService service;
-    const MedLangAnalysisResult result = service.analyzeFile(filePath.toStdString());
+    const MedLangAnalysisResult result = service.analyzeFile(filePath.toStdString(), true);
 
     renderAnalysis(result);
 
@@ -171,7 +171,11 @@ void MainWindow::handleExportReports() {
         const QFileInfo info(indexPath);
         if (info.exists()) {
             QDesktopServices::openUrl(QUrl::fromLocalFile(indexPath));
-            m_statusLabel->setText("Reportes HTML exportados y abiertos en el navegador.");
+            if (result.syntaxOk) {
+                m_statusLabel->setText("Reportes HTML exportados y abiertos en el navegador.");
+            } else {
+                m_statusLabel->setText("Reportes HTML exportados en modo forzado (con errores en entrada).");
+            }
         } else {
             m_statusLabel->setText("Reportes HTML exportados, pero no se encontro output/indice_reportes.html.");
         }

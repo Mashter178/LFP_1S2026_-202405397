@@ -26,7 +26,7 @@ struct MedLangAnalysisResult {
 
 class MedLangService {
 public:
-    MedLangAnalysisResult analyzeFile(const std::string& filePath) const;
+    MedLangAnalysisResult analyzeFile(const std::string& filePath, bool forceGenerateReports = false) const;
 };
 
 #endif

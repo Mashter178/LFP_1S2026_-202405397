@@ -188,11 +188,26 @@ CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.s"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Doctors.cpp" -o CMakeFiles\medlang_core.dir\src\core\report\Doctors.cpp.s
 
+CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj: CMakeFiles/medlang_core.dir/flags.make
+CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
+CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/report/Graphviz.cpp
+CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\report\Graphviz.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\report\Graphviz.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Graphviz.cpp"
+
+CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Graphviz.cpp" > CMakeFiles\medlang_core.dir\src\core\report\Graphviz.cpp.i
+
+CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Graphviz.cpp" -o CMakeFiles\medlang_core.dir\src\core\report\Graphviz.cpp.s
+
 CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj: CMakeFiles/medlang_core.dir/flags.make
 CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
 CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/report/Generator.cpp
 CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\report\Generator.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\report\Generator.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Generator.cpp"
 
 CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.i: cmake_force
@@ -207,7 +222,7 @@ CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj: CMakeFiles/medlang
 CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
 CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/report/Hospital.cpp
 CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\report\Hospital.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\report\Hospital.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Hospital.cpp"
 
 CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.i: cmake_force
@@ -222,7 +237,7 @@ CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj: CMakeFiles/medlang_cor
 CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
 CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/report/Html.cpp
 CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\report\Html.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\report\Html.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Html.cpp"
 
 CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.i: cmake_force
@@ -237,7 +252,7 @@ CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj: CMakeFiles/me
 CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
 CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/report/LexicalReport.cpp
 CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\report\LexicalReport.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\report\LexicalReport.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\LexicalReport.cpp"
 
 CMakeFiles/medlang_core.dir/src/core/report/LexicalReport.cpp.i: cmake_force
@@ -252,7 +267,7 @@ CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj: CMakeFiles/medlang
 CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
 CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/report/Patients.cpp
 CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\report\Patients.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\report\Patients.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\report\Patients.cpp"
 
 CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.i: cmake_force
@@ -267,7 +282,7 @@ CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: CMakeFil
 CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: CMakeFiles/medlang_core.dir/includes_CXX.rsp
 CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 1/src/core/semantic/SemanticAnalyzer.cpp
 CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: CMakeFiles/medlang_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj -MF CMakeFiles\medlang_core.dir\src\core\semantic\SemanticAnalyzer.cpp.obj.d -o CMakeFiles\medlang_core.dir\src\core\semantic\SemanticAnalyzer.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\src\core\semantic\SemanticAnalyzer.cpp"
 
 CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.i: cmake_force
@@ -288,6 +303,7 @@ medlang_core_OBJECTS = \
 "CMakeFiles/medlang_core.dir/src/core/parser/Parser.cpp.obj" \
 "CMakeFiles/medlang_core.dir/src/core/report/Appointments.cpp.obj" \
 "CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.obj" \
+"CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj" \
 "CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj" \
 "CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj" \
 "CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj" \
@@ -306,6 +322,7 @@ libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/lexer/LexerValidators.cp
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/parser/Parser.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Appointments.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Doctors.cpp.obj
+libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Graphviz.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Generator.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Hospital.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Html.cpp.obj
@@ -314,7 +331,7 @@ libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/report/Patients.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj
 libmedlang_core.a: CMakeFiles/medlang_core.dir/build.make
 libmedlang_core.a: CMakeFiles/medlang_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library libmedlang_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 1\build_alt\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX static library libmedlang_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\medlang_core.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\medlang_core.dir\link.txt --verbose=$(VERBOSE)
 

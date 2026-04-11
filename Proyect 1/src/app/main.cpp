@@ -7,15 +7,35 @@
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cerr << "Uso: medlang_lexer archivo.med\n";
+        std::cerr << "Uso: medlang_cli archivo.med [--force]\n";
+        return 1;
+    }
+
+    std::string inputPath;
+    bool forceGenerateReports = false;
+
+    for (int i = 1; i < argc; ++i) {
+        const std::string argument = argv[i];
+        if (argument == "--force" || argument == "-f") {
+            forceGenerateReports = true;
+            continue;
+        }
+
+        if (inputPath.empty()) {
+            inputPath = argument;
+        }
+    }
+
+    if (inputPath.empty()) {
+        std::cerr << "Uso: medlang_cli archivo.med [--force]\n";
         return 1;
     }
 
     MedLangService service;
-    const MedLangAnalysisResult result = service.analyzeFile(argv[1]);
+    const MedLangAnalysisResult result = service.analyzeFile(inputPath, forceGenerateReports);
 
     if (!result.sourceLoaded) {
-        std::cerr << "No se pudo abrir el archivo: " << argv[1] << "\n";
+        std::cerr << "No se pudo abrir el archivo: " << inputPath << "\n";
         return 1;
     }
 
@@ -79,8 +99,12 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    if (!result.syntaxOk) {
+    if (!result.syntaxOk && !forceGenerateReports) {
         return 2;
+    }
+
+    if (!result.syntaxOk && forceGenerateReports) {
+        std::cout << "\nModo force activo: se intentaron generar reportes con el modelo parcial.\n";
     }
 
     std::cout << "\nReconocimiento de entrada semantica\n";

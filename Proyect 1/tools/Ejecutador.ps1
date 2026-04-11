@@ -1,6 +1,9 @@
 param(
     [ValidateSet('configure','build','gui','cli')]
-    [string]$Mode = 'gui'
+    [string]$Mode = 'gui',
+    [string]$MedFile = '',
+    [switch]$Force,
+    [switch]$OpenOutput
 )
 
 $ErrorActionPreference = 'Stop'
@@ -17,6 +20,7 @@ $altBuildDir = Join-Path $projectRoot 'build_alt'
 $cliExeName = 'medlang_cli.exe'
 $guiExeName = 'medlang_gui.exe'
 $sampleMed = Join-Path $projectRoot 'test/hospital_valido_01.med'
+$forceGenerateReports = $Force.IsPresent
 
 $env:PATH = "$qtBin;$env:PATH"
 $env:QT_PLUGIN_PATH = $qtPlugins
@@ -169,7 +173,74 @@ function Ensure-BuildDir {
     return Invoke-MedLangCompile -PreferredBuildDirName $preferredBuildDirName
 }
 
+function Resolve-MedInputPath {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$InputPath
+    )
+
+    if ([string]::IsNullOrWhiteSpace($InputPath)) {
+        throw 'No se recibio ruta de archivo .med.'
+    }
+
+    $candidate = $InputPath
+    if (-not [System.IO.Path]::IsPathRooted($candidate)) {
+        $candidate = Join-Path $projectRoot $candidate
+    }
+
+    if (-not (Test-Path $candidate)) {
+        throw "No existe el archivo .med: $candidate"
+    }
+
+    return (Resolve-Path $candidate).Path
+}
+
+function Open-ReportsIndex {
+    $indexPath = Join-Path $projectRoot 'output/indice_reportes.html'
+    if (Test-Path $indexPath) {
+        Start-Process $indexPath | Out-Null
+        Write-Host "Indice abierto: $indexPath"
+    } else {
+        Write-Host "No se encontro el indice en: $indexPath"
+    }
+}
+
+function Start-MedLangGui {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$BuildDir,
+        [switch]$TryAltOnPolicyBlock = $true
+    )
+
+    $guiPath = Join-Path $BuildDir $guiExeName
+
+    try {
+        & $guiPath
+        return
+    } catch {
+        $errorMessage = $_.Exception.Message
+        $isPolicyBlocked = $errorMessage -match 'Application Control policy has blocked this file'
+        $isPrimaryBuild = (Split-Path $BuildDir -Leaf) -eq 'build'
+
+        if ($TryAltOnPolicyBlock -and $isPolicyBlocked -and $isPrimaryBuild) {
+            Write-Host 'Windows bloqueo medlang_gui.exe en build. Reintentando desde build_alt...'
+            $altBuildDir = Invoke-MedLangCompile -PreferredBuildDirName 'build_alt' -AllowFallbackToAlt:$false
+            Write-Host "Build usado: $altBuildDir"
+            Start-MedLangGui -BuildDir $altBuildDir -TryAltOnPolicyBlock:$false
+            return
+        }
+
+        if ($isPolicyBlocked) {
+            throw "Windows Application Control bloqueo: $guiPath`nSolucion sugerida: mover el proyecto fuera de OneDrive o permitir este .exe en la politica de seguridad."
+        }
+
+        throw
+    }
+}
+
 Set-Location $projectRoot
+Write-Host "Proyecto: $projectRoot"
+Write-Host "Modo: $Mode"
 
 switch ($Mode) {
     'configure' {
@@ -186,10 +257,28 @@ switch ($Mode) {
             $preferredBuildDirName = 'build_alt'
         }
         $buildDir = Invoke-MedLangCompile -PreferredBuildDirName $preferredBuildDirName
-        & (Join-Path $buildDir $guiExeName)
+        Write-Host "Build usado: $buildDir"
+        Start-MedLangGui -BuildDir $buildDir
     }
     'cli' {
         $buildDir = Invoke-MedLangCompile
-        & (Join-Path $buildDir $cliExeName) $sampleMed
+        Write-Host "Build usado: $buildDir"
+        $selectedMedFile = $MedFile
+        if ([string]::IsNullOrWhiteSpace($selectedMedFile)) {
+            $selectedMedFile = $sampleMed
+        }
+        $resolvedMedFile = Resolve-MedInputPath -InputPath $selectedMedFile
+        Write-Host "Archivo de entrada: $resolvedMedFile"
+        Write-Host "Modo force: $($forceGenerateReports)"
+
+        $args = @($resolvedMedFile)
+        if ($forceGenerateReports) {
+            $args += '--force'
+        }
+        & (Join-Path $buildDir $cliExeName) @args
+
+        if ($OpenOutput) {
+            Open-ReportsIndex
+        }
     }
 }

@@ -1,5 +1,6 @@
 HOSPITAL {
     PACIENTES {
+        #comentario 2
         paciente: "María García" [edad: 45, tipo_sangre: "A+", habitacion: 302],
         paciente: "Carlos Mendoza" [edad: 62, tipo_sangre: "O-", habitacion: 410],
         paciente: "Sofía Ramírez" [edad: 29, tipo_sangre: "B+", habitacion: 115],
@@ -15,6 +16,7 @@ HOSPITAL {
     };
 
     MEDICOS {
+        #comentario preterminado
         medico: "Dr. Roberto Juárez" [especialidad: CARDIOLOGIA, codigo: "MED-001"],
         medico: "Dra. Ana Solís" [especialidad: NEUROLOGIA, codigo: "MED-002"],
         medico: "Dr. Luis Herrera" [especialidad: PEDIATRIA, codigo: "MED-003"],

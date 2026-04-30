@@ -380,6 +380,8 @@ bool Parser::consume(TokenType type, const std::string& expectedDesc, Token& con
     return false;
 }
 
+
+
 void Parser::addError(const std::string& message, const std::string& expectedDesc, const Token& foundToken) {
     SyntaxError error;
     error.number = ++m_errorCounter;

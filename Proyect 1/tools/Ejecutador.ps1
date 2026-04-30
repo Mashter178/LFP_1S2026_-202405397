@@ -1,9 +1,7 @@
 param(
-    [ValidateSet('configure','build','gui','cli')]
+    [ValidateSet('gui','cli','build','configure')]
     [string]$Mode = 'gui',
-    [string]$MedFile = '',
-    [switch]$Force,
-    [switch]$OpenOutput
+    [string]$MedFile = 'test/hospital_valido_01.med'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -17,199 +15,76 @@ $qtPlugins = Join-Path $qtPrefix 'plugins'
 $qtPlatformPlugins = Join-Path $qtPlugins 'platforms'
 $primaryBuildDir = Join-Path $projectRoot 'build'
 $altBuildDir = Join-Path $projectRoot 'build_alt'
-$cliExeName = 'medlang_cli.exe'
 $guiExeName = 'medlang_gui.exe'
-$sampleMed = Join-Path $projectRoot 'test/hospital_valido_01.med'
-$forceGenerateReports = $Force.IsPresent
+$cliExeName = 'medlang_cli.exe'
+
+Set-Location $projectRoot
 
 $env:PATH = "$qtBin;$env:PATH"
 $env:QT_PLUGIN_PATH = $qtPlugins
 $env:QT_QPA_PLATFORM_PLUGIN_PATH = $qtPlatformPlugins
 
-function Test-MedLangFileLocked {
+function Test-BuildConfigured {
     param(
-        [Parameter(Mandatory = $true)]
-        [string]$Path
-    )
-
-    if (-not (Test-Path $Path)) {
-        return $false
-    }
-
-    try {
-        $stream = [System.IO.File]::Open($Path, 'Open', 'ReadWrite', 'None')
-        $stream.Close()
-        return $false
-    } catch {
-        return $true
-    }
-}
-
-function Invoke-MedLangConfigure {
-    param(
-        [Parameter(Mandatory = $true)]
         [string]$BuildDir
     )
 
-    try {
-        $output = & $cmake `
-            -S $projectRoot `
-            -B $BuildDir `
-            -G 'MinGW Makefiles' `
-            -DCMAKE_CXX_COMPILER=$compiler `
-            -DCMAKE_PREFIX_PATH=$qtPrefix 2>&1
-    } catch {
-        $output = $_.Exception.Message
+    $cacheFile = Join-Path $BuildDir 'CMakeCache.txt'
+    $makeFile = Join-Path $BuildDir 'Makefile'
+    return (Test-Path $cacheFile) -and (Test-Path $makeFile)
+}
+
+function Invoke-Configure {
+    param(
+        [string]$BuildDir
+    )
+
+    if (Test-Path $BuildDir) {
+        $cacheFile = Join-Path $BuildDir 'CMakeCache.txt'
+        $cmakeFilesDir = Join-Path $BuildDir 'CMakeFiles'
+        $makeFile = Join-Path $BuildDir 'Makefile'
+
+        if (Test-Path $cacheFile) { Remove-Item $cacheFile -Force }
+        if (Test-Path $makeFile) { Remove-Item $makeFile -Force }
+        if (Test-Path $cmakeFilesDir) { Remove-Item $cmakeFilesDir -Recurse -Force }
     }
 
-    if ($output) {
-        $output | ForEach-Object { Write-Host $_ }
-    }
+    & $cmake -S . -B $BuildDir -G 'MinGW Makefiles' `
+        "-DCMAKE_CXX_COMPILER=$($compiler)" `
+        "-DCMAKE_PREFIX_PATH=$($qtPrefix)"
 
     if ($LASTEXITCODE -ne 0) {
-        throw "La configuracion fallo en $BuildDir."
+        throw "Fallo la configuracion en $BuildDir"
     }
 }
 
-function Invoke-MedLangBuild {
+function Invoke-Build {
     param(
-        [Parameter(Mandatory = $true)]
         [string]$BuildDir
     )
 
-    try {
-        $output = & $cmake --build $BuildDir -j 2>&1
-    } catch {
-        $output = $_.Exception.Message
-    }
+    & $cmake --build $BuildDir -j
 
-    if ($output) {
-        $output | ForEach-Object { Write-Host $_ }
-    }
-
-    return [pscustomobject]@{
-        Success = ($LASTEXITCODE -eq 0)
-        OutputText = ($output | Out-String)
+    if ($LASTEXITCODE -ne 0) {
+        throw "Fallo la compilacion en $BuildDir"
     }
 }
 
-function Invoke-MedLangCompile {
+function Ensure-Build {
     param(
-        [ValidateSet('build','build_alt')]
-        [string]$PreferredBuildDirName = 'build',
-        [switch]$Clean,
-        [switch]$Reconfigure,
-        [switch]$AllowFallbackToAlt = $true
+        [string]$PreferredBuildDir
     )
 
-    $buildDirNames = @($PreferredBuildDirName)
-    if ($AllowFallbackToAlt -and $PreferredBuildDirName -eq 'build') {
-        $buildDirNames += 'build_alt'
+    if (-not (Test-Path $PreferredBuildDir) -or -not (Test-BuildConfigured -BuildDir $PreferredBuildDir)) {
+        Invoke-Configure -BuildDir $PreferredBuildDir
     }
 
-    foreach ($buildDirName in $buildDirNames) {
-        $buildDir = Join-Path $projectRoot $buildDirName
-
-        if ($Clean -and (Test-Path $buildDir)) {
-            Remove-Item $buildDir -Recurse -Force
-        }
-
-        if ($Reconfigure -or -not (Test-Path $buildDir)) {
-            Invoke-MedLangConfigure -BuildDir $buildDir
-        }
-
-        $buildResult = Invoke-MedLangBuild -BuildDir $buildDir
-        if ($buildResult.Success) {
-            return $buildDir
-        }
-
-        if ($buildDirName -eq 'build' -and $AllowFallbackToAlt -and $buildResult.OutputText -match 'Permission denied|cannot open output file medlang_gui\.exe') {
-            Write-Host 'El ejecutable principal esta bloqueado. Reintentando en build_alt...'
-            continue
-        }
-
-        throw "La compilacion fallo en $buildDir."
-    }
-
-    throw 'No se pudo compilar MedLang.'
+    Invoke-Build -BuildDir $PreferredBuildDir
 }
 
-function Get-UsableBuildDir {
+function Start-Gui {
     param(
-        [Parameter(Mandatory = $true)]
-        [string]$ExecutableName
-    )
-
-    $primaryExe = Join-Path $primaryBuildDir $ExecutableName
-    if ((Test-Path $primaryExe) -and -not (Test-MedLangFileLocked -Path $primaryExe)) {
-        return $primaryBuildDir
-    }
-
-    $altExe = Join-Path $altBuildDir $ExecutableName
-    if ((Test-Path $altExe) -and -not (Test-MedLangFileLocked -Path $altExe)) {
-        return $altBuildDir
-    }
-
-    return $null
-}
-
-function Ensure-BuildDir {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$ExecutableName
-    )
-
-    $usableBuildDir = Get-UsableBuildDir -ExecutableName $ExecutableName
-    if ($usableBuildDir) {
-        return $usableBuildDir
-    }
-
-    $preferredBuildDirName = 'build'
-    $primaryExe = Join-Path $primaryBuildDir $ExecutableName
-    if ((Test-Path $primaryExe) -and (Test-MedLangFileLocked -Path $primaryExe)) {
-        $preferredBuildDirName = 'build_alt'
-    }
-
-    return Invoke-MedLangCompile -PreferredBuildDirName $preferredBuildDirName
-}
-
-function Resolve-MedInputPath {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$InputPath
-    )
-
-    if ([string]::IsNullOrWhiteSpace($InputPath)) {
-        throw 'No se recibio ruta de archivo .med.'
-    }
-
-    $candidate = $InputPath
-    if (-not [System.IO.Path]::IsPathRooted($candidate)) {
-        $candidate = Join-Path $projectRoot $candidate
-    }
-
-    if (-not (Test-Path $candidate)) {
-        throw "No existe el archivo .med: $candidate"
-    }
-
-    return (Resolve-Path $candidate).Path
-}
-
-function Open-ReportsIndex {
-    $indexPath = Join-Path $projectRoot 'output/indice_reportes.html'
-    if (Test-Path $indexPath) {
-        Start-Process $indexPath | Out-Null
-        Write-Host "Indice abierto: $indexPath"
-    } else {
-        Write-Host "No se encontro el indice en: $indexPath"
-    }
-}
-
-function Start-MedLangGui {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$BuildDir,
-        [switch]$TryAltOnPolicyBlock = $true
+        [string]$BuildDir
     )
 
     $guiPath = Join-Path $BuildDir $guiExeName
@@ -218,67 +93,46 @@ function Start-MedLangGui {
         & $guiPath
         return
     } catch {
-        $errorMessage = $_.Exception.Message
-        $isPolicyBlocked = $errorMessage -match 'Application Control policy has blocked this file'
-        $isPrimaryBuild = (Split-Path $BuildDir -Leaf) -eq 'build'
+        $message = $_.Exception.Message
 
-        if ($TryAltOnPolicyBlock -and $isPolicyBlocked -and $isPrimaryBuild) {
-            Write-Host 'Windows bloqueo medlang_gui.exe en build. Reintentando desde build_alt...'
-            $altBuildDir = Invoke-MedLangCompile -PreferredBuildDirName 'build_alt' -AllowFallbackToAlt:$false
-            Write-Host "Build usado: $altBuildDir"
-            Start-MedLangGui -BuildDir $altBuildDir -TryAltOnPolicyBlock:$false
+        if ($message -match 'Application Control policy has blocked this file' -and $BuildDir -eq $primaryBuildDir) {
+            Write-Host 'Windows bloqueo el GUI en build. Probando build_alt...'
+            Ensure-Build -PreferredBuildDir $altBuildDir
+            try {
+                & (Join-Path $altBuildDir $guiExeName)
+            } catch {
+                $altMessage = $_.Exception.Message
+                if ($altMessage -match 'Application Control policy has blocked this file') {
+                    throw 'Windows bloquea la ejecucion del GUI. Mueve el proyecto fuera de OneDrive o permite medlang_gui.exe en la politica de seguridad.'
+                }
+                throw
+            }
             return
-        }
-
-        if ($isPolicyBlocked) {
-            throw "Windows Application Control bloqueo: $guiPath`nSolucion sugerida: mover el proyecto fuera de OneDrive o permitir este .exe en la politica de seguridad."
         }
 
         throw
     }
 }
 
-Set-Location $projectRoot
-Write-Host "Proyecto: $projectRoot"
-Write-Host "Modo: $Mode"
+if ($Mode -eq 'configure') {
+    Invoke-Configure -BuildDir $primaryBuildDir
+    exit 0
+}
 
-switch ($Mode) {
-    'configure' {
-        Invoke-MedLangConfigure -BuildDir $primaryBuildDir
-    }
-    'build' {
-        Invoke-MedLangCompile | Out-Null
-    }
-    'gui' {
-        Get-Process medlang_gui -ErrorAction SilentlyContinue | Stop-Process -Force
-        $preferredBuildDirName = 'build'
-        $primaryExe = Join-Path $primaryBuildDir $guiExeName
-        if ((Test-Path $primaryExe) -and (Test-MedLangFileLocked -Path $primaryExe)) {
-            $preferredBuildDirName = 'build_alt'
-        }
-        $buildDir = Invoke-MedLangCompile -PreferredBuildDirName $preferredBuildDirName
-        Write-Host "Build usado: $buildDir"
-        Start-MedLangGui -BuildDir $buildDir
-    }
-    'cli' {
-        $buildDir = Invoke-MedLangCompile
-        Write-Host "Build usado: $buildDir"
-        $selectedMedFile = $MedFile
-        if ([string]::IsNullOrWhiteSpace($selectedMedFile)) {
-            $selectedMedFile = $sampleMed
-        }
-        $resolvedMedFile = Resolve-MedInputPath -InputPath $selectedMedFile
-        Write-Host "Archivo de entrada: $resolvedMedFile"
-        Write-Host "Modo force: $($forceGenerateReports)"
+if ($Mode -eq 'build') {
+    Ensure-Build -PreferredBuildDir $primaryBuildDir
+    exit 0
+}
 
-        $args = @($resolvedMedFile)
-        if ($forceGenerateReports) {
-            $args += '--force'
-        }
-        & (Join-Path $buildDir $cliExeName) @args
+if ($Mode -eq 'gui') {
+    Ensure-Build -PreferredBuildDir $primaryBuildDir
+    Start-Gui -BuildDir $primaryBuildDir
+    exit 0
+}
 
-        if ($OpenOutput) {
-            Open-ReportsIndex
-        }
-    }
+if ($Mode -eq 'cli') {
+    Ensure-Build -PreferredBuildDir $primaryBuildDir
+    $cliPath = Join-Path $primaryBuildDir $cliExeName
+    & $cliPath $MedFile
+    exit $LASTEXITCODE
 }

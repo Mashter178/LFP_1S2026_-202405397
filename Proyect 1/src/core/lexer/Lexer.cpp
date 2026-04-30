@@ -49,8 +49,19 @@ Token Lexer::nextToken() {
     }
 
     const std::string invalid(1, c);
+
+    //ignorar comentarios con #
+    if (c == '#' && peek() != '\n')
+    {
+        while (!isAtEnd() && peek() != '\n') {
+            advance();
+        }
+        addError(invalid, "Deme puntos Aux", "HOLA JESSIE, estoy en la TV", startLine, startColumn);
+        return nextToken();
+    }else{
     addError(invalid, "CaracterInvalido", "Caracter no reconocido por el lenguaje", startLine, startColumn);
     return makeToken(TokenType::Unknown, invalid, startLine, startColumn);
+    }
 }
 
 bool Lexer::isAtEnd() const {

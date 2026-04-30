@@ -13,13 +13,6 @@
         "C:/Qt/6.5.3/mingw_64/include/QtGui",
         "C:/Qt/6.5.3/mingw_64/include/QtWidgets"
     ],
-    "material-icon-theme.folders.associations": {
-        "core": "component",
-        "lexer": "tools",
-        "parser": "library",
-        "model": "class",
-        "gui": "desktop",
-        "app": "app"
-    },
+    // Removed material-icon-theme.folders.associations here so user-level settings take precedence
     "cmake.sourceDirectory": "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 1"
 }

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>medlang.svg</file>
+    </qresource>
+</RCC>

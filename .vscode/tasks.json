@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "TaskScript: Configure",
+            "type": "shell",
+            "command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "-S",
+                "${workspaceFolder}/Proyect 2",
+                "-B",
+                "${workspaceFolder}/Proyect 2/build",
+                "-G",
+                "MinGW Makefiles",
+                "-DCMAKE_CXX_COMPILER=C:/Qt/Tools/mingw1120_64/bin/g++.exe"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "TaskScript: Build",
+            "type": "shell",
+            "command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "--build",
+                "${workspaceFolder}/Proyect 2/build",
+                "-j"
+            ],
+            "dependsOn": [
+                "TaskScript: Configure"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "TaskScript: Run Sample",
+            "type": "shell",
+            "command": "${workspaceFolder}/Proyect 2/build/taskscript_cli.exe",
+            "args": [
+                "${workspaceFolder}/Proyect 2/test/test04_error_sintactico.task"
+            ],
+            "dependsOn": [
+                "TaskScript: Build"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

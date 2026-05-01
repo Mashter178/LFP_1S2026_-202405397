@@ -1,98 +1,105 @@
 #include "SemanticAnalyzer.h"
-
-#include <unordered_map>
 #include <unordered_set>
 
-SemanticAnalyzer::SemanticAnalyzer(const Hospital& data)
-    : m_data(data) {}
+SemanticAnalyzer::SemanticAnalyzer() {}
 
-SemanticRecognitionResult SemanticAnalyzer::recognizeInput() const {
-    SemanticRecognitionResult result;
-    result.inputReady = true;
-
-    result.notes.push_back("Entrada semantica reconocida desde parser.");
-    result.notes.push_back("Pacientes cargados: " + std::to_string(m_data.pacientes.size()));
-    result.notes.push_back("Medicos cargados: " + std::to_string(m_data.medicos.size()));
-    result.notes.push_back("Citas cargadas: " + std::to_string(m_data.citas.size()));
-    result.notes.push_back("Diagnosticos cargados: " + std::to_string(m_data.diagnosticos.size()));
-
-    if (m_data.pacientes.empty()) {
-        result.inputReady = false;
-        result.notes.push_back("Seccion PACIENTES vacia.");
-    }
-    if (m_data.medicos.empty()) {
-        result.inputReady = false;
-        result.notes.push_back("Seccion MEDICOS vacia.");
-    }
-    if (m_data.citas.empty()) {
-        result.inputReady = false;
-        result.notes.push_back("Seccion CITAS vacia.");
-    }
-    if (m_data.diagnosticos.empty()) {
-        result.inputReady = false;
-        result.notes.push_back("Seccion DIAGNOSTICOS vacia.");
-    }
-
-    return result;
+std::vector<SemanticError> SemanticAnalyzer::analyze(ASTNode* root) {
+    m_errors.clear(); m_counter = 0;
+    if (!root) return m_errors;
+    analyzeProgram(root);
+    return m_errors;
 }
 
-SemanticValidationResult SemanticAnalyzer::validateBasicRules() const {
-    SemanticValidationResult result;
-    result.valid = true;
-
-    std::unordered_set<std::string> pacientes;
-    std::unordered_set<std::string> medicos;
-    std::unordered_map<std::string, int> firstScheduleLine;
-    int errorCounter = 0;
-
-    for (std::size_t i = 0; i < m_data.pacientes.size(); ++i) {
-        pacientes.insert(m_data.pacientes[i].nombre);
-    }
-
-    for (std::size_t i = 0; i < m_data.medicos.size(); ++i) {
-        medicos.insert(m_data.medicos[i].nombre);
-    }
-
-    for (std::size_t i = 0; i < m_data.citas.size(); ++i) {
-        const Cita& cita = m_data.citas[i];
-
-        if (pacientes.find(cita.paciente) == pacientes.end()) {
-            SemanticError err;
-            err.number = ++errorCounter;
-            err.type = "PacienteInexistente";
-            err.description = "La cita referencia un paciente no registrado";
-            err.entity = cita.paciente;
-            err.line = cita.line;
-            result.errors.push_back(err);
-            result.valid = false;
+void SemanticAnalyzer::analyzeProgram(ASTNode* program) {
+    if (!program) return;
+    std::unordered_set<std::string> boardNames;
+    for (auto child : program->children) {
+        if (!child || child->label != "Tablero") {
+            continue;
         }
 
-        if (medicos.find(cita.medico) == medicos.end()) {
-            SemanticError err;
-            err.number = ++errorCounter;
-            err.type = "MedicoInexistente";
-            err.description = "La cita referencia un medico no registrado";
-            err.entity = cita.medico;
-            err.line = cita.line;
-            result.errors.push_back(err);
-            result.valid = false;
-        }
-
-        const std::string scheduleKey = cita.medico + "|" + cita.fecha + "|" + cita.hora;
-        const auto it = firstScheduleLine.find(scheduleKey);
-        if (it == firstScheduleLine.end()) {
-            firstScheduleLine[scheduleKey] = cita.line;
+        if (boardNames.find(child->value) != boardNames.end()) {
+            addError(child->value, "Nombre de tablero duplicado", child->line, child->column);
         } else {
-            SemanticError err;
-            err.number = ++errorCounter;
-            err.type = "ConflictoHorario";
-            err.description = "Conflicto de horario para medico en la misma fecha y hora (primera ocurrencia en linea " + std::to_string(it->second) + ")";
-            err.entity = cita.medico + " @ " + cita.fecha + " " + cita.hora;
-            err.line = cita.line;
-            result.errors.push_back(err);
-            result.valid = false;
+            boardNames.insert(child->value);
+        }
+
+        analyzeBoard(child);
+    }
+}
+
+void SemanticAnalyzer::analyzeBoard(ASTNode* board) {
+    if (!board) return;
+    std::unordered_set<std::string> columnNames;
+    for (auto c : board->children) {
+        if (!c) continue;
+        if (c->label == "Columna") {
+            if (columnNames.find(c->value) != columnNames.end()) {
+                addError(c->value, "Nombre de columna duplicado en el mismo tablero", c->line, c->column);
+            } else {
+                columnNames.insert(c->value);
+            }
+            analyzeColumn(c);
         }
     }
+}
 
-    return result;
+void SemanticAnalyzer::analyzeColumn(ASTNode* column) {
+    if (!column) return;
+    std::unordered_set<std::string> taskNames;
+    for (auto t : column->children) {
+        if (!t) continue;
+        if (t->label == "Tarea") {
+            if (taskNames.find(t->value) != taskNames.end()) {
+                addError(t->value, "Nombre de tarea duplicado en la misma columna", t->line, t->column);
+            } else {
+                taskNames.insert(t->value);
+            }
+            analyzeTask(t);
+        }
+    }
+}
+
+void SemanticAnalyzer::analyzeTask(ASTNode* task) {
+    if (!task) return;
+
+    int prioridadCount = 0;
+    int responsableCount = 0;
+    int fechaLimiteCount = 0;
+
+    for (auto p : task->children) {
+        if (!p) continue;
+        if (p->label == "Prioridad") prioridadCount++;
+        else if (p->label == "Responsable") responsableCount++;
+        else if (p->label == "FechaLimite") fechaLimiteCount++;
+    }
+
+    if (prioridadCount == 0) {
+        addError(task->value, "La tarea no tiene atributo PRIORIDAD", task->line, task->column);
+    } else if (prioridadCount > 1) {
+        addError(task->value, "La tarea tiene PRIORIDAD duplicada", task->line, task->column);
+    }
+
+    if (responsableCount == 0) {
+        addError(task->value, "La tarea no tiene atributo RESPONSABLE", task->line, task->column);
+    } else if (responsableCount > 1) {
+        addError(task->value, "La tarea tiene RESPONSABLE duplicado", task->line, task->column);
+    }
+
+    if (fechaLimiteCount == 0) {
+        addError(task->value, "La tarea no tiene atributo FECHA_LIMITE", task->line, task->column);
+    } else if (fechaLimiteCount > 1) {
+        addError(task->value, "La tarea tiene FECHA_LIMITE duplicada", task->line, task->column);
+    }
+}
+
+void SemanticAnalyzer::addError(const std::string& lex, const std::string& desc, int line, int col) {
+    SemanticError e;
+    e.number = ++m_counter;
+    e.lexeme = lex;
+    e.errorType = "Semantico";
+    e.description = desc;
+    e.line = line;
+    e.column = col;
+    m_errors.push_back(e);
 }

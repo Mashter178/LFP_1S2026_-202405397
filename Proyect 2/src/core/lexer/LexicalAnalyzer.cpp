@@ -1,6 +1,31 @@
 #include "LexicalAnalyzer.h"
 #include <cctype>
 
+namespace {
+bool isAllowedStringChar(unsigned char c) {
+    if (c >= 128) {
+        return true;
+    }
+
+    if (std::isalnum(c) || c == ' ' || c == '-' || c == '_' || c == '.' || c == '/') {
+        return true;
+    }
+
+    return false;
+}
+
+void addLexicalError(std::vector<LexicalError>& errors, int& counter, const std::string& lexeme, const std::string& description, int line, int column) {
+    LexicalError err;
+    err.number = ++counter;
+    err.invalidLexeme = lexeme;
+    err.errorType = "CaracterNoPermitido";
+    err.description = description;
+    err.line = line;
+    err.column = column;
+    errors.push_back(err);
+}
+}
+
 LexicalAnalyzer::LexicalAnalyzer(const std::string& source)
     : m_source(source), m_index(0), m_line(1), m_column(1) {
     initializeKeywords();
@@ -169,9 +194,16 @@ Token LexicalAnalyzer::scanString(int startLine, int startColumn) {
     while (!isAtEnd() && peek() != '"') {
         // allow escaped quotes simple handling
         if (peek() == '\\' && peekNext() == '"') { advance(); lexeme.push_back(advance()); continue; }
+
+        const unsigned char current = static_cast<unsigned char>(peek());
+        if (!isAllowedStringChar(current)) {
+            addLexicalError(m_errors, m_errorCounter, std::string(1, static_cast<char>(current)), "Caracter no permitido dentro de cadena", m_line, m_column);
+        }
+
         lexeme.push_back(advance());
     }
     if (isAtEnd()) {
+        addLexicalError(m_errors, m_errorCounter, lexeme, "Cadena sin cerrar", startLine, startColumn);
         return Token{TokenType::Unknown, lexeme, startLine, startColumn};
     }
     // consume closing quote

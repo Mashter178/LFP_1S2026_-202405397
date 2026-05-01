@@ -70,7 +70,7 @@ CMakeFiles/taskscript_core_autogen: taskscript_core_autogen/timestamp
 taskscript_core_autogen/timestamp: C:/Qt/6.5.3/mingw_64/./bin/moc.exe
 taskscript_core_autogen/timestamp: CMakeFiles/taskscript_core_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target taskscript_core"
-	C:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autogen "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_core_autogen.dir/AutogenInfo.json" ""
+	C:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autogen "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_core_autogen.dir/AutogenInfo.json" Debug
 	C:\Qt\Tools\CMake_64\bin\cmake.exe -E touch "C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/taskscript_core_autogen/timestamp"
 
 taskscript_core_autogen: CMakeFiles/taskscript_core_autogen

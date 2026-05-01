@@ -1,0 +1,64 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake: build (debug)",
+            "type": "shell",
+            "command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "--build",
+                "build",
+                "-j",
+                "--config",
+                "Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "cmake: configure (debug)",
+            "type": "shell",
+            "command": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+            "args": [
+                "-S",
+                ".",
+                "-B",
+                "build",
+                "-G",
+                "MinGW Makefiles",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_CXX_COMPILER=C:/Qt/Tools/mingw1120_64/bin/g++.exe",
+                "-DCMAKE_PREFIX_PATH=C:/Qt/6.5.3/mingw_64"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        },
+        {
+            "label": "cmake: clean build",
+            "type": "shell",
+            "command": "powershell.exe",
+            "args": [
+                "-Command",
+                "Remove-Item build -Recurse -Force -ErrorAction SilentlyContinue; Write-Host 'Build directory cleaned'"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        }
+    ]
+}

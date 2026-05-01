@@ -128,140 +128,12 @@ CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.s"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\app\MedLangService.cpp" -o CMakeFiles\taskscript_gui.dir\src\app\MedLangService.cpp.s
 
-CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Lexer.cpp
-CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\lexer\Lexer.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\lexer\Lexer.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\Lexer.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\Lexer.cpp" > CMakeFiles\taskscript_gui.dir\src\core\lexer\Lexer.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\Lexer.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\lexer\Lexer.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexerCatalog.cpp
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerCatalog.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerCatalog.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\LexerCatalog.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\LexerCatalog.cpp" > CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerCatalog.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\LexerCatalog.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerCatalog.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexerValidators.cpp
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerValidators.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerValidators.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\LexerValidators.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\LexerValidators.cpp" > CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerValidators.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\lexer\LexerValidators.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\lexer\LexerValidators.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/Parser.cpp
-CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\parser\Parser.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\parser\Parser.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\parser\Parser.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\parser\Parser.cpp" > CMakeFiles\taskscript_gui.dir\src\core\parser\Parser.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\parser\Parser.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\parser\Parser.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/semantic/SemanticAnalyzer.cpp
-CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\semantic\SemanticAnalyzer.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\semantic\SemanticAnalyzer.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\semantic\SemanticAnalyzer.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\semantic\SemanticAnalyzer.cpp" > CMakeFiles\taskscript_gui.dir\src\core\semantic\SemanticAnalyzer.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\semantic\SemanticAnalyzer.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\semantic\SemanticAnalyzer.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Generator.cpp
-CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\report\Generator.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\report\Generator.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Generator.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Generator.cpp" > CMakeFiles\taskscript_gui.dir\src\core\report\Generator.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Generator.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\report\Generator.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Html.cpp
-CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\report\Html.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\report\Html.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Html.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Html.cpp" > CMakeFiles\taskscript_gui.dir\src\core\report\Html.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Html.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\report\Html.cpp.s
-
-CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj: CMakeFiles/taskscript_gui.dir/flags.make
-CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj: CMakeFiles/taskscript_gui.dir/includes_CXX.rsp
-CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/LexicalReport.cpp
-CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj: CMakeFiles/taskscript_gui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj -MF CMakeFiles\taskscript_gui.dir\src\core\report\LexicalReport.cpp.obj.d -o CMakeFiles\taskscript_gui.dir\src\core\report\LexicalReport.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\LexicalReport.cpp"
-
-CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\LexicalReport.cpp" > CMakeFiles\taskscript_gui.dir\src\core\report\LexicalReport.cpp.i
-
-CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\LexicalReport.cpp" -o CMakeFiles\taskscript_gui.dir\src\core\report\LexicalReport.cpp.s
-
 # Object files for target taskscript_gui
 taskscript_gui_OBJECTS = \
 "CMakeFiles/taskscript_gui.dir/taskscript_gui_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/taskscript_gui.dir/src/gui/main.cpp.obj" \
 "CMakeFiles/taskscript_gui.dir/src/gui/MainWindow.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj" \
-"CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj"
+"CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj"
 
 # External object files for target taskscript_gui
 taskscript_gui_EXTERNAL_OBJECTS =
@@ -270,22 +142,15 @@ taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/taskscript_gui_autogen/mocs_co
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/gui/main.cpp.obj
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/gui/MainWindow.cpp.obj
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/lexer/Lexer.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerCatalog.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/lexer/LexerValidators.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/parser/Parser.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/semantic/SemanticAnalyzer.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/report/Generator.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/report/Html.cpp.obj
-taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/src/core/report/LexicalReport.cpp.obj
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/build.make
+taskscript_gui.exe: libtaskscript_core.a
 taskscript_gui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Widgets.a
 taskscript_gui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Gui.a
 taskscript_gui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Core.a
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/linkLibs.rsp
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/objects1.rsp
 taskscript_gui.exe: CMakeFiles/taskscript_gui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable taskscript_gui.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable taskscript_gui.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\taskscript_gui.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

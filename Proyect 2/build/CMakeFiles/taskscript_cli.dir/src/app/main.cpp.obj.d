@@ -200,7 +200,7 @@ CMakeFiles/taskscript_cli.dir/src/app/main.cpp.obj: \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/ReportGenerator.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Report.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h \

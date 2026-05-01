@@ -6,7 +6,7 @@
 
 #include "../core/lexer/LexicalAnalyzer.h"
 #include "../core/parser/SyntaxAnalyzer.h"
-#include "../core/report/ReportGenerator.h"
+#include "../core/report/Report.h"
 #include "../core/semantic/SemanticAnalyzer.h"
 
 static std::string readFile(const std::string& path) {
@@ -50,23 +50,53 @@ int main(int argc, char* argv[]) {
     auto semErrors = sema.analyze(parser.getRoot());
 
     std::filesystem::create_directories("output");
-    ReportGenerator::generateTokenReport(tokens, "output/tokens.html");
-    ReportGenerator::generateErrorReport(
-        lexerForTokens.getErrors(),
-        parser.getErrors(),
-        semErrors,
-        "output/errors.html"
-    );
-    ReportGenerator::generateStatsReport(
-        tokens,
-        lexerForTokens.getErrors(),
-        parser.getErrors(),
-        semErrors,
-        "output/stats.html"
-    );
-    ReportGenerator::generateKanbanReport(parser.getRoot(), "output/kanban.html");
-    ReportGenerator::generateWorkloadReport(parser.getRoot(), "output/workload.html");
-    ReportGenerator::generateAstDot(parser.getRoot(), "output/ast.dot");
+    
+    try {
+        std::cout << "Generando token report...\n";
+        Report::generateTokenReport(tokens, "output/tokens.html");
+        std::cout << "OK\n";
+    } catch (...) { std::cout << "FAIL\n"; }
+    
+    try {
+        std::cout << "Generando error report...\n";
+        Report::generateErrorReport(
+            lexerForTokens.getErrors(),
+            parser.getErrors(),
+            semErrors,
+            "output/errors.html"
+        );
+        std::cout << "OK\n";
+    } catch (...) { std::cout << "FAIL\n"; }
+    
+    try {
+        std::cout << "Generando stats report...\n";
+        Report::generateStatsReport(
+            tokens,
+            lexerForTokens.getErrors(),
+            parser.getErrors(),
+            semErrors,
+            "output/stats.html"
+        );
+        std::cout << "OK\n";
+    } catch (...) { std::cout << "FAIL\n"; }
+    
+    try {
+        std::cout << "Generando kanban report...\n";
+        Report::generateKanbanReport(parser.getRoot(), "output/kanban.html");
+        std::cout << "OK\n";
+    } catch (...) { std::cout << "FAIL\n"; }
+    
+    try {
+        std::cout << "Generando workload report...\n";
+        Report::generateWorkloadReport(parser.getRoot(), "output/workload.html");
+        std::cout << "OK\n";
+    } catch (...) { std::cout << "FAIL\n"; }
+    
+    try {
+        std::cout << "Generando ast dot...\n";
+        Report::generateAstDot(parser.getRoot(), "output/ast.dot");
+        std::cout << "OK\n";
+    } catch (...) { std::cout << "FAIL\n"; }
 
     std::cout << "Analisis completado. Reportes generados en ./output\n";
     return 0;

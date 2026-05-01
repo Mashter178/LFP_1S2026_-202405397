@@ -2,20 +2,58 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "TaskScript: Launch CLI",
+            "name": "TaskScript: GUI Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${command:cmake.launchTargetPath}",
+            "program": "${workspaceFolder}/Proyect 2/build/taskscript_gui.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Proyect 2",
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "C:/Qt/6.5.3/mingw_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+                }
+            ],
+            "externalConsole": false,
+            "preLaunchTask": "TaskScript: Build",
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/Qt/Tools/mingw1120_64/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "TaskScript: CLI Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Proyect 2/build/taskscript_cli.exe",
             "args": [
                 "${input:taskFile}"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/Proyect 2",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "C:/Qt/6.5.3/mingw_64/bin;C:/Qt/Tools/mingw1120_64/bin;${env:PATH}"
+                }
+            ],
             "externalConsole": true,
             "preLaunchTask": "TaskScript: Build",
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/Qt/Tools/mingw1120_64/bin/gdb.exe"
+            "miDebuggerPath": "C:/Qt/Tools/mingw1120_64/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ],
     "inputs": [

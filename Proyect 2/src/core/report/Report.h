@@ -1,5 +1,5 @@
-#ifndef REPORT_GENERATOR_H
-#define REPORT_GENERATOR_H
+#ifndef REPORT_H
+#define REPORT_H
 
 #include "../lexer/Token.h"
 #include "../lexer/LexicalAnalyzer.h"
@@ -7,8 +7,8 @@
 #include "../semantic/SemanticAnalyzer.h"
 #include <string>
 
-// Fachada central para generar todos los reportes
-class ReportGenerator {
+// Generar Reportes
+class Report {
 public:
     // Reportes HTML
     static void generateTokenReport(const std::vector<Token>& tokens, const std::string& outPath);

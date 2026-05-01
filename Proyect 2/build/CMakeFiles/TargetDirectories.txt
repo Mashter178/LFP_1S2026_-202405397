@@ -1,6 +1,7 @@
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_core.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_cli.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_qt_test.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_gui.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/edit_cache.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/rebuild_cache.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_core_autogen_timestamp_deps.dir
@@ -9,3 +10,5 @@ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_cli_autogen.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_qt_test_autogen_timestamp_deps.dir
 C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_qt_test_autogen.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_gui_autogen_timestamp_deps.dir
+C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect 2/build/CMakeFiles/taskscript_gui_autogen.dir

@@ -27,7 +27,6 @@ void SyntaxAnalyzer::consumeExpected(TokenType t, const std::string& errMsg) {
     e.line = m_current.line;
     e.column = m_current.column;
     m_errors.push_back(e);
-    synchronize();
 }
 
 void SyntaxAnalyzer::synchronize() {

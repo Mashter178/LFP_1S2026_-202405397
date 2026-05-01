@@ -453,13 +453,11 @@ CMakeFiles/taskscript_gui.dir/src/gui/MainWindow.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QWidget \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qwidget.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/app/MedLangService.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Lexer.h \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_set \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_set.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/Parser.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/semantic/SemanticAnalyzer.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h

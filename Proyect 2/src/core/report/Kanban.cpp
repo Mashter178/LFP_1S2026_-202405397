@@ -1,4 +1,4 @@
-#include "KanbanReportGenerator.h"
+#include "Kanban.h"
 #include <fstream>
 #include <map>
 #include <algorithm>
@@ -61,7 +61,7 @@ static void collectTasks(ASTNode* node, std::vector<TaskCard>& tasks) {
     }
 }
 
-void KanbanReportGenerator::generate(ASTNode* root, const std::string& outPath) {
+void Kanban::generate(ASTNode* root, const std::string& outPath) {
     std::vector<TaskCard> tasks;
     collectTasks(root, tasks);
     

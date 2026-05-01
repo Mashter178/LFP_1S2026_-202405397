@@ -113,7 +113,9 @@ CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Lexer.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_map \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/aligned_buffer.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable.h \
@@ -127,15 +129,11 @@ CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_set \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_set.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/Parser.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/semantic/SemanticAnalyzer.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/filesystem \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_fwd.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/system_error \
@@ -205,10 +203,8 @@ CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fstream.tcc \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Generator.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/model/HospitalModel.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/semantic/SemanticAnalyzer.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Html.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/LexicalReport.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Report.h \
  C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Token.h \
- C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/Lexer.h
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/lexer/LexicalAnalyzer.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/parser/SyntaxAnalyzer.h \
+ C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/semantic/SemanticAnalyzer.h

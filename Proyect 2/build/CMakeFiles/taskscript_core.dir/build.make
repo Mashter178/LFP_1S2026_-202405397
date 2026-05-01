@@ -128,50 +128,50 @@ CMakeFiles/taskscript_core.dir/src/core/semantic/SemanticAnalyzer.cpp.s: cmake_f
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/semantic/SemanticAnalyzer.cpp.s"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\semantic\SemanticAnalyzer.cpp" -o CMakeFiles\taskscript_core.dir\src\core\semantic\SemanticAnalyzer.cpp.s
 
-CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/flags.make
-CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/includes_CXX.rsp
-CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/ReportGenerator.cpp
-CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj -MF CMakeFiles\taskscript_core.dir\src\core\report\ReportGenerator.cpp.obj.d -o CMakeFiles\taskscript_core.dir\src\core\report\ReportGenerator.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\ReportGenerator.cpp"
+CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj: CMakeFiles/taskscript_core.dir/flags.make
+CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj: CMakeFiles/taskscript_core.dir/includes_CXX.rsp
+CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Report.cpp
+CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj: CMakeFiles/taskscript_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj -MF CMakeFiles\taskscript_core.dir\src\core\report\Report.cpp.obj.d -o CMakeFiles\taskscript_core.dir\src\core\report\Report.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Report.cpp"
 
-CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\ReportGenerator.cpp" > CMakeFiles\taskscript_core.dir\src\core\report\ReportGenerator.cpp.i
+CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Report.cpp" > CMakeFiles\taskscript_core.dir\src\core\report\Report.cpp.i
 
-CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\ReportGenerator.cpp" -o CMakeFiles\taskscript_core.dir\src\core\report\ReportGenerator.cpp.s
+CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Report.cpp" -o CMakeFiles\taskscript_core.dir\src\core\report\Report.cpp.s
 
-CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/flags.make
-CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/includes_CXX.rsp
-CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/KanbanReportGenerator.cpp
-CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj -MF CMakeFiles\taskscript_core.dir\src\core\report\KanbanReportGenerator.cpp.obj.d -o CMakeFiles\taskscript_core.dir\src\core\report\KanbanReportGenerator.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\KanbanReportGenerator.cpp"
+CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj: CMakeFiles/taskscript_core.dir/flags.make
+CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj: CMakeFiles/taskscript_core.dir/includes_CXX.rsp
+CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Kanban.cpp
+CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj: CMakeFiles/taskscript_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj -MF CMakeFiles\taskscript_core.dir\src\core\report\Kanban.cpp.obj.d -o CMakeFiles\taskscript_core.dir\src\core\report\Kanban.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Kanban.cpp"
 
-CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\KanbanReportGenerator.cpp" > CMakeFiles\taskscript_core.dir\src\core\report\KanbanReportGenerator.cpp.i
+CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Kanban.cpp" > CMakeFiles\taskscript_core.dir\src\core\report\Kanban.cpp.i
 
-CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\KanbanReportGenerator.cpp" -o CMakeFiles\taskscript_core.dir\src\core\report\KanbanReportGenerator.cpp.s
+CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Kanban.cpp" -o CMakeFiles\taskscript_core.dir\src\core\report\Kanban.cpp.s
 
-CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/flags.make
-CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/includes_CXX.rsp
-CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/WorkloadReportGenerator.cpp
-CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj: CMakeFiles/taskscript_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj -MF CMakeFiles\taskscript_core.dir\src\core\report\WorkloadReportGenerator.cpp.obj.d -o CMakeFiles\taskscript_core.dir\src\core\report\WorkloadReportGenerator.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\WorkloadReportGenerator.cpp"
+CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj: CMakeFiles/taskscript_core.dir/flags.make
+CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj: CMakeFiles/taskscript_core.dir/includes_CXX.rsp
+CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj: C:/Users/masho/OneDrive/Documentos/VSC/LFP/Proyectos/Proyect\ 2/src/core/report/Workload.cpp
+CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj: CMakeFiles/taskscript_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj -MF CMakeFiles\taskscript_core.dir\src\core\report\Workload.cpp.obj.d -o CMakeFiles\taskscript_core.dir\src\core\report\Workload.cpp.obj -c "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Workload.cpp"
 
-CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\WorkloadReportGenerator.cpp" > CMakeFiles\taskscript_core.dir\src\core\report\WorkloadReportGenerator.cpp.i
+CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Workload.cpp" > CMakeFiles\taskscript_core.dir\src\core\report\Workload.cpp.i
 
-CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\WorkloadReportGenerator.cpp" -o CMakeFiles\taskscript_core.dir\src\core\report\WorkloadReportGenerator.cpp.s
+CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\src\core\report\Workload.cpp" -o CMakeFiles\taskscript_core.dir\src\core\report\Workload.cpp.s
 
 # Object files for target taskscript_core
 taskscript_core_OBJECTS = \
@@ -179,9 +179,9 @@ taskscript_core_OBJECTS = \
 "CMakeFiles/taskscript_core.dir/src/core/lexer/LexicalAnalyzer.cpp.obj" \
 "CMakeFiles/taskscript_core.dir/src/core/parser/SyntaxAnalyzer.cpp.obj" \
 "CMakeFiles/taskscript_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj" \
-"CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj" \
-"CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj" \
-"CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj"
+"CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj" \
+"CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj" \
+"CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj"
 
 # External object files for target taskscript_core
 taskscript_core_EXTERNAL_OBJECTS =
@@ -190,9 +190,9 @@ libtaskscript_core.a: CMakeFiles/taskscript_core.dir/taskscript_core_autogen/moc
 libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/lexer/LexicalAnalyzer.cpp.obj
 libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/parser/SyntaxAnalyzer.cpp.obj
 libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/semantic/SemanticAnalyzer.cpp.obj
-libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj
-libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj
-libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj
+libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj
+libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj
+libtaskscript_core.a: CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj
 libtaskscript_core.a: CMakeFiles/taskscript_core.dir/build.make
 libtaskscript_core.a: CMakeFiles/taskscript_core.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\masho\OneDrive\Documentos\VSC\LFP\Proyectos\Proyect 2\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libtaskscript_core.a"

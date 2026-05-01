@@ -155,6 +155,19 @@ taskscript_qt_test/fast:
 .PHONY : taskscript_qt_test/fast
 
 #=============================================================================
+# Target rules for targets named taskscript_gui
+
+# Build rule for target.
+taskscript_gui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 taskscript_gui
+.PHONY : taskscript_gui
+
+# fast build rule for target.
+taskscript_gui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/build
+.PHONY : taskscript_gui/fast
+
+#=============================================================================
 # Target rules for targets named taskscript_core_autogen_timestamp_deps
 
 # Build rule for target.
@@ -232,6 +245,56 @@ taskscript_qt_test_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_qt_test_autogen.dir\build.make CMakeFiles/taskscript_qt_test_autogen.dir/build
 .PHONY : taskscript_qt_test_autogen/fast
 
+#=============================================================================
+# Target rules for targets named taskscript_gui_autogen_timestamp_deps
+
+# Build rule for target.
+taskscript_gui_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 taskscript_gui_autogen_timestamp_deps
+.PHONY : taskscript_gui_autogen_timestamp_deps
+
+# fast build rule for target.
+taskscript_gui_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui_autogen_timestamp_deps.dir\build.make CMakeFiles/taskscript_gui_autogen_timestamp_deps.dir/build
+.PHONY : taskscript_gui_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named taskscript_gui_autogen
+
+# Build rule for target.
+taskscript_gui_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 taskscript_gui_autogen
+.PHONY : taskscript_gui_autogen
+
+# fast build rule for target.
+taskscript_gui_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui_autogen.dir\build.make CMakeFiles/taskscript_gui_autogen.dir/build
+.PHONY : taskscript_gui_autogen/fast
+
+src/app/MedLangService.obj: src/app/MedLangService.cpp.obj
+.PHONY : src/app/MedLangService.obj
+
+# target to build an object file
+src/app/MedLangService.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.obj
+.PHONY : src/app/MedLangService.cpp.obj
+
+src/app/MedLangService.i: src/app/MedLangService.cpp.i
+.PHONY : src/app/MedLangService.i
+
+# target to preprocess a source file
+src/app/MedLangService.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.i
+.PHONY : src/app/MedLangService.cpp.i
+
+src/app/MedLangService.s: src/app/MedLangService.cpp.s
+.PHONY : src/app/MedLangService.s
+
+# target to generate assembly for a file
+src/app/MedLangService.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/app/MedLangService.cpp.s
+.PHONY : src/app/MedLangService.cpp.s
+
 src/app/main.obj: src/app/main.cpp.obj
 .PHONY : src/app/main.obj
 
@@ -304,77 +367,77 @@ src/core/parser/SyntaxAnalyzer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/parser/SyntaxAnalyzer.cpp.s
 .PHONY : src/core/parser/SyntaxAnalyzer.cpp.s
 
-src/core/report/KanbanReportGenerator.obj: src/core/report/KanbanReportGenerator.cpp.obj
-.PHONY : src/core/report/KanbanReportGenerator.obj
+src/core/report/Kanban.obj: src/core/report/Kanban.cpp.obj
+.PHONY : src/core/report/Kanban.obj
 
 # target to build an object file
-src/core/report/KanbanReportGenerator.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.obj
-.PHONY : src/core/report/KanbanReportGenerator.cpp.obj
+src/core/report/Kanban.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.obj
+.PHONY : src/core/report/Kanban.cpp.obj
 
-src/core/report/KanbanReportGenerator.i: src/core/report/KanbanReportGenerator.cpp.i
-.PHONY : src/core/report/KanbanReportGenerator.i
+src/core/report/Kanban.i: src/core/report/Kanban.cpp.i
+.PHONY : src/core/report/Kanban.i
 
 # target to preprocess a source file
-src/core/report/KanbanReportGenerator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.i
-.PHONY : src/core/report/KanbanReportGenerator.cpp.i
+src/core/report/Kanban.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.i
+.PHONY : src/core/report/Kanban.cpp.i
 
-src/core/report/KanbanReportGenerator.s: src/core/report/KanbanReportGenerator.cpp.s
-.PHONY : src/core/report/KanbanReportGenerator.s
+src/core/report/Kanban.s: src/core/report/Kanban.cpp.s
+.PHONY : src/core/report/Kanban.s
 
 # target to generate assembly for a file
-src/core/report/KanbanReportGenerator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/KanbanReportGenerator.cpp.s
-.PHONY : src/core/report/KanbanReportGenerator.cpp.s
+src/core/report/Kanban.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Kanban.cpp.s
+.PHONY : src/core/report/Kanban.cpp.s
 
-src/core/report/ReportGenerator.obj: src/core/report/ReportGenerator.cpp.obj
-.PHONY : src/core/report/ReportGenerator.obj
+src/core/report/Report.obj: src/core/report/Report.cpp.obj
+.PHONY : src/core/report/Report.obj
 
 # target to build an object file
-src/core/report/ReportGenerator.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.obj
-.PHONY : src/core/report/ReportGenerator.cpp.obj
+src/core/report/Report.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.obj
+.PHONY : src/core/report/Report.cpp.obj
 
-src/core/report/ReportGenerator.i: src/core/report/ReportGenerator.cpp.i
-.PHONY : src/core/report/ReportGenerator.i
+src/core/report/Report.i: src/core/report/Report.cpp.i
+.PHONY : src/core/report/Report.i
 
 # target to preprocess a source file
-src/core/report/ReportGenerator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.i
-.PHONY : src/core/report/ReportGenerator.cpp.i
+src/core/report/Report.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.i
+.PHONY : src/core/report/Report.cpp.i
 
-src/core/report/ReportGenerator.s: src/core/report/ReportGenerator.cpp.s
-.PHONY : src/core/report/ReportGenerator.s
+src/core/report/Report.s: src/core/report/Report.cpp.s
+.PHONY : src/core/report/Report.s
 
 # target to generate assembly for a file
-src/core/report/ReportGenerator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/ReportGenerator.cpp.s
-.PHONY : src/core/report/ReportGenerator.cpp.s
+src/core/report/Report.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Report.cpp.s
+.PHONY : src/core/report/Report.cpp.s
 
-src/core/report/WorkloadReportGenerator.obj: src/core/report/WorkloadReportGenerator.cpp.obj
-.PHONY : src/core/report/WorkloadReportGenerator.obj
+src/core/report/Workload.obj: src/core/report/Workload.cpp.obj
+.PHONY : src/core/report/Workload.obj
 
 # target to build an object file
-src/core/report/WorkloadReportGenerator.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.obj
-.PHONY : src/core/report/WorkloadReportGenerator.cpp.obj
+src/core/report/Workload.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.obj
+.PHONY : src/core/report/Workload.cpp.obj
 
-src/core/report/WorkloadReportGenerator.i: src/core/report/WorkloadReportGenerator.cpp.i
-.PHONY : src/core/report/WorkloadReportGenerator.i
+src/core/report/Workload.i: src/core/report/Workload.cpp.i
+.PHONY : src/core/report/Workload.i
 
 # target to preprocess a source file
-src/core/report/WorkloadReportGenerator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.i
-.PHONY : src/core/report/WorkloadReportGenerator.cpp.i
+src/core/report/Workload.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.i
+.PHONY : src/core/report/Workload.cpp.i
 
-src/core/report/WorkloadReportGenerator.s: src/core/report/WorkloadReportGenerator.cpp.s
-.PHONY : src/core/report/WorkloadReportGenerator.s
+src/core/report/Workload.s: src/core/report/Workload.cpp.s
+.PHONY : src/core/report/Workload.s
 
 # target to generate assembly for a file
-src/core/report/WorkloadReportGenerator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/WorkloadReportGenerator.cpp.s
-.PHONY : src/core/report/WorkloadReportGenerator.cpp.s
+src/core/report/Workload.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/report/Workload.cpp.s
+.PHONY : src/core/report/Workload.cpp.s
 
 src/core/semantic/SemanticAnalyzer.obj: src/core/semantic/SemanticAnalyzer.cpp.obj
 .PHONY : src/core/semantic/SemanticAnalyzer.obj
@@ -399,6 +462,54 @@ src/core/semantic/SemanticAnalyzer.s: src/core/semantic/SemanticAnalyzer.cpp.s
 src/core/semantic/SemanticAnalyzer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/src/core/semantic/SemanticAnalyzer.cpp.s
 .PHONY : src/core/semantic/SemanticAnalyzer.cpp.s
+
+src/gui/MainWindow.obj: src/gui/MainWindow.cpp.obj
+.PHONY : src/gui/MainWindow.obj
+
+# target to build an object file
+src/gui/MainWindow.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/gui/MainWindow.cpp.obj
+.PHONY : src/gui/MainWindow.cpp.obj
+
+src/gui/MainWindow.i: src/gui/MainWindow.cpp.i
+.PHONY : src/gui/MainWindow.i
+
+# target to preprocess a source file
+src/gui/MainWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/gui/MainWindow.cpp.i
+.PHONY : src/gui/MainWindow.cpp.i
+
+src/gui/MainWindow.s: src/gui/MainWindow.cpp.s
+.PHONY : src/gui/MainWindow.s
+
+# target to generate assembly for a file
+src/gui/MainWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/gui/MainWindow.cpp.s
+.PHONY : src/gui/MainWindow.cpp.s
+
+src/gui/main.obj: src/gui/main.cpp.obj
+.PHONY : src/gui/main.obj
+
+# target to build an object file
+src/gui/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/gui/main.cpp.obj
+.PHONY : src/gui/main.cpp.obj
+
+src/gui/main.i: src/gui/main.cpp.i
+.PHONY : src/gui/main.i
+
+# target to preprocess a source file
+src/gui/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/gui/main.cpp.i
+.PHONY : src/gui/main.cpp.i
+
+src/gui/main.s: src/gui/main.cpp.s
+.PHONY : src/gui/main.s
+
+# target to generate assembly for a file
+src/gui/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/src/gui/main.cpp.s
+.PHONY : src/gui/main.cpp.s
 
 src/gui/qt_test_main.obj: src/gui/qt_test_main.cpp.obj
 .PHONY : src/gui/qt_test_main.obj
@@ -472,6 +583,30 @@ taskscript_core_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_core.dir\build.make CMakeFiles/taskscript_core.dir/taskscript_core_autogen/mocs_compilation.cpp.s
 .PHONY : taskscript_core_autogen/mocs_compilation.cpp.s
 
+taskscript_gui_autogen/mocs_compilation.obj: taskscript_gui_autogen/mocs_compilation.cpp.obj
+.PHONY : taskscript_gui_autogen/mocs_compilation.obj
+
+# target to build an object file
+taskscript_gui_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/taskscript_gui_autogen/mocs_compilation.cpp.obj
+.PHONY : taskscript_gui_autogen/mocs_compilation.cpp.obj
+
+taskscript_gui_autogen/mocs_compilation.i: taskscript_gui_autogen/mocs_compilation.cpp.i
+.PHONY : taskscript_gui_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+taskscript_gui_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/taskscript_gui_autogen/mocs_compilation.cpp.i
+.PHONY : taskscript_gui_autogen/mocs_compilation.cpp.i
+
+taskscript_gui_autogen/mocs_compilation.s: taskscript_gui_autogen/mocs_compilation.cpp.s
+.PHONY : taskscript_gui_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+taskscript_gui_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\taskscript_gui.dir\build.make CMakeFiles/taskscript_gui.dir/taskscript_gui_autogen/mocs_compilation.cpp.s
+.PHONY : taskscript_gui_autogen/mocs_compilation.cpp.s
+
 taskscript_qt_test_autogen/mocs_compilation.obj: taskscript_qt_test_autogen/mocs_compilation.cpp.obj
 .PHONY : taskscript_qt_test_autogen/mocs_compilation.obj
 
@@ -508,11 +643,17 @@ help:
 	@echo ... taskscript_cli_autogen_timestamp_deps
 	@echo ... taskscript_core_autogen
 	@echo ... taskscript_core_autogen_timestamp_deps
+	@echo ... taskscript_gui_autogen
+	@echo ... taskscript_gui_autogen_timestamp_deps
 	@echo ... taskscript_qt_test_autogen
 	@echo ... taskscript_qt_test_autogen_timestamp_deps
 	@echo ... taskscript_cli
 	@echo ... taskscript_core
+	@echo ... taskscript_gui
 	@echo ... taskscript_qt_test
+	@echo ... src/app/MedLangService.obj
+	@echo ... src/app/MedLangService.i
+	@echo ... src/app/MedLangService.s
 	@echo ... src/app/main.obj
 	@echo ... src/app/main.i
 	@echo ... src/app/main.s
@@ -522,18 +663,24 @@ help:
 	@echo ... src/core/parser/SyntaxAnalyzer.obj
 	@echo ... src/core/parser/SyntaxAnalyzer.i
 	@echo ... src/core/parser/SyntaxAnalyzer.s
-	@echo ... src/core/report/KanbanReportGenerator.obj
-	@echo ... src/core/report/KanbanReportGenerator.i
-	@echo ... src/core/report/KanbanReportGenerator.s
-	@echo ... src/core/report/ReportGenerator.obj
-	@echo ... src/core/report/ReportGenerator.i
-	@echo ... src/core/report/ReportGenerator.s
-	@echo ... src/core/report/WorkloadReportGenerator.obj
-	@echo ... src/core/report/WorkloadReportGenerator.i
-	@echo ... src/core/report/WorkloadReportGenerator.s
+	@echo ... src/core/report/Kanban.obj
+	@echo ... src/core/report/Kanban.i
+	@echo ... src/core/report/Kanban.s
+	@echo ... src/core/report/Report.obj
+	@echo ... src/core/report/Report.i
+	@echo ... src/core/report/Report.s
+	@echo ... src/core/report/Workload.obj
+	@echo ... src/core/report/Workload.i
+	@echo ... src/core/report/Workload.s
 	@echo ... src/core/semantic/SemanticAnalyzer.obj
 	@echo ... src/core/semantic/SemanticAnalyzer.i
 	@echo ... src/core/semantic/SemanticAnalyzer.s
+	@echo ... src/gui/MainWindow.obj
+	@echo ... src/gui/MainWindow.i
+	@echo ... src/gui/MainWindow.s
+	@echo ... src/gui/main.obj
+	@echo ... src/gui/main.i
+	@echo ... src/gui/main.s
 	@echo ... src/gui/qt_test_main.obj
 	@echo ... src/gui/qt_test_main.i
 	@echo ... src/gui/qt_test_main.s
@@ -543,6 +690,9 @@ help:
 	@echo ... taskscript_core_autogen/mocs_compilation.obj
 	@echo ... taskscript_core_autogen/mocs_compilation.i
 	@echo ... taskscript_core_autogen/mocs_compilation.s
+	@echo ... taskscript_gui_autogen/mocs_compilation.obj
+	@echo ... taskscript_gui_autogen/mocs_compilation.i
+	@echo ... taskscript_gui_autogen/mocs_compilation.s
 	@echo ... taskscript_qt_test_autogen/mocs_compilation.obj
 	@echo ... taskscript_qt_test_autogen/mocs_compilation.i
 	@echo ... taskscript_qt_test_autogen/mocs_compilation.s

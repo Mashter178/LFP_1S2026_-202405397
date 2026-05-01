@@ -24,6 +24,23 @@ namespace {
 QString toQString(const std::string& text) {
     return QString::fromUtf8(text.c_str());
 }
+
+template <typename ErrorT>
+void fillErrorTable(QTableWidget* table, const std::vector<ErrorT>& errors, int columnCount) {
+    table->clearContents();
+    table->setRowCount(0);
+
+    if (errors.empty()) {
+        table->setRowCount(1);
+        auto* item = new QTableWidgetItem("Sin errores");
+        item->setTextAlignment(Qt::AlignCenter);
+        table->setItem(0, 0, item);
+        for (int column = 1; column < columnCount; ++column) {
+            table->setItem(0, column, new QTableWidgetItem(""));
+        }
+        return;
+    }
+}
 }
 
 MainWindow::MainWindow()
@@ -49,9 +66,9 @@ void MainWindow::buildUi() {
     QVBoxLayout* rootLayout = new QVBoxLayout(central);
 
     QHBoxLayout* fileRow = new QHBoxLayout();
-    QLabel* fileLabel = new QLabel("Archivo .med:", central);
+    QLabel* fileLabel = new QLabel("Archivo .task:", central);
     m_filePathEdit = new QLineEdit(central);
-    m_filePathEdit->setPlaceholderText("Selecciona un archivo de entrada...");
+    m_filePathEdit->setPlaceholderText("Selecciona un archivo .task de entrada...");
 
     m_browseButton = new QPushButton("Buscar", central);
     m_analyzeButton = new QPushButton("Analizar", central);
@@ -69,7 +86,7 @@ void MainWindow::buildUi() {
 
     m_sourceText = new QTextEdit(m_tabs);
     m_sourceText->setReadOnly(true);
-    m_sourceText->setPlaceholderText("Vista previa del archivo .med");
+    m_sourceText->setPlaceholderText("Vista previa del archivo .task");
 
     m_tokensTable = new QTableWidget(0, 5, m_tabs);
     m_tokensTable->setHorizontalHeaderLabels({"#", "Tipo", "Lexema", "Linea", "Columna"});
@@ -84,13 +101,13 @@ void MainWindow::buildUi() {
     m_lexicalErrorsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     m_syntaxErrorsTable = new QTableWidget(0, 6, m_tabs);
-    m_syntaxErrorsTable->setHorizontalHeaderLabels({"#", "Mensaje", "Esperado", "Encontrado", "Linea", "Columna"});
+    m_syntaxErrorsTable->setHorizontalHeaderLabels({"#", "Lexema", "Tipo", "Descripcion", "Linea", "Columna"});
     m_syntaxErrorsTable->horizontalHeader()->setStretchLastSection(true);
     m_syntaxErrorsTable->verticalHeader()->setVisible(false);
     m_syntaxErrorsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     m_semanticErrorsTable = new QTableWidget(0, 5, m_tabs);
-    m_semanticErrorsTable->setHorizontalHeaderLabels({"#", "Tipo", "Descripcion", "Entidad", "Linea"});
+    m_semanticErrorsTable->setHorizontalHeaderLabels({"#", "Lexema", "Tipo", "Descripcion", "Linea"});
     m_semanticErrorsTable->horizontalHeader()->setStretchLastSection(true);
     m_semanticErrorsTable->verticalHeader()->setVisible(false);
     m_semanticErrorsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -113,11 +130,16 @@ void MainWindow::buildUi() {
 }
 
 void MainWindow::handleBrowse() {
+    QString startDir = QDir::current().filePath("test");
+    if (!QDir(startDir).exists()) {
+        startDir = QDir::currentPath();
+    }
+
     const QString selected = QFileDialog::getOpenFileName(
         this,
-        "Seleccionar archivo MedLang",
-        QDir::currentPath(),
-        "Archivos MedLang (*.med);;Todos los archivos (*.*)");
+        "Seleccionar archivo TaskScript",
+        startDir,
+        "Archivos TaskScript (*.task);;Todos los archivos (*.*)");
 
     if (!selected.isEmpty()) {
         m_filePathEdit->setText(selected);
@@ -128,7 +150,7 @@ void MainWindow::handleBrowse() {
 void MainWindow::handleAnalyze() {
     const QString filePath = m_filePathEdit->text().trimmed();
     if (filePath.isEmpty()) {
-        QMessageBox::warning(this, "MedLang", "Selecciona un archivo .med antes de analizar.");
+        QMessageBox::warning(this, "MedLang", "Selecciona un archivo .task antes de analizar.");
         return;
     }
 
@@ -149,7 +171,7 @@ void MainWindow::handleAnalyze() {
 void MainWindow::handleExportReports() {
     const QString filePath = m_filePathEdit->text().trimmed();
     if (filePath.isEmpty()) {
-        QMessageBox::warning(this, "MedLang", "Selecciona un archivo .med antes de exportar reportes.");
+        QMessageBox::warning(this, "MedLang", "Selecciona un archivo .task antes de exportar reportes.");
         return;
     }
 
@@ -223,30 +245,44 @@ void MainWindow::renderAnalysis(const MedLangAnalysisResult& result) {
 
     m_lexicalErrorsTable->clearContents();
     m_lexicalErrorsTable->setRowCount(0);
-    for (std::size_t i = 0; i < result.lexicalErrors.size(); ++i) {
-        const LexicalError& err = result.lexicalErrors[i];
-        const int row = m_lexicalErrorsTable->rowCount();
-        m_lexicalErrorsTable->insertRow(row);
-        m_lexicalErrorsTable->setItem(row, 0, new QTableWidgetItem(QString::number(err.number)));
-        m_lexicalErrorsTable->setItem(row, 1, new QTableWidgetItem(toQString(err.invalidLexeme)));
-        m_lexicalErrorsTable->setItem(row, 2, new QTableWidgetItem(toQString(err.errorType)));
-        m_lexicalErrorsTable->setItem(row, 3, new QTableWidgetItem(toQString(err.description)));
-        m_lexicalErrorsTable->setItem(row, 4, new QTableWidgetItem(QString::number(err.line)));
-        m_lexicalErrorsTable->setItem(row, 5, new QTableWidgetItem(QString::number(err.column)));
+    if (result.lexicalErrors.empty()) {
+        m_lexicalErrorsTable->setRowCount(1);
+        QTableWidgetItem* emptyItem = new QTableWidgetItem("Sin errores lexicos");
+        emptyItem->setTextAlignment(Qt::AlignCenter);
+        m_lexicalErrorsTable->setItem(0, 0, emptyItem);
+    } else {
+        for (std::size_t i = 0; i < result.lexicalErrors.size(); ++i) {
+            const LexicalError& err = result.lexicalErrors[i];
+            const int row = m_lexicalErrorsTable->rowCount();
+            m_lexicalErrorsTable->insertRow(row);
+            m_lexicalErrorsTable->setItem(row, 0, new QTableWidgetItem(QString::number(err.number)));
+            m_lexicalErrorsTable->setItem(row, 1, new QTableWidgetItem(toQString(err.invalidLexeme)));
+            m_lexicalErrorsTable->setItem(row, 2, new QTableWidgetItem(toQString(err.errorType)));
+            m_lexicalErrorsTable->setItem(row, 3, new QTableWidgetItem(toQString(err.description)));
+            m_lexicalErrorsTable->setItem(row, 4, new QTableWidgetItem(QString::number(err.line)));
+            m_lexicalErrorsTable->setItem(row, 5, new QTableWidgetItem(QString::number(err.column)));
+        }
     }
 
     m_syntaxErrorsTable->clearContents();
     m_syntaxErrorsTable->setRowCount(0);
-    for (std::size_t i = 0; i < result.syntaxErrors.size(); ++i) {
-        const SyntaxError& err = result.syntaxErrors[i];
-        const int row = m_syntaxErrorsTable->rowCount();
-        m_syntaxErrorsTable->insertRow(row);
-        m_syntaxErrorsTable->setItem(row, 0, new QTableWidgetItem(QString::number(err.number)));
-        m_syntaxErrorsTable->setItem(row, 1, new QTableWidgetItem(toQString(err.message)));
-        m_syntaxErrorsTable->setItem(row, 2, new QTableWidgetItem(toQString(err.expected)));
-        m_syntaxErrorsTable->setItem(row, 3, new QTableWidgetItem(toQString(err.found)));
-        m_syntaxErrorsTable->setItem(row, 4, new QTableWidgetItem(QString::number(err.line)));
-        m_syntaxErrorsTable->setItem(row, 5, new QTableWidgetItem(QString::number(err.column)));
+    if (result.syntaxErrors.empty()) {
+        m_syntaxErrorsTable->setRowCount(1);
+        QTableWidgetItem* emptyItem = new QTableWidgetItem("Sin errores sintacticos");
+        emptyItem->setTextAlignment(Qt::AlignCenter);
+        m_syntaxErrorsTable->setItem(0, 0, emptyItem);
+    } else {
+        for (std::size_t i = 0; i < result.syntaxErrors.size(); ++i) {
+            const SyntaxError& err = result.syntaxErrors[i];
+            const int row = m_syntaxErrorsTable->rowCount();
+            m_syntaxErrorsTable->insertRow(row);
+            m_syntaxErrorsTable->setItem(row, 0, new QTableWidgetItem(QString::number(err.number)));
+            m_syntaxErrorsTable->setItem(row, 1, new QTableWidgetItem(toQString(err.lexeme)));
+            m_syntaxErrorsTable->setItem(row, 2, new QTableWidgetItem(toQString(err.errorType)));
+            m_syntaxErrorsTable->setItem(row, 3, new QTableWidgetItem(toQString(err.description)));
+            m_syntaxErrorsTable->setItem(row, 4, new QTableWidgetItem(QString::number(err.line)));
+            m_syntaxErrorsTable->setItem(row, 5, new QTableWidgetItem(QString::number(err.column)));
+        }
     }
 
     m_semanticErrorsTable->clearContents();
@@ -256,9 +292,9 @@ void MainWindow::renderAnalysis(const MedLangAnalysisResult& result) {
         const int row = m_semanticErrorsTable->rowCount();
         m_semanticErrorsTable->insertRow(row);
         m_semanticErrorsTable->setItem(row, 0, new QTableWidgetItem(QString::number(err.number)));
-        m_semanticErrorsTable->setItem(row, 1, new QTableWidgetItem(toQString(err.type)));
-        m_semanticErrorsTable->setItem(row, 2, new QTableWidgetItem(toQString(err.description)));
-        m_semanticErrorsTable->setItem(row, 3, new QTableWidgetItem(toQString(err.entity)));
+        m_semanticErrorsTable->setItem(row, 1, new QTableWidgetItem(toQString(err.lexeme)));
+        m_semanticErrorsTable->setItem(row, 2, new QTableWidgetItem(toQString(err.errorType)));
+        m_semanticErrorsTable->setItem(row, 3, new QTableWidgetItem(toQString(err.description)));
         m_semanticErrorsTable->setItem(row, 4, new QTableWidgetItem(QString::number(err.line)));
     }
 
@@ -268,5 +304,21 @@ void MainWindow::renderAnalysis(const MedLangAnalysisResult& result) {
         .arg(static_cast<int>(result.syntaxErrors.size()))
         .arg(static_cast<int>(result.semanticValidation.errors.size()));
     m_statusLabel->setText(summary);
+
+    m_tabs->setTabText(0, QString("Entrada .task"));
+    m_tabs->setTabText(1, QString("Tokens (%1)").arg(static_cast<int>(result.tokens.size())));
+    m_tabs->setTabText(2, QString("Errores Lexicos (%1)").arg(static_cast<int>(result.lexicalErrors.size())));
+    m_tabs->setTabText(3, QString("Errores Sintacticos (%1)").arg(static_cast<int>(result.syntaxErrors.size())));
+    m_tabs->setTabText(4, QString("Errores Semanticos (%1)").arg(static_cast<int>(result.semanticValidation.errors.size())));
+
+    if (!result.lexicalErrors.empty()) {
+        m_tabs->setCurrentWidget(m_lexicalErrorsTable);
+    } else if (!result.syntaxErrors.empty()) {
+        m_tabs->setCurrentWidget(m_syntaxErrorsTable);
+    } else if (!result.semanticValidation.errors.empty()) {
+        m_tabs->setCurrentWidget(m_semanticErrorsTable);
+    } else {
+        m_tabs->setCurrentWidget(m_tokensTable);
+    }
 }
 

@@ -15,9 +15,9 @@ add_library(taskscript_core STATIC
     src/core/lexer/LexicalAnalyzer.cpp
     src/core/parser/SyntaxAnalyzer.cpp
     src/core/semantic/SemanticAnalyzer.cpp
-    src/core/report/ReportGenerator.cpp
-    src/core/report/KanbanReportGenerator.cpp
-    src/core/report/WorkloadReportGenerator.cpp
+    src/core/report/Report.cpp
+    src/core/report/Kanban.cpp
+    src/core/report/Workload.cpp
 )
 
 target_include_directories(taskscript_core PUBLIC
@@ -37,3 +37,18 @@ add_executable(taskscript_qt_test
 )
 
 target_link_libraries(taskscript_qt_test PRIVATE Qt6::Widgets)
+
+add_executable(taskscript_gui
+    src/gui/main.cpp
+    src/gui/MainWindow.cpp
+    src/app/MedLangService.cpp
+)
+
+target_include_directories(taskscript_gui PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_link_libraries(taskscript_gui PRIVATE
+    taskscript_core
+    Qt6::Widgets
+)

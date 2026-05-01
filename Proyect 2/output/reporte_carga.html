@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Carga de Trabajo por Responsable</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .summary {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .summary-item {
+            text-align: center;
+        }
+        .summary-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2a5298;
+        }
+        .summary-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        th {
+            background: #2a5298;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+        .responsable-cell {
+            font-weight: 500;
+            color: #2a5298;
+        }
+        .count-alta {
+            background: #ffe0e0;
+            color: #cc0000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .count-media {
+            background: #fff4e0;
+            color: #cc6600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .count-baja {
+            background: #e0f5e3;
+            color: #006600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .count-total {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .percentage {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .empty-message {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Carga de Trabajo por Responsable</h1>
+        
+        <div class="summary">
+            <div class="summary-item">
+                <div class="summary-number">18</div>
+                <div class="summary-label">Total Tareas</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">17</div>
+                <div class="summary-label">Responsables</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">11</div>
+                <div class="summary-label">ALTA</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">5</div>
+                <div class="summary-label">MEDIA</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">2</div>
+                <div class="summary-label">BAJA</div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Responsable</th>
+                    <th style="text-align: center; width: 80px;">ALTA</th>
+                    <th style="text-align: center; width: 80px;">MEDIA</th>
+                    <th style="text-align: center; width: 80px;">BAJA</th>
+                    <th style="text-align: center; width: 100px;">Total</th>
+                    <th style="text-align: center; width: 120px;">% Carga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="responsable-cell">Admin|Portal</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Arquitecto</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">BackendDev</td>
+                    <td><span class="count-alta">0</span></td>
+                    <td><span class="count-media">1</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Compras</td>
+                    <td><span class="count-alta">0</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">1</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">DBA_Senior</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">DevOps</td>
+                    <td><span class="count-alta">0</span></td>
+                    <td><span class="count-media">1</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">DevTeam#3</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Dirección</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">1</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">2</span></td>
+                    <td><span class="percentage">11.1%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Estudio&amp;Media</td>
+                    <td><span class="count-alta">0</span></td>
+                    <td><span class="count-media">1</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">IT$Admin</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Infraestructura</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">MobileTeam</td>
+                    <td><span class="count-alta">0</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">1</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Profesora_Ana</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">RRHH^Dept</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Soporte</td>
+                    <td><span class="count-alta">0</span></td>
+                    <td><span class="count-media">1</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">Técnico~Red</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+                <tr>
+                    <td class="responsable-cell">UX@Designer</td>
+                    <td><span class="count-alta">1</span></td>
+                    <td><span class="count-media">0</span></td>
+                    <td><span class="count-baja">0</span></td>
+                    <td><span class="count-total">1</span></td>
+                    <td><span class="percentage">5.6%</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

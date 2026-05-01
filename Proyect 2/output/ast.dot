@@ -1,89 +1,236 @@
 digraph AST {
 node [shape=box];
-  node1 [label="Program
+  node94 [label="Program
 "];
-  node2 [label="Tablero
-Proyecto LFP"];
-  node3 [label="Columna
-Por Hacer"];
-  node4 [label="Tarea
-Diseñar AFD"];
-  node5 [label="Prioridad
+  node95 [label="Tablero
+Plataforma Educativa - Semestre 1"];
+  node96 [label="Columna
+Por Iniciar"];
+  node97 [label="Tarea
+Diseñar curriculum de cursos"];
+  node98 [label="Prioridad
 ALTA"];
-  node4 -> node5;
-  node6 [label="Responsable
-Jorge"];
-  node4 -> node6;
-  node7 [label="FechaLimite
-2026-05-01"];
-  node4 -> node7;
-  node3 -> node4;
-  node8 [label="Tarea
-Implementar Lexer"];
-  node9 [label="Prioridad
-ALTA"];
-  node8 -> node9;
-  node10 [label="Responsable
-Maria"];
-  node8 -> node10;
-  node11 [label="FechaLimite
-2026-05-08"];
-  node8 -> node11;
-  node3 -> node8;
-  node12 [label="Tarea
-Escribir casos de prueba"];
-  node13 [label="Prioridad
+  node97 -> node98;
+  node99 [label="Responsable
+Profesora_Ana"];
+  node97 -> node99;
+  node100 [label="FechaLimite
+2026-05-12"];
+  node97 -> node100;
+  node96 -> node97;
+  node101 [label="Tarea
+Crear material audiovisual"];
+  node102 [label="Prioridad
 MEDIA"];
-  node12 -> node13;
-  node14 [label="Responsable
-Carlos"];
-  node12 -> node14;
-  node15 [label="FechaLimite
-2026-05-10"];
-  node12 -> node15;
-  node3 -> node12;
-  node2 -> node3;
-  node16 [label="Columna
+  node101 -> node102;
+  node103 [label="Responsable
+Estudio&Media"];
+  node101 -> node103;
+  node104 [label="FechaLimite
+2026-05-18"];
+  node101 -> node104;
+  node96 -> node101;
+  node105 [label="Tarea
+Definir métricas de evaluación"];
+  node106 [label="Prioridad
+MEDIA"];
+  node105 -> node106;
+  node107 [label="Responsable
+Dirección"];
+  node105 -> node107;
+  node108 [label="FechaLimite
+2026-05-22"];
+  node105 -> node108;
+  node96 -> node105;
+  node109 [label="Tarea
+Registrar 200 estudiantes nuevos"];
+  node110 [label="Prioridad
+ALTA"];
+  node109 -> node110;
+  node111 [label="Responsable
+Admin|Portal"];
+  node109 -> node111;
+  node112 [label="FechaLimite
+2026-05-30"];
+  node109 -> node112;
+  node96 -> node109;
+  node113 [label="Tarea
+Adquirir licencias software"];
+  node114 [label="Prioridad
+BAJA"];
+  node113 -> node114;
+  node115 [label="Responsable
+Compras"];
+  node113 -> node115;
+  node116 [label="FechaLimite
+2026-06-01"];
+  node113 -> node116;
+  node96 -> node113;
+  node95 -> node96;
+  node117 [label="Columna
 En Progreso"];
-  node17 [label="Tarea
-Diseñar GUI"];
-  node18 [label="Prioridad
+  node118 [label="Tarea
+Desarrollar módulo de quizzes"];
+  node119 [label="Prioridad
+ALTA"];
+  node118 -> node119;
+  node120 [label="Responsable
+DevTeam#3"];
+  node118 -> node120;
+  node121 [label="FechaLimite
+2026-05-25"];
+  node118 -> node121;
+  node117 -> node118;
+  node122 [label="Tarea
+Migrar contenido antiguo"];
+  node123 [label="Prioridad
 MEDIA"];
-  node17 -> node18;
-  node19 [label="Responsable
-Ana"];
-  node17 -> node19;
-  node20 [label="FechaLimite
-2026-05-05"];
-  node17 -> node20;
-  node16 -> node17;
-  node2 -> node16;
-  node21 [label="Columna
-Completado"];
-  node22 [label="Tarea
-Investigar Qt"];
-  node23 [label="Prioridad
+  node122 -> node123;
+  node124 [label="Responsable
+Soporte"];
+  node122 -> node124;
+  node125 [label="FechaLimite
+2026-05-28"];
+  node122 -> node125;
+  node117 -> node122;
+  node126 [label="Tarea
+Integrar sistema de videoconferencia"];
+  node127 [label="Prioridad
+ALTA"];
+  node126 -> node127;
+  node128 [label="Responsable
+Técnico~Red"];
+  node126 -> node128;
+  node129 [label="FechaLimite
+2026-06-05"];
+  node126 -> node129;
+  node117 -> node126;
+  node130 [label="Tarea
+Implementar foro estudiantil"];
+  node131 [label="Prioridad
+MEDIA"];
+  node130 -> node131;
+  node132 [label="Responsable
+BackendDev"];
+  node130 -> node132;
+  node133 [label="FechaLimite
+2026-06-08"];
+  node130 -> node133;
+  node117 -> node130;
+  node134 [label="Tarea
+Crear dashboard de progreso"];
+  node135 [label="Prioridad
+ALTA"];
+  node134 -> node135;
+  node136 [label="Responsable
+UX@Designer"];
+  node134 -> node136;
+  node137 [label="FechaLimite
+2026-06-10"];
+  node134 -> node137;
+  node117 -> node134;
+  node138 [label="Tarea
+Habilitar notificaciones push"];
+  node139 [label="Prioridad
 BAJA"];
-  node22 -> node23;
-  node24 [label="Responsable
-Pedro"];
-  node22 -> node24;
-  node25 [label="FechaLimite
+  node138 -> node139;
+  node140 [label="Responsable
+MobileTeam"];
+  node138 -> node140;
+  node141 [label="FechaLimite
+2026-06-15"];
+  node138 -> node141;
+  node117 -> node138;
+  node95 -> node117;
+  node142 [label="Columna
+Bloqueado"];
+  node143 [label="Tarea
+Obtener certificación SSL dominio"];
+  node144 [label="Prioridad
+ALTA"];
+  node143 -> node144;
+  node145 [label="Responsable
+IT$Admin"];
+  node143 -> node145;
+  node146 [label="FechaLimite
+2026-05-10"];
+  node143 -> node146;
+  node142 -> node143;
+  node147 [label="Tarea
+Actualizar servidor de producción"];
+  node148 [label="Prioridad
+ALTA"];
+  node147 -> node148;
+  node149 [label="Responsable
+Infraestructura"];
+  node147 -> node149;
+  node150 [label="FechaLimite
+2026-05-14"];
+  node147 -> node150;
+  node142 -> node147;
+  node151 [label="Tarea
+Resolver fallo en BD Oracle!!"];
+  node152 [label="Prioridad
+ALTA"];
+  node151 -> node152;
+  node153 [label="Responsable
+DBA_Senior"];
+  node151 -> node153;
+  node154 [label="FechaLimite
+2026-05-08"];
+  node151 -> node154;
+  node142 -> node151;
+  node95 -> node142;
+  node155 [label="Columna
+Finalizado"];
+  node156 [label="Tarea
+Levantar ambiente de staging"];
+  node157 [label="Prioridad
+MEDIA"];
+  node156 -> node157;
+  node158 [label="Responsable
+DevOps"];
+  node156 -> node158;
+  node159 [label="FechaLimite
+2026-04-05"];
+  node156 -> node159;
+  node155 -> node156;
+  node160 [label="Tarea
+Definir stack tecnológico"];
+  node161 [label="Prioridad
+ALTA"];
+  node160 -> node161;
+  node162 [label="Responsable
+Arquitecto"];
+  node160 -> node162;
+  node163 [label="FechaLimite
+2026-04-10"];
+  node160 -> node163;
+  node155 -> node160;
+  node164 [label="Tarea
+Aprobar presupuesto 2026"];
+  node165 [label="Prioridad
+ALTA"];
+  node164 -> node165;
+  node166 [label="Responsable
+Dirección"];
+  node164 -> node166;
+  node167 [label="FechaLimite
+2026-04-12"];
+  node164 -> node167;
+  node155 -> node164;
+  node168 [label="Tarea
+Contratar equipo de desarrollo"];
+  node169 [label="Prioridad
+ALTA"];
+  node168 -> node169;
+  node170 [label="Responsable
+RRHH^Dept"];
+  node168 -> node170;
+  node171 [label="FechaLimite
 2026-04-20"];
-  node22 -> node25;
-  node21 -> node22;
-  node26 [label="Tarea
-Configurar GitHub"];
-  node27 [label="Prioridad
-BAJA"];
-  node26 -> node27;
-  node28 [label="Responsable
-Jorge"];
-  node26 -> node28;
-  node29 [label="FechaLimite
-2026-04-18"];
-  node26 -> node29;
-  node21 -> node26;
-  node2 -> node21;
-  node1 -> node2;
+  node168 -> node171;
+  node155 -> node168;
+  node95 -> node155;
+  node94 -> node95;
 }
